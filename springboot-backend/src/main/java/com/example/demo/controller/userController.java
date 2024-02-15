@@ -19,5 +19,9 @@ public class userController {
         return UserName;
     }
 
-
+    @PostMapping(path = "/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDto) {
+        LoginMesage loginMesage = userService.loginUser(loginDto);
+        return ResponseEntity.ok(loginMesage);
+    }
 }
