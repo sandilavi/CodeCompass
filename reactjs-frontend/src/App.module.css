@@ -1,0 +1,653 @@
+.welcomeBack {
+    margin: 0;
+    height: 68px;
+    width: 477px;
+    position: relative;
+    font-size: inherit;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    font-family: inherit;
+    display: inline-block;
+    flex-shrink: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-right: var(--padding-xl);
+}
+
+.secondFrame {
+    width: 498px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.codecompassBasicRemovebgPreIcon {
+    align-self: stretch;
+    height: 167px;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.dontHaveAn {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+.fifthFrame {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 21.35px;
+    background-color: var(--color-gainsboro-100);
+    box-shadow: -2.2px -2.2px 6.54px #fff,
+        2.2px 2.2px 6.54px rgba(174, 174, 192, 0.4);
+}
+
+.signUp,
+.signUp1 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.signUp1 {
+    height: 54.6px;
+    width: 184.4px;
+    font-size: var(--font-size-11xl);
+    font-family: var(--font-roboto);
+    color: var(--color-black);
+    text-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.signUp {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-sm) var(--padding-sm) var(--padding-3xl);
+    background-color: transparent;
+    width: 300px;
+    flex-direction: row;
+    align-items: flex-start;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.fourthFrame {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--padding-xl) 0 0;
+    box-sizing: border-box;
+    gap: 32px 0;
+}
+
+.codeCompassContainer,
+.firstFrame,
+.fourthFrame,
+.thirdFrame {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.thirdFrame {
+    width: 400px;
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 40px;
+}
+
+.codeCompassContainer,
+.firstFrame {
+    flex-direction: column;
+}
+
+.firstFrame {
+    align-self: stretch;
+    align-items: center;
+    gap: 182px 0;
+}
+
+.codeCompassContainer {
+    width: 590px;
+    align-items: flex-start;
+    padding: 66px 0 0;
+    box-sizing: border-box;
+    min-width: 590px;
+}
+
+.signInTo {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+.sixthFrame {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 var(--padding-13xl) 0 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.eleventhRectangle {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--br-mini);
+    background-color: var(--color-gainsboro-100);
+}
+
+.eleventhRectangleParent,
+.email {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 100%;
+}
+
+.email {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font-family: var(--font-outfit);
+    font-size: var(--font-size-13xl);
+    background-color: transparent;
+    height: 60.3px;
+    flex: 1;
+    color: var(--color-black);
+    text-align: left;
+    min-width: 250px;
+    z-index: 1;
+}
+
+.eleventhRectangleParent {
+    align-self: stretch;
+    border-radius: var(--br-mini);
+    flex-direction: row;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-11xl) var(--padding-base) var(--padding-19xl);
+    box-sizing: border-box;
+}
+
+.instanceChild {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--br-mini);
+    background-color: var(--color-gainsboro-100);
+}
+
+.password,
+.rectangleParent {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 100%;
+}
+
+.password {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font-family: var(--font-outfit);
+    font-size: var(--font-size-13xl);
+    background-color: transparent;
+    height: 60.3px;
+    flex: 1;
+    color: var(--color-black);
+    text-align: left;
+    min-width: 250px;
+    z-index: 1;
+}
+
+.rectangleParent {
+    align-self: stretch;
+    border-radius: var(--br-mini);
+    flex-direction: row;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-11xl) var(--padding-base) var(--padding-19xl);
+    box-sizing: border-box;
+}
+
+.eighthFrame,
+.ninthFrame {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.ninthFrame {
+    width: 500px;
+    flex-direction: column;
+    gap: 57px 0;
+}
+
+.eighthFrame {
+    width: 566px;
+    flex-direction: row;
+    padding: 0 0 var(--padding-base) 0;
+    box-sizing: border-box;
+}
+
+.signUpFrame {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 21.35px;
+    background-color: var(--color-gainsboro-100);
+    box-shadow: -2.2px -2.2px 6.54px #fff,
+        2.2px 2.2px 6.54px rgba(174, 174, 192, 0.4);
+}
+
+.signIn1 {
+    height: 54.6px;
+    flex: 1;
+    position: relative;
+    font-size: var(--font-size-11xl);
+    display: flex;
+    font-family: var(--font-roboto);
+    color: var(--color-black);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.signIn,
+.signInButton {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.signIn {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-sm) 58px var(--padding-3xl) var(--padding-38xl);
+    background-color: transparent;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+}
+
+.signInButton {
+    width: 322px;
+    justify-content: flex-start;
+    padding: 0 var(--padding-3xl) 0 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.orChild {
+    height: 1px;
+    width: 236px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+}
+
+.or1,
+.orChild,
+.orItem {
+    position: relative;
+}
+
+.or1 {
+    width: 82px;
+    font-size: var(--font-size-5xl);
+    font-weight: 600;
+    font-family: var(--font-roboto);
+    color: var(--color-black);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.orItem {
+    height: 1px;
+    width: 248px;
+    object-fit: contain;
+}
+
+.or {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-14xl);
+}
+
+.inputFieldFrame,
+.signInFrame {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.inputFieldFrame {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 67px 0;
+}
+
+.signInFrame {
+    align-self: stretch;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+}
+
+.signUpChild {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    margin: 0 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 21.35px;
+    background-color: var(--color-gainsboro-100);
+    box-shadow: -2.2px -2.2px 6.54px #fff,
+        2.2px 2.2px 6.54px rgba(174, 174, 192, 0.4);
+}
+
+.google1Icon {
+    height: 33.1px;
+    width: 39.7px;
+    position: relative;
+    border-radius: 100px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.continueWithGoogle {
+    width: 259px;
+    position: relative;
+    font-size: var(--font-size-5xl);
+    display: flex;
+    font-family: var(--font-outfit);
+    color: var(--color-black);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.continueWithGoogleWrapper {
+    width: 219px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.signUpInner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 0 3px;
+    z-index: 1;
+}
+
+.seventhFrame,
+.signUp2 {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.signUp2 {
+    width: 632px;
+    flex-direction: row;
+    align-items: center;
+    padding: 19px var(--padding-19xl) var(--padding-sm);
+    box-sizing: border-box;
+    position: relative;
+    gap: var(--gap-108xl);
+}
+
+.seventhFrame {
+    margin: 0;
+    align-self: stretch;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 81px 0;
+}
+
+.detailedFrameChild,
+.detailedFrameItem {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: none;
+}
+
+.desktop1,
+.detailedFrame {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.detailedFrame {
+    flex: 1;
+    background-color: rgba(217, 217, 217, 0.4);
+    flex-direction: column;
+    padding: 34px var(--padding-13xl) 134px 44px;
+    gap: 107px 0;
+    min-width: 468px;
+    max-width: 100%;
+    font-size: var(--font-size-29xl);
+    color: #090c57;
+}
+
+.desktop1 {
+    width: 1440px;
+    background-color: #b2b4cb;
+    flex-direction: row;
+    padding: 0 0 0 86px;
+    gap: 0 44px;
+    letter-spacing: normal;
+    text-align: left;
+    font-size: 60px;
+    color: var(--color-white);
+    font-family: var(--font-jaldi);
+}
+
+@media screen and (max-width: 1125px) {
+    .codeCompassContainer {
+        flex: 1;
+    }
+
+    .desktop1 {
+        flex-wrap: wrap;
+        padding-left: var(--padding-xl);
+        padding-right: var(--padding-xl);
+        padding-bottom: var(--padding-xl);
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .welcomeBack {
+        font-size: var(--font-size-29xl);
+    }
+
+    .dontHaveAn {
+        font-size: var(--font-size-13xl);
+    }
+
+    .codeCompassContainer {
+        padding-top: 43px;
+        box-sizing: border-box;
+    }
+
+    .signInTo {
+        font-size: 38px;
+    }
+
+    .email,
+    .password {
+        font-size: var(--font-size-7xl);
+    }
+
+    .detailedFrame {
+        padding-top: var(--padding-3xl);
+        padding-bottom: 87px;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .firstFrame {
+        gap: 182px 0;
+    }
+
+    .codeCompassContainer {
+        min-width: 100%;
+    }
+
+    .ninthFrame {
+        gap: 57px 0;
+    }
+
+    .or {
+        flex-wrap: wrap;
+        gap: var(--gap-14xl);
+    }
+
+    .inputFieldFrame {
+        gap: 67px 0;
+    }
+
+    .signUp2 {
+        flex-wrap: wrap;
+    }
+
+    .seventhFrame {
+        gap: 81px 0;
+    }
+
+    .detailedFrame {
+        gap: 107px 0;
+        padding-left: var(--padding-3xl);
+        box-sizing: border-box;
+        min-width: 100%;
+    }
+
+    .desktop1 {
+        gap: 0 44px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .welcomeBack {
+        font-size: 36px;
+    }
+
+    .dontHaveAn {
+        font-size: var(--font-size-5xl);
+    }
+
+    .fourthFrame {
+        gap: 32px 0;
+    }
+
+    .firstFrame {
+        gap: 182px 0;
+    }
+
+    .codeCompassContainer {
+        padding-top: 28px;
+        box-sizing: border-box;
+    }
+
+    .signInTo {
+        font-size: 29px;
+    }
+
+    .email,
+    .password {
+        font-size: var(--font-size-lgi);
+    }
+
+    .signIn {
+        padding-left: var(--padding-xl);
+        padding-right: var(--padding-xl);
+        box-sizing: border-box;
+    }
+
+    .or1 {
+        font-size: var(--font-size-lgi);
+    }
+
+    .inputFieldFrame {
+        gap: 67px 0;
+    }
+
+    .continueWithGoogle {
+        font-size: var(--font-size-lgi);
+    }
+
+    .signUp2 {
+        gap: var(--gap-108xl);
+    }
+
+    .seventhFrame {
+        gap: 81px 0;
+    }
+
+    .detailedFrame {
+        gap: 107px 0;
+        padding-top: var(--padding-xl);
+        padding-bottom: var(--padding-38xl);
+        box-sizing: border-box;
+    }
+}
