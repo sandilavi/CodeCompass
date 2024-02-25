@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./global.css";
-import SignInForm from "./components/login/Signing";
+import SignInForm from "./components/login/Signin";
 import SignUpForm from "./components/login/Signup";
 
 export default function App() {
