@@ -1,13 +1,11 @@
-User_ID,Quiz_Level,Topic,Question_ID,Question_Text,Correct_Answer,User_Response,Outcome
-1,Begineer,Loops,1,What is the correct for loop?,B,B,Correct
-1,Indermediate,Arrays,11,What is an array?,C,A,Incorrect
-1,Advanced,Functions,21,What is the correct function?,A,A,Correct
-2,Begineer,Loops,1,What is the correct for loop?,B,B,Correct
-2,Indermediate,Arrays,11,What is an array?,C,A,Incorrect
-2,Advanced,Functions,21,What is the correct function?,A,A,Correct
-3,Begineer,Loops,1,What is the correct for loop?,B,B,Correct
-3,Indermediate,Arrays,11,What is an array?,C,B,Incorrect
-3,Advanced,Functions,21,What is the correct function?,A,A,Correct
-4,Begineer,Loops,1,What is the correct for loop?,B,B,Correct
-4,Indermediate,Arrays,11,What is an array?,C,D,Incorrect
-4,Advanced,Functions,21,What is the correct function?,A,B,Incorrect
+User_ID,Total_Correct_Answers,Total_Attempted_Questions,Proficiency_Level
+1,1,10,Beginner
+2,2,10,Beginner
+3,3,10,Beginner
+4,4,10,Intermediate
+5,5,10,Intermediate
+6,6,10,Intermediate
+7,7,10,Intermediate
+8,8,10,Advanced
+9,9,10,Advanced
+10,10,10,Advanced
