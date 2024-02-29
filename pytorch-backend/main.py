@@ -1,8 +1,8 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.feature_selection import RFE
 
 # Converts csv file into a dataframe and stored it as df
@@ -46,9 +46,23 @@ print("Selected Features:", selected_features)
 # Train the model with selected features
 model.fit(X_train_scaled[:, rfe.support_], y_train)
 
-# Predict on the test set
-y_pred = model.predict(X_test_scaled[:, rfe.support_])
+# Hyperparameter tuning
+param_grid = {'C': [0.001, 0.01, 0.1, 1, 10, 100]}
+grid_search = GridSearchCV(estimator=LogisticRegression(), param_grid=param_grid, cv=2)
+grid_search.fit(X_train_scaled[:, rfe.support_], y_train)
 
-# Calculate accuracy
+print("Best Parameters:", grid_search.best_params_)
+
+# Predict on the test set
+y_pred = grid_search.predict(X_test_scaled[:, rfe.support_])
+
+# Calculate evaluation metrics
 accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, average='macro')
+recall = recall_score(y_test, y_pred, average='macro')
+f1 = f1_score(y_test, y_pred, average='macro')
+
 print(f'Test Accuracy: {accuracy * 100:.2f}%')
+print(f'Precision: {precision}')
+print(f'Recall: {recall}')
+print(f'F1 Score: {f1}')
