@@ -1,4 +1,5 @@
 import React from "react";
+import UserService from "../../services/UserService";
 
 function SignUpForm() {
     const [state, setState] = React.useState({
@@ -19,9 +20,9 @@ function SignUpForm() {
         evt.preventDefault();
 
         const { name, email, password } = state;
-        alert(
-            `You are sign up with name: ${name} email: ${email} and password: ${password}`
-        );
+        let user = { name, email, password };
+        console.log(response.data);
+        UserService.signup(user);
 
         for (const key in state) {
             setState({
@@ -29,6 +30,8 @@ function SignUpForm() {
                 [key]: ""
             });
         }
+
+
     };
 
     return (

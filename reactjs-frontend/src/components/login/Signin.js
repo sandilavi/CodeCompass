@@ -19,8 +19,7 @@ function SignInForm() {
 
         const { email, password } = state;
         let user = { email, password };
-        alert(`You are login with email: ${email} and password: ${password}`);
-        console.log("response.data");
+        console.log(response.data);
         UserService.signing(user);
 
         for (const key in state) {
