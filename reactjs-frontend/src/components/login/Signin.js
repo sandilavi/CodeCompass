@@ -1,4 +1,6 @@
 import React from "react";
+import UserService from '../../services/UserService';
+
 function SignInForm() {
     const [state, setState] = React.useState({
         email: "",
@@ -16,7 +18,10 @@ function SignInForm() {
         evt.preventDefault();
 
         const { email, password } = state;
+        let user = { email, password };
         alert(`You are login with email: ${email} and password: ${password}`);
+        console.log("response.data");
+        UserService.signing(user);
 
         for (const key in state) {
             setState({
@@ -25,6 +30,8 @@ function SignInForm() {
             });
         }
     };
+
+    ;
 
     return (
         <div className="form-container sign-in-container">

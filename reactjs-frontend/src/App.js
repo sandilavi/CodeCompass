@@ -3,7 +3,11 @@ import "./global.css";
 import SignInForm from "./components/login/Signin";
 import SignUpForm from "./components/login/Signup";
 
+
+
+
 export default function App() {
+
   const [type, setType] = useState("signIn");
   const handleOnClick = text => {
     if (text !== type) {
