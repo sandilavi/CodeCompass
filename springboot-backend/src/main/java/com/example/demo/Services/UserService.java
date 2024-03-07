@@ -3,15 +3,17 @@ package com.example.demo.Services;
 import com.example.demo.Entity.User;
 import com.example.demo.dto.LoginDto;
 import com.example.demo.dto.UserDto;
-import com.example.demo.repository.ConfirmationTokenRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Service
@@ -21,25 +23,43 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    ConfirmationTokenRepository confirmationTokenRepository;
+    private JavaMailSender javaMailSender;
 
     UserDto userDto;
 
-    public String addUser(UserDto userDto){
-        User user=new User(
-                userDto.getUserId(),
-                userDto.getUserName(),
-                userDto.getEmail(),
-                this.passwordEncoder.encode(userDto.getPassword())
-        );
-        if (userRepository.existsByUserEmail(user.getEmail())) {
-            return "Error: Email is already in use!";
-        }else{
+    public ResponseEntity<String> addUser(User user){
+        String token = UUID.randomUUID().toString();
+        user.setVerificationToken(token);
+
+
+       // if (userRepository.existsByUserEmail(user.getEmail())) {
+            //return ResponseEntity.badRequest().body("Error: Email is already in use!");
+       // }else{
             userRepository.save(user);
-            return user.getUserName();
+            // Send verification email
+            sendVerificationEmail(user.getEmail(), token);
+            return ResponseEntity.ok("Verify email by the link sent on your email address");
+        }
+
+
+
+  private void sendVerificationEmail(String email, String token) {
+      SimpleMailMessage message = new SimpleMailMessage();
+      message.setTo(email);
+      message.setSubject("Email Verification");
+      message.setText("Click the following link to verify your email: http://localhost:3000/verify-email?token=" + token);
+      javaMailSender.send(message);
+  }
+    public void verifyEmail(String token) {
+        User user = userRepository.findByVerificationToken(token);
+        if (user != null) {
+            user.setVerified(true);
+            user.setVerificationToken(null);
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("Invalid verification token.");
         }
     }
-
     public LoginMesage loginUser(LoginDto loginDto) {
         String msg = "";
         User user = userRepository.findByEmail(loginDto.getEmail());

@@ -13,9 +13,9 @@ import java.util.Optional;
 
 
 @Repository
-@EnableJpaRepositories
+
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneByEmailAndPassword(String email, String password);
     User findByEmail(String email);
-    //LoginMesage loginEmployee(LoginDto loginDTO);
+    User findByVerificationToken(String verificationToken);
 }
