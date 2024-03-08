@@ -4,6 +4,8 @@ import com.example.demo.Entity.User;
 import com.example.demo.dto.LoginDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -24,22 +26,21 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private JavaMailSender javaMailSender;
-
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     UserDto userDto;
 
     public ResponseEntity<String> addUser(User user){
         String token = UUID.randomUUID().toString();
         user.setVerificationToken(token);
-
-
-       // if (userRepository.existsByUserEmail(user.getEmail())) {
-            //return ResponseEntity.badRequest().body("Error: Email is already in use!");
-       // }else{
+        if (userRepository.existsByemail(user.getEmail())) {
+            return ResponseEntity.badRequest().body("Error: Email is already in use!");
+        } else {
+           user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
-            // Send verification email
             sendVerificationEmail(user.getEmail(), token);
             return ResponseEntity.ok("Verify email by the link sent on your email address");
         }
+    }
 
 
 
@@ -47,7 +48,7 @@ public class UserService {
       SimpleMailMessage message = new SimpleMailMessage();
       message.setTo(email);
       message.setSubject("Email Verification");
-      message.setText("Click the following link to verify your email: http://localhost:3000/verify-email?token=" + token);
+      message.setText("Click the following link to verify your email: http://localhost:8080/user/verify-email?token=" + token);
       javaMailSender.send(message);
   }
     public void verifyEmail(String token) {
