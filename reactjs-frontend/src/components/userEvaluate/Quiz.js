@@ -9,29 +9,54 @@ export default function Quiz() {
 
   const questions = [
     {
-      question: "What is the full form of JVM?",
-      options: ["Java Virtual Machine", "Java Virtual Module", "Java Virtual Method", "None of the above"],
-      answer: "Java Virtual Machine"
+      question: "What is the correct syntax to declare a variable of type integer in Java?",
+      options: ["int myVar;", "myVar int;", "integer myVar;", "int = myVar;"],
+      answer: "int myVar"
     },
     {
-      question: "Which of the following can be used to declare and initialize an array in Java?",
-      options: ["int[] numbers = new int[5];", "int numbers[5] = {1, 2, 3, 4, 5};", "int numbers = {1, 2, 3, 4, 5};", "List<int> numbers = new ArrayList<int>(5);"],
-      answers: ["int[] numbers = new int[5];", "int numbers[5] = {1, 2, 3, 4, 5};"]
+      question: "Which of the following is used for explicit type casting in Java?",
+      options: ["(cast)", "cast()", "(type)", "None of the above"],
+      answers: ["(cast)"]
     },
     {
-      question: "_____ is used to find and fix bugs in the Java programs.",
-      options: ["JVM", "JRE", "JDK", "JDB"],
-      answer: "JDB"
+      question: "What will be the result of the following expression: 5 > 3 && 3 < 2?",
+      options: ["true", "false", "compilation error", "runtime error"],
+      answer: "false"
     },
     {
-      question: "What is the use of the println method?",
-      options: ["It is used to print text on the screen.", "It is used to print text on the screen with the line break.", "It is used to read text from keyboard.", "It is used to read text from a file."],
-      answer: "It is used to print text on the screen with the line break."
+      question: "Which method is used to concatenate two strings in Java?",
+      options: ["concat()", "append()", "concatenate()", "add()"],
+      answer: "concat()"
     },
     {
-      question: "Which one of the following is the first strictly OOP language?",
-      options: ["C", "C++", "Java", "C#"],
-      answer: "Java"
+      question: (
+        <div>
+          <div className="question-text"> Which statement will be printed by the following Java code snippet? </div>
+          <img src="/images/question5.png" alt="question5"/>
+        </div>
+      ),
+      options: ["Number is greater than 5", "Number is less than 5", "Number is less than or equal to 5", "Number is greater than or equal to 5"],
+      answer: "Number is greater than 5"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the following code snippet? </div>
+          <img src="/images/question6.png" alt="question6" />
+        </div>
+      ),
+      options: ["Day is: Sunday", "Day is: Monday", "Day is: Tuesday", "Day is: Invalid day"],
+      answer: "Day is: Tuesday"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> How many iterations will the following Java loop perform? </div>
+          <img src="/images/question7.png" alt="question7" />
+        </div>
+      ),
+      options: ["5", "10", "4", "6"],
+      answer: "5"
     }
   ];
 
@@ -91,7 +116,8 @@ export default function Quiz() {
         <>
           <div className="question-section">
             <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span className="question-count-class">Question {currentQuestion + 1}/</span>
+              <span className="question-count-class">{questions.length}</span>
             </div>
             <div className="question-text">{questions[currentQuestion].question}</div>
           </div>

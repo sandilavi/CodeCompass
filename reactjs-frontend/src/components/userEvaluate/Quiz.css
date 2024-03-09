@@ -3,7 +3,6 @@
   flex-direction: column;
 }
 .option {
-  
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
@@ -11,11 +10,19 @@
   transition: background-color 0.3s;
 }
 .option.selected {
-  background-color: #87ceeb; /* Change the background color to highlight the selected option */
+  background-color: #87ceeb;
 }
-.button-section {
-  margin-top: 20px; /* Add space between the Previous and Next buttons */
+.next-question-button {
+  margin-top: 20px;
+  background-color: #3dc593;
 }
-.prev-question-button {
-  margin-right: 5px; /* Add space between the Previous and Next buttons */
+.question-count {
+  margin-bottom: 15px;
+}
+.question-count-class {
+  font-size: 30px;
+}
+.question-text {
+  font-size: 20px;
+  margin-bottom: 12px;
 }
