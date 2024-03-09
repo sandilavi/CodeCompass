@@ -1,0 +1,21 @@
+.answer-section {
+  display: flex;
+  flex-direction: column;
+}
+.option {
+  
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.option.selected {
+  background-color: #87ceeb; /* Change the background color to highlight the selected option */
+}
+.button-section {
+  margin-top: 20px; /* Add space between the Previous and Next buttons */
+}
+.prev-question-button {
+  margin-right: 5px; /* Add space between the Previous and Next buttons */
+}
