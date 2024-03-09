@@ -1,0 +1,57 @@
+/* ProfilePopup.css */
+
+.profile-popup {
+    background-color: #ffffff;
+    border: 1px solid #a5caff;
+    padding: 20px;
+    max-width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .profile-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .profile-popup p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .profile-popup button {
+    background-color: #7895b7;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Increase top margin to move it down */
+
+    
+  }
+  
+  .profile-popup button:hover {
+    background-color: #7bb1ec;
+  }
+
+  .show-profile-button {
+    background-color: #e8dff1; /* Background color */
+    color: #0f0f0f; /* Text color */
+    border: none; /* No border */
+    padding: 12px 24px; /* Padding */
+    border-radius:20px; /* Border radius */
+    cursor: pointer; /* Cursor type */
+    transition: background-color 0.3s ease; /* Transition effect */
+    float: center; /* Move the button to the right */
+  margin-top: 20px; /* Move the button down by increasing the top margin */
+  }
+  
+  .show-profile-button:hover {
+    background-color: #7bb1ec; /* Background color on hover */
+  }
+  
+  
