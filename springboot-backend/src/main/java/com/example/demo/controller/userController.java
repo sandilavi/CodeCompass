@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class userController {
     @Autowired
     private UserService userService;
+
     @PostMapping(path = "/signUp")
     public String saveUser(@RequestBody User user) {
         String UserName = String.valueOf(userService.addUser(user));
@@ -24,9 +27,17 @@ public class userController {
         LoginMesage loginMesage = userService.loginUser(loginDto);
         return ResponseEntity.ok(loginMesage);
     }
-    @GetMapping("/verify-email")
+
+    @GetMapping("/verifyEmail")
     public ResponseEntity<?> verifyEmail(@RequestParam("token") String token) {
         userService.verifyEmail(token);
         return ResponseEntity.ok("Email verified successfully.");
     }
+
+    @PutMapping("/userUpdate_id/{id}")
+    public ResponseEntity<String> updateUser_from_id(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser_from_id(id, user);
+
+    }
+
 }
