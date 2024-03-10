@@ -1,11 +1,11 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons-react';
+import { IconHome, IconBookFilled, IconCalendarExclamation, IconWindmill } from '@tabler/icons-react';
 
 // constant
 const icons = {
-  IconTypography,
-  IconPalette,
-  IconShadow,
+  IconHome,
+  IconBookFilled,
+  IconCalendarExclamation,
   IconWindmill
 };
 
@@ -13,56 +13,37 @@ const icons = {
 
 const utilities = {
   id: 'utilities',
-  title: 'Utilities',
+  title: 'Menu',
   type: 'group',
   children: [
     {
       id: 'util-typography',
       title: 'Home',
       type: 'item',
-      url: '/utils/util-typography',
-      icon: icons.IconTypography,
+      url: '/menu/home',
+      icon: icons.IconHome,
       breadcrumbs: false
     },
     {
       id: 'util-color',
-      title: 'Color',
+      title: 'My Learning Plans',
       type: 'item',
-      url: '/utils/util-color',
-      icon: icons.IconPalette,
-      breadcrumbs: false
+      url: '/menu/courses',
+      icon: icons.IconBookFilled,
     },
     {
       id: 'util-shadow',
-      title: 'Shadow',
+      title: 'My Goals',
       type: 'item',
-      url: '/utils/util-shadow',
-      icon: icons.IconShadow,
-      breadcrumbs: false
+      url: '/menu/goals',
+      icon: icons.IconCalendarExclamation,
     },
     {
       id: 'icons',
-      title: 'Icons',
-      type: 'collapse',
-      icon: icons.IconWindmill,
-      children: [
-        {
-          id: 'tabler-icons',
-          title: 'Tabler Icons',
-          type: 'item',
-          url: '/icons/tabler-icons',
-          breadcrumbs: false
-        },
-        {
-          id: 'material-icons',
-          title: 'Material Icons',
-          type: 'item',
-          external: true,
-          target: '_blank',
-          url: 'https://mui.com/material-ui/material-icons/',
-          breadcrumbs: false
-        }
-      ]
+      title: 'About Us',
+      type: 'item',
+      url: '/menu/aboutus',
+      icon: icons.IconWindmill
     }
   ]
 };
