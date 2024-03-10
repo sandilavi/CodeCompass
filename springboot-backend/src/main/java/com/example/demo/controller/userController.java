@@ -45,5 +45,9 @@ public class userController {
         return userService.updateUser_from_email(email, user);
 
     }
+    @GetMapping("/getAllUsers")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
 }

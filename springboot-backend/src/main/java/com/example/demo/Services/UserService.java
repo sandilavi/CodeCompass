@@ -114,4 +114,7 @@ public class UserService {
             return ResponseEntity.badRequest().body("Error");
         }
     }
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }
