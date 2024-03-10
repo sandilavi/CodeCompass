@@ -40,4 +40,10 @@ public class userController {
 
     }
 
+    @PutMapping("/userUpdate_email/{email}")
+    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody User user) {
+        return userService.updateUser_from_email(email, user);
+
+    }
+
 }

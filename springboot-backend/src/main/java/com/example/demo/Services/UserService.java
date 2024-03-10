@@ -99,4 +99,19 @@ public class UserService {
         }
     }
 
+    public ResponseEntity<String> updateUser_from_email(String email, User user) {
+
+        User existingUser = userRepository.findByEmail(email);
+
+
+        if (existingUser != null) {
+            existingUser.setUserName(user.getUserName());
+            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(existingUser);
+            return ResponseEntity.ok("updated");
+        } else {
+            // Handle user not found scenario
+            return ResponseEntity.badRequest().body("Error");
+        }
+    }
 }
