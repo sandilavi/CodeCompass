@@ -50,4 +50,8 @@ public class userController {
         return userService.getAllUsers();
     }
 
+    @DeleteMapping("/delete/{email}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("email") String email) {
+        return userService.deleteEmployeeByEmail(email);
+    }
 }

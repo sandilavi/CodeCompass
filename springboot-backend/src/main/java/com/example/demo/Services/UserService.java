@@ -117,4 +117,15 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    public ResponseEntity<String> deleteEmployeeByEmail(String email) {
+        User existingUser= userRepository.findByEmail(email);
+        if (existingUser != null) {
+            userRepository.delete(existingUser);
+            return ResponseEntity.ok("deleted");
+        } else {
+            // Handle user not found scenario
+            return ResponseEntity.badRequest().body("Error");
+        }
+    }
 }
