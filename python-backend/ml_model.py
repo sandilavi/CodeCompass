@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.feature_selection import RFE
 
 # Converts csv file into a dataframe and stored it as df
-df = pd.read_csv('sample_dataset.csv')
+df = pd.read_csv('dataset.csv')
 
 # Handle the missing values
 df.dropna(inplace=True)
@@ -16,7 +16,7 @@ df.dropna(inplace=True)
 label_encoder = LabelEncoder()
 
 # Encode non-numerical columns to numerical values
-df['User_ID'] = label_encoder.fit_transform(df['User_ID'])
+#df['User_ID'] = label_encoder.fit_transform(df['User_ID'])
 df['Proficiency_Level'] = label_encoder.fit_transform(df['Proficiency_Level'])
 
 # Split features and target variable
@@ -35,7 +35,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 model = LogisticRegression()
 
 # Initialize RFE with LR
-rfe = RFE(model, n_features_to_select=2)  # Select top 2 features
+rfe = RFE(model, n_features_to_select=4)
 
 # Apply RFE to the training data and target lables
 rfe.fit(X_train, y_train)
@@ -68,7 +68,6 @@ print(f'Precision: {precision}')
 print(f'Recall: {recall}')
 print(f'F1 Score: {f1}')
 
+# Save the trained model to a fileimport joblib
 import joblib
-
-# Save the trained model to a file
-#joblib.dump(model, 'trained_model.joblib')
+joblib.dump(model, 'trained_model.joblib')
