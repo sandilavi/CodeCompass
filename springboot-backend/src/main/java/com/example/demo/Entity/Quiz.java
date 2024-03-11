@@ -18,8 +18,6 @@ public class Quiz {
     @Column(nullable = false)
     private String technology;
 
-    //	@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-//	private List<QuizQuestion> quizQuestions;
     @JsonIgnoreProperties("quiz") // Add this annotation
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     private List<QuizQuestion> quizQuestions;
