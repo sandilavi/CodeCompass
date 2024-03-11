@@ -1,5 +1,5 @@
 // material-ui
-import { Typography } from '@mui/material';
+import { Badge, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,12 +8,16 @@ import { CardActionArea } from '@mui/material';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
-
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEventsTwoTone';
+import AddReactionTwoToneIcon from '@mui/icons-material/AddReactionTwoTone';
+import newbie from 'assets/images/users/new-bie.png';
+import { useTheme } from '@mui/material/styles';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const HomePage = () => {
 
-  // const theme = useTheme();
+  const theme = useTheme();
 
   return (
     <MainCard title="Dashboard">
@@ -51,8 +55,41 @@ const HomePage = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-
       </Box>
+      <Grid container spacing={1} mt={'10px'}>
+        <Grid item xs={12} md={4}>
+          <Box display='flex' alignItems='center' justifyContent='space-evenly' sx={{ boxShadow: 3, borderRadius: 1, height: '150px' }}>
+            <img src={newbie} alt="newbie" style={{ height: '100px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant='h3' fontStyle='italic' sx={{ color: theme.palette.primary.dark }}>Unlock your badges</Typography>
+              <Typography>Hurry! collect them</Typography>
+            </div>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <Box display='flex' alignItems='center' justifyContent='space-evenly' sx={{ boxShadow: 3, borderRadius: 1, height: '150px' }}>
+            <div>
+              <Badge badgeContent={0} sx={{ mt: '4px', mb: '4px', mr: '4px' }} color="primary" showZero>
+                <SchoolOutlinedIcon color="primary" fontSize='large' />
+              </Badge>
+              <Typography variant='h4'>Learning Plans Completed</Typography>
+            </div>
+            <div>
+              <Badge badgeContent={0} sx={{ mt: '4px', mb: '4px', mr: '4px' }} color="primary" showZero>
+                <EmojiEventsTwoToneIcon color="primary" fontSize='large' />
+              </Badge>
+              <Typography variant='h4'>Achivements</Typography>
+            </div>
+            <div>
+              <Badge badgeContent={0} sx={{ mt: '4px', mb: '4px', mr: '4px' }} color="primary" showZero>
+                <AddReactionTwoToneIcon color="primary" fontSize='large' />
+              </Badge>
+              <Typography variant='h4'>XP Gained</Typography>
+            </div>
+
+          </Box>
+        </Grid>
+      </Grid>
 
       <Typography variant="body1">
       </Typography>
