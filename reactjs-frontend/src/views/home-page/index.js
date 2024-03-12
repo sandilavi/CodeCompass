@@ -13,11 +13,17 @@ import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEventsTwoTone';
 import AddReactionTwoToneIcon from '@mui/icons-material/AddReactionTwoTone';
 import newbie from 'assets/images/users/new-bie.png';
 import { useTheme } from '@mui/material/styles';
+import { useState } from 'react';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const HomePage = () => {
 
   const theme = useTheme();
+  const [statistics, setStatistics] = useState({
+    plansCompleted: 3,
+    archivements: 0,
+    experience: 0
+  });
 
   return (
     <MainCard title="Dashboard">
@@ -69,7 +75,7 @@ const HomePage = () => {
         <Grid item xs={12} md={8}>
           <Box display='flex' alignItems='center' justifyContent='space-evenly' sx={{ boxShadow: 3, borderRadius: 1, height: '150px' }}>
             <div>
-              <Badge badgeContent={0} sx={{ mt: '4px', mb: '4px', mr: '4px' }} color="primary" showZero>
+              <Badge badgeContent={statistics.plansCompleted} sx={{ mt: '4px', mb: '4px', mr: '4px' }} color="primary" showZero>
                 <SchoolOutlinedIcon color="primary" fontSize='large' />
               </Badge>
               <Typography variant='h4'>Learning Plans Completed</Typography>
