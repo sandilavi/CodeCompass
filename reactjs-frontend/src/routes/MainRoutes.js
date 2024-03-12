@@ -8,7 +8,7 @@ import Loadable from 'ui-component/Loadable';
 // utilities routing
 // const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
 const MyLearningPlan = Loadable(lazy(() => import('views/options/myLearningPlan')));
-const MyGoals = Loadable(lazy(() => import('views/options/myGoals')));
+const MyGoals = Loadable(lazy(() => import('views/options/GoalSection/MyGoals')));
 const AboutUs = Loadable(lazy(() => import('views/options/aboutUs')));
 
 // sample page routing
