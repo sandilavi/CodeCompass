@@ -30,7 +30,7 @@ const HomePage = () => {
       <Typography variant='h3' align='center' marginBottom='20px' sx={{ fontWeight: 'medium' }} >
         Select a Programming Language
       </Typography>
-      <Box display='flex' alignItems='center' sx={{ boxShadow: 3, borderRadius: 2 }} >
+      <Box display='flex' alignItems='center' justifyContent='center' sx={{ boxShadow: 3, borderRadius: 2 }} >
         <Card sx={{ maxWidth: 345, width: 200, mt: '9px', mb: '9px', ml: '4px' }} onClick={() => { console.log('onClick'); }}>
           <CardActionArea>
             <CardMedia
