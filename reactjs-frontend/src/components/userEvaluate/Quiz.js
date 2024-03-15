@@ -32,7 +32,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which statement will be printed by the following Java code snippet? </div>
-          <img src="/images/question5.png" alt="question5"/>
+          <img src="/images/question5.png" alt="question"/>
         </div>
       ),
       options: ["Number is greater than 5", "Number is less than 5", "Number is less than or equal to 5", "Number is greater than or equal to 5"],
@@ -41,8 +41,8 @@ export default function Quiz() {
     {
       question: (
         <div>
-          <div className="question-text"> What will be the output of the following code snippet? </div>
-          <img src="/images/question6.png" alt="question6" />
+          <div className="question-text"> What will be the output of this code snippet? </div>
+          <img src="/images/question6.png" alt="question" />
         </div>
       ),
       options: ["Day is: Sunday", "Day is: Monday", "Day is: Tuesday", "Day is: Invalid day"],
@@ -52,11 +52,36 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> How many iterations will the following Java loop perform? </div>
-          <img src="/images/question7.png" alt="question7" />
+          <img src="/images/question7.png" alt="question" />
         </div>
       ),
       options: ["5", "10", "4", "6"],
       answer: "5"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the following Java code snippet? </div>
+          <img src="/images/question8.png" alt="question" />
+        </div>
+      ),
+      options: ["1 2 3 4 5", "1 2 4 5", "1 2 3 5", "1 3 4 5"],
+      answer: "1 2 4 5"
+    },
+    {
+      question: "How do you access the first element of an array named 'arr' in Java?",
+      options: ["arr[0]", "arr(0)", "arr{0}", "arr.at(0)"],
+      answer: "arr[0]"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What does this method determine? </div>
+          <img src="/images/question10.png" alt="question" />
+        </div>
+      ),
+      options: ["It checks if the given number is a perfect square.", "It checks if the given number is a power of 2.", "It checks if the given number is a prime number.", "It checks if the given number is a Fibonacci number."],
+      answer: "It checks if the given number is a prime number."
     }
   ];
 
