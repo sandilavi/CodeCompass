@@ -1,13 +1,12 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import LabelEncoder
-# from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.feature_selection import RFE
 
 # Converts csv file into a dataframe and stored it as df
-df = pd.read_csv('sample_dataset.csv')
+df = pd.read_csv('dataset.csv')
 
 # Handle the missing values
 df.dropna(inplace=True)
@@ -16,7 +15,6 @@ df.dropna(inplace=True)
 label_encoder = LabelEncoder()
 
 # Encode non-numerical columns to numerical values
-df['User_ID'] = label_encoder.fit_transform(df['User_ID'])
 df['Proficiency_Level'] = label_encoder.fit_transform(df['Proficiency_Level'])
 
 # Split features and target variable
@@ -26,16 +24,11 @@ y = df['Proficiency_Level'] # y which includes only the Proficiency_Level column
 # Split train data as 75% and test data as 25%
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=2)
 
-# Feature scaling to transform the features to have similar scales
-# scaler = StandardScaler()
-# X_train_scaled = scaler.fit_transform(X_train)
-# X_test_scaled = scaler.transform(X_test)
-
 # Initialize logistic regression model
 model = LogisticRegression()
 
 # Initialize RFE with LR
-rfe = RFE(model, n_features_to_select=2)  # Select top 2 features
+rfe = RFE(model, n_features_to_select=4)
 
 # Apply RFE to the training data and target lables
 rfe.fit(X_train, y_train)
@@ -68,7 +61,6 @@ print(f'Precision: {precision}')
 print(f'Recall: {recall}')
 print(f'F1 Score: {f1}')
 
-import joblib
-
-# Save the trained model to a file
+# Save the trained model to a fileimport joblib
+#import joblib
 #joblib.dump(model, 'trained_model.joblib')
