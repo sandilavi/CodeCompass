@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './Quiz.css';
+import axios from 'axios';
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [proficiencyLevel, setProficiencyLevel] = useState('');
 
   const questions = [
     {
@@ -16,7 +18,7 @@ export default function Quiz() {
     {
       question: "Which of the following is used for explicit type casting in Java?",
       options: ["(cast)", "cast()", "(type)", "None of the above"],
-      answers: ["(cast)"]
+      answers: "(cast)"
     },
     {
       question: "What will be the result of the following expression: 5 > 3 && 3 < 2?",
@@ -130,12 +132,23 @@ export default function Quiz() {
       setShowScore(true);
     }
   };
+
+  const handleGetProficiencyLevel = async () => {
+    try {
+      const response = await axios.post('/predict_proficiency', selectedOptions);
+      const { user_levels } = response.data;
+      setProficiencyLevel(user_levels[0]); // Assuming only one proficiency level is returned
+    } catch (error) {
+      console.error('Error fetching proficiency level:', error);
+    }
+  };
   
   return (
     <div className="quiz-container">
       {showScore ? (
         <div className="score-section">
           You scored {score} out of {questions.length}
+          {proficiencyLevel && <div>Proficiency Level: {proficiencyLevel}</div>}
         </div>
       ) : (
         <>
@@ -157,7 +170,9 @@ export default function Quiz() {
               </button>
             ))}
           </div>
-          <button className="next-question-button" onClick={handleNextQuestionClick}>Next Question</button>
+          <button className="next-question-button" onClick={handleNextQuestionClick}>
+            {currentQuestion === questions.length - 1 ? 'Submit the Quiz' : 'Next Question'}
+          </button>
         </>
       )}
     </div>
