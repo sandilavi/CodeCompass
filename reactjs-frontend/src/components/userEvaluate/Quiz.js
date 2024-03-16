@@ -8,6 +8,9 @@ export default function Quiz() {
   const [showScore, setShowScore] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [proficiencyLevel, setProficiencyLevel] = useState('');
+  const [beginnerCorrect, setBeginnerCorrect] = useState(0);
+  const [intermediateCorrect, setIntermediateCorrect] = useState(0);
+  const [advancedCorrect, setAdvancedCorrect] = useState(0);
 
   const questions = [
     {
@@ -105,19 +108,21 @@ export default function Quiz() {
 
   const handleNextQuestionClick = () => {
     let currentScore = score;
+    let beginnerCorrectAnswer = 0;
+    let intermediateCorrectAnswer = 0;
+    let advancedCorrectAnswer = 0;
   
-    // For the second question
-    if (currentQuestion === 1) {
-      const correctAnswers = questions[currentQuestion].answers;
-      const selectedCorrect = correctAnswers.length === selectedOptions.length && correctAnswers.every(answer => selectedOptions.includes(answer));
-      const allCorrectSelected = selectedOptions.every(option => correctAnswers.includes(option));
-      if (selectedCorrect && allCorrectSelected) {
+    // Update score based on the user's answer
+    if (selectedOptions.length === 1) {
+      if (selectedOptions[0] === questions[currentQuestion].answer) {
         currentScore++;
-      }
-    } else {
-      // For other questions, check if the selected option is correct
-      if (selectedOptions.length === 1 && selectedOptions[0] === questions[currentQuestion].answer) {
-        currentScore++;
+        if (currentQuestion < 4) { // Assuming first 4 questions are for beginners
+          beginnerCorrectAnswer++;
+        } else if (currentQuestion < 7) { // Assuming next 3 questions are for intermediate
+          intermediateCorrectAnswer++;
+        } else { // Assuming last 3 questions are for advanced
+          advancedCorrectAnswer++;
+        }
       }
     }
   
@@ -130,14 +135,39 @@ export default function Quiz() {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      handleGetProficiencyLevel();
+  
+      // Send quiz data to backend
+      const quizData = {
+        totalCorrect: currentScore,
+        beginnerCorrect: beginnerCorrectAnswer,
+        intermediateCorrect: intermediateCorrectAnswer,
+        advancedCorrect: advancedCorrectAnswer,
+      };
+  
+      axios.post('http://127.0.0.1:5000/send_quiz_data', quizData)
+        .then((response) => {
+          // Handle response from backend if needed
+          const { proficiencyLevel } = response.data;
+          setProficiencyLevel(proficiencyLevel);
+          setShowScore(true);
+        })
+        .catch((error) => {
+          console.error('Error sending quiz data:', error);
+        });
     }
-  };
+  };  
 
   const handleGetProficiencyLevel = async () => {
     try {
-      const response = await axios.post('/predict_proficiency', selectedOptions);
-      const { user_levels } = response.data;
-      setProficiencyLevel(user_levels[0]); // Assuming only one proficiency level is returned
+      const response = await axios.post('http://127.0.0.1:5000/send_quiz_data', {
+        totalCorrect: score,
+        beginnerCorrect: beginnerCorrect,
+        intermediateCorrect: intermediateCorrect,
+        advancedCorrect: advancedCorrect,
+      });
+      const { proficiencyLevel } = response.data;
+      setProficiencyLevel(proficiencyLevel);
     } catch (error) {
       console.error('Error fetching proficiency level:', error);
     }
