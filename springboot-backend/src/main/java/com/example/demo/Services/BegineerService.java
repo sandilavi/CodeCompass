@@ -1,3 +1,4 @@
+/*
 package com.example.demo.Services;
 
 import com.example.demo.Entity.Begineer_quiz;
@@ -23,3 +24,4 @@ public class BegineerService {
 
     }
 }
+*/

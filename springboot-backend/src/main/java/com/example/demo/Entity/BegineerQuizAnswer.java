@@ -1,3 +1,4 @@
+/*
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
@@ -84,3 +85,4 @@ public class BegineerQuizAnswer {
         isCorrect = correct;
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.demo.controller;
 
 import com.example.demo.Entity.Begineer_quiz;
@@ -16,8 +17,10 @@ public class BegineerQuizController {
     @Autowired
     private BegineerQuizRepository begineerQuizRepository;
 
-    @Autowired
-    private BegineerService begineerService;
+   */
+/* @Autowired
+    private BegineerService begineerService;*//*
+
 
     @PostMapping(path = "/saveQuestions")
     public ResponseEntity<?> saveQuestions(@RequestBody Begineer_quiz begineerQuiz) {
@@ -31,3 +34,4 @@ public class BegineerQuizController {
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.demo.controller;
 
 import com.example.demo.Entity.BegineerQuizAnswer;
@@ -44,3 +45,4 @@ public class BegineerAnswerController {
 
 
 }
+*/
