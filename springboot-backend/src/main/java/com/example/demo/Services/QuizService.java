@@ -46,7 +46,9 @@ public class QuizService {
         // Perform any necessary validation or business logic
         // Update the quiz entity with the new values
         quiz.setQuizName(updatedQuiz.getQuizName());
+        quiz.setId(updatedQuiz.getId());
         quiz.setTechnology(updatedQuiz.getTechnology());
+        quiz.setQuizQuestions(updatedQuiz.getQuizQuestions());
         return quizRepository.save(quiz);
     }
 

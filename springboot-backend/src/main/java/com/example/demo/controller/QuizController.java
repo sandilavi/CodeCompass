@@ -4,6 +4,8 @@ import com.example.demo.Entity.Questions;
 import com.example.demo.Entity.Quiz;
 import com.example.demo.Entity.QuizQuestion;
 import com.example.demo.Services.QuizService;
+import com.example.demo.repository.QuestionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,20 +15,24 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class QuizController {
     private final QuizService quizService;
+    @Autowired
+    private QuestionRepository questRepository;
 
     public QuizController(QuizService quizService) {
         this.quizService = quizService;
     }
-
-//  public Quiz createQuiz(@RequestBody Quiz quiz) {
-//  return quizService.createQuiz(quiz);
-//}
 
     @PostMapping
     public Quiz createQuiz(@RequestBody Quiz quiz) {
         List<QuizQuestion> quizQuestions = quiz.getQuizQuestions();
         for (QuizQuestion quizQuestion : quizQuestions) {
             quizQuestion.setQuiz(quiz); // Set the quiz for each quiz question
+
+            Questions question = quizQuestion.getQuestion();
+            if (question.getId() == null) {
+                // If the question is not persisted yet, persist it
+                questRepository.save(question);
+            }
         }
         return quizService.createQuiz(quiz);
     }
