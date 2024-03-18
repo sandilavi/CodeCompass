@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Configuration
+
 public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
