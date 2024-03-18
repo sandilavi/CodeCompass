@@ -139,8 +139,7 @@ const aboutUs = () => {
               they ensure the seamless functionality of our applications.
               </Typography>
               <p>imasha.20212190@iit.ac.lk</p>
-              <div className="dropdown">
-              <a href="imasha.20212190@iit.ac.lk" className="button">Email</a> {/* Changed the button text to "Email" */}
+              <a href="mailto:imasha.20212190@iit.ac.lk" className="button">Email</a> {/* Changed the button text to "Email" */}
               &nbsp; {/* Add a non-breaking space here */}
   
 
@@ -150,7 +149,7 @@ const aboutUs = () => {
             </div>
           </div>
         </div>
-        </div>
+        
       
     </MainCard>
   );
