@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class MyGoalsService {
 
@@ -15,4 +18,10 @@ public class MyGoalsService {
         myGoalsRepository.save(myGoals);
         return ResponseEntity.ok("Verify email by the link sent on your email address");
     }
+
+    public List<MyGoals> getMyGoals(long userId) {
+        List<MyGoals> myGoals = myGoalsRepository.findByUserId(userId);
+        return myGoals;
+    }
+
 }

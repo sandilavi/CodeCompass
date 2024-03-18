@@ -1,9 +1,12 @@
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 @Table(name ="myGoals")
-public class MyGoals {
+public class MyGoals  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
