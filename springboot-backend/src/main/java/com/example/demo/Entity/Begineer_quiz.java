@@ -3,8 +3,8 @@ package com.example.demo.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name ="questions")
-public class Questions {
+@Table(name ="begineer_quiz")
+public class Begineer_quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,9 +28,10 @@ public class Questions {
     @Column(nullable = false)
     private String technology;
 
-    public Questions(Long id, String questionText, String option1, String option2, String option3, String option4,
-                     int correctOption, String technology) {
-        super();
+    public Begineer_quiz() {
+    }
+
+    public Begineer_quiz(Long id, String questionText, String option1, String option2, String option3, String option4, int correctOption, String technology) {
         this.id = id;
         this.questionText = questionText;
         this.option1 = option1;
@@ -104,10 +105,4 @@ public class Questions {
     public void setTechnology(String technology) {
         this.technology = technology;
     }
-
-    public Questions() {
-        super();
-    }
-
-
 }
