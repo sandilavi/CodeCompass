@@ -108,25 +108,28 @@ export default function Quiz() {
 
   const handleNextQuestionClick = () => {
     let currentScore = score;
-    let beginnerCorrectAnswer = 0;
-    let intermediateCorrectAnswer = 0;
-    let advancedCorrectAnswer = 0;
+    let beginnerCorrectAnswer = beginnerCorrect;
+    let intermediateCorrectAnswer = intermediateCorrect;
+    let advancedCorrectAnswer = advancedCorrect;
   
     // Update score based on the user's answer
     if (selectedOptions.length === 1) {
       if (selectedOptions[0] === questions[currentQuestion].answer) {
         currentScore++;
-        if (currentQuestion < 4) { // Assuming first 4 questions are for beginners
+        if (currentQuestion < 4) { // First 4 questions are for beginners
           beginnerCorrectAnswer++;
-        } else if (currentQuestion < 7) { // Assuming next 3 questions are for intermediate
+        } else if (currentQuestion < 7) { // Next 3 questions are for intermediate
           intermediateCorrectAnswer++;
-        } else { // Assuming last 3 questions are for advanced
+        } else { // Last 3 questions are for advanced
           advancedCorrectAnswer++;
         }
       }
     }
   
     setScore(currentScore);
+    setBeginnerCorrect(beginnerCorrectAnswer);
+    setIntermediateCorrect(intermediateCorrectAnswer);
+    setAdvancedCorrect(advancedCorrectAnswer);
   
     setSelectedOptions([]);
   
@@ -139,17 +142,17 @@ export default function Quiz() {
   
       // Send quiz data to backend
       const quizData = {
-        totalCorrect: currentScore,
-        beginnerCorrect: beginnerCorrectAnswer,
-        intermediateCorrect: intermediateCorrectAnswer,
-        advancedCorrect: advancedCorrectAnswer,
+        "Total_Correct_Answers": currentScore,
+        "Beginner_Correct_Answers": beginnerCorrectAnswer,
+        "Intermediate_Correct_Answers": intermediateCorrectAnswer,
+        "Advanced_Correct_Answers": advancedCorrectAnswer,
       };
   
       axios.post('http://127.0.0.1:5000/send_quiz_data', quizData)
         .then((response) => {
           // Handle response from backend if needed
-          const { proficiencyLevel } = response.data;
-          setProficiencyLevel(proficiencyLevel);
+          const { User_Level } = response.data;
+          setProficiencyLevel(User_Level);
           setShowScore(true);
         })
         .catch((error) => {
@@ -161,13 +164,14 @@ export default function Quiz() {
   const handleGetProficiencyLevel = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/send_quiz_data', {
-        totalCorrect: score,
-        beginnerCorrect: beginnerCorrect,
-        intermediateCorrect: intermediateCorrect,
-        advancedCorrect: advancedCorrect,
+        'Total_Correct_Answers': score,
+        'Beginner_Correct_Answers': beginnerCorrect,
+        'Intermediate_Correct_Answers': intermediateCorrect,
+        'Advanced_Correct_Answers': advancedCorrect,
       });
-      const { proficiencyLevel } = response.data;
-      setProficiencyLevel(proficiencyLevel);
+      const { User_Level } = response.data;
+      setProficiencyLevel(User_Level);
+      setShowScore(true);
     } catch (error) {
       console.error('Error fetching proficiency level:', error);
     }

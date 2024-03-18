@@ -1,15 +1,19 @@
 import pandas as pd
-import joblib
+import joblib, json
 
 # Load the trained model
-model = joblib.load('trained_model.joblib')
+model = joblib.load('ml_model.joblib')
 
-# Enter the data which wants to test
-X_new_data = [
-    {'Total_Correct_Answers': 15, 'Beginner_Correct_Answers': 5, 'Intermediate_Correct_Answers': 5, 'Advanced_Correct_Answers': 5},
-]
+# Define data as a Python dictionary
+data = {"Total_Correct_Answers": 15, "Beginner_Correct_Answers": 5, "Intermediate_Correct_Answers": 5, "Advanced_Correct_Answers": 5}
 
-# Convert dictionary to DataFrame
+# Convert the Python dictionary to JSON
+data_json = json.dumps([data])
+
+# Load the JSON string into a Python object (list of dictionaries)
+X_new_data = json.loads(data_json)
+
+# Convert the Python object to a DataFrame
 X_new_df = pd.DataFrame(X_new_data)
 
 # Select the relavant features
