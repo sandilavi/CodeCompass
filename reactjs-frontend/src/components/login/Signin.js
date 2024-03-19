@@ -30,8 +30,6 @@ function SignInForm() {
         }
     };
 
-    ;
-
     return (
         <div className="form-container sign-in-container">
             <form onSubmit={handleOnSubmit}>
