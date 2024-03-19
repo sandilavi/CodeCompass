@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MyGoalsService {
@@ -23,5 +24,16 @@ public class MyGoalsService {
         List<MyGoals> myGoals = myGoalsRepository.findByUserId(userId);
         return myGoals;
     }
+
+    public ResponseEntity<String> deleteGoal(long goalId) {
+        Optional<MyGoals> goalOptional = myGoalsRepository.findById(goalId);
+        if (goalOptional.isPresent()) {
+            myGoalsRepository.deleteById(goalId);
+            return ResponseEntity.ok("Goal deleted successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }
