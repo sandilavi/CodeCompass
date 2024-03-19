@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
 const HomePage = () => {
 
   const theme = useTheme();
-  const [statistics, setStatistics] = useState({
+  const [statistics] = useState({
     plansCompleted: 3,
     archivements: 0,
     experience: 0
