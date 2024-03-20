@@ -12,7 +12,7 @@ function SignUpForm() {
         const value = evt.target.value;
         setState({
             ...state,
-            [evt.target.name]: value
+            [evt.target.email]: value
         });
     };
 
@@ -21,14 +21,16 @@ function SignUpForm() {
 
         const { name, email, password } = state;
         let user = { name, email, password };
-        console.log(response.data);
-        UserService.signup(user);
 
+        UserService.signup(user);
+        console.log("userName", name);
+        console.log("email", email);
+        console.log("password");
         for (const key in state) {
-            setState({
-                ...state,
+            setState(prevState => ({
+                ...prevState,
                 [key]: ""
-            });
+            }));
         }
 
 
