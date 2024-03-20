@@ -14,15 +14,18 @@
 //     </MainCard>
 // );
 // 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserService from "../../../services/UserService.js";
 
 import './MyGoals.css';
 
 function MyGoals() {
   const [goals, setGoals] = useState([]);
+  //const [goalsTuesday, setGoalsTuesday] = useState([]);
   const [newGoal, setNewGoal] = useState('');
   const [selectedDay, setSelectedDay] = useState(''); // Selected day for filtering
+
+
   const userId = 123;
   let task = "";
   let day = "";
@@ -51,6 +54,57 @@ function MyGoals() {
   const handleDayChange = (day) => {
     setSelectedDay(day);
   };
+
+  useEffect(() => {
+    console.log("res.data")
+    if (selectedDay === "Monday") {
+      UserService.getMonday()
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching employees:', error);
+        });
+    } else if (selectedDay == "Tuesday") {
+      UserService.getTuesday()
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching employees:', error);
+        });
+    } else if (selectedDay == "Wednesday") {
+      UserService.getWednesday()
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching employees:', error);
+        });
+    } else if (selectedDay == "Thursday") {
+      UserService.getThursday()
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching employees:', error);
+        });
+    }
+
+  }, [selectedDay]);
+
 
   const filteredGoals = goals.filter((goal) => !selectedDay || goal.day === selectedDay);
   // const filteredGoals1 = UserService.getGoal();
@@ -82,9 +136,9 @@ function MyGoals() {
         <button type="submit">Add Goal</button>
       </form>
       <ul>
-        {filteredGoals.map((task, index) => (
+        {filteredGoals.map((goals, index) => (
           <li key={index}>
-            {task.text}
+            {goals.task}
             <button onClick={() => handleRemoveGoal(index)}>Remove</button>
           </li>
         ))}
