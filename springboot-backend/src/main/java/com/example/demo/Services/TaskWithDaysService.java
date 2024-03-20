@@ -20,4 +20,10 @@ public class TaskWithDaysService {
     public List<TaskWithDays> getList(Long userId) {
        return taskWithDaysRepository.findByUserid(userId);
     }
+
+    public List<TaskWithDays> getAllTaskWithDays() {
+        return taskWithDaysRepository.findAll();
+    }
+
+
 }

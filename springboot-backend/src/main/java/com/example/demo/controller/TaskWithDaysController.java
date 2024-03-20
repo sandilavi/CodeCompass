@@ -25,4 +25,9 @@ public class TaskWithDaysController {
         return taskWithDaysService.getList(userId);
 
     }
+    @GetMapping("/getAll")
+    public List<TaskWithDays> getAllTaskWithDays() {
+        return taskWithDaysService.getAllTaskWithDays();
+    }
+
 }

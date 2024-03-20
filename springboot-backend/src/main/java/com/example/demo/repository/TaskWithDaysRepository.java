@@ -11,6 +11,9 @@ public interface TaskWithDaysRepository extends JpaRepository<TaskWithDays, Long
 
     List<TaskWithDays> findByUserid(Long userId);
 
+    // Custom method to find all tasks
+    List<TaskWithDays> findAll();
+
 
 
 }
