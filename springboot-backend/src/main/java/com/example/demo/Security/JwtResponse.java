@@ -1,4 +1,4 @@
-package com.pearson.springbootservice.security;
+package com.example.demo.Security;
 
 import java.io.Serializable;
 

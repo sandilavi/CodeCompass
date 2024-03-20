@@ -1,7 +1,7 @@
-package com.pearson.springbootservice.config;
+package com.example.demo.config;
 
-import com.pearson.springbootservice.security.JwtAuthenticationEntryPoint;
-import com.pearson.springbootservice.security.JwtRequestFilter;
+import com.example.demo.Security.JwtAuthenticationEntryPoint;
+import com.example.demo.Security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

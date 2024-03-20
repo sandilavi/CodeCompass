@@ -1,7 +1,7 @@
-package com.pearson.springbootservice.security;
+package com.example.demo.Security;
 
-import com.pearson.springbootservice.user.AppUserDetailsService;
-import com.pearson.springbootservice.util.JwtTokenUtil;
+
+import com.example.demo.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,7 +29,7 @@ public class JwtAuthenticationController {
 	private AppUserDetailsService userDetailsService;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody com.pearson.springbootservice.security.JwtRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -38,7 +38,7 @@ public class JwtAuthenticationController {
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+		return ResponseEntity.ok(new com.pearson.springbootservice.security.JwtResponse(token));
 	}
 
 	private void authenticate(String username, String password) throws Exception {

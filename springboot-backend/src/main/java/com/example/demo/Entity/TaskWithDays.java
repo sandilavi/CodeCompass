@@ -9,13 +9,13 @@ public class TaskWithDays{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private Long userid;
 
-    @Column(nullable = false)
+    @Column
     private String task;
 
-    @Column(nullable = false)
+    @Column
     private String day;
 
     public TaskWithDays() {

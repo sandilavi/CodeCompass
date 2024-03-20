@@ -1,4 +1,4 @@
-package com.pearson.springbootservice.util;
+package com.example.demo.util;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+
 
 @Component
 public class JwtTokenUtil implements Serializable {
