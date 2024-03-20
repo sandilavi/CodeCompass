@@ -31,12 +31,15 @@ public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     UserDto userDto;
     public ResponseEntity<String> addUser(User user){
+        logger.info(user.getUserName());
+        logger.info(user.getEmail());
+        logger.info(user.getPassword());
         String token = UUID.randomUUID().toString();
         user.setVerificationToken(token);
         if (userRepository.existsByemail(user.getEmail())) {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         } else {
-           user.setPassword(passwordEncoder.encode(user.getPassword()));
+           user.setPassword(user.getPassword());
             userRepository.save(user);
             sendVerificationEmail(user.getEmail(), token);
             return ResponseEntity.ok("Verify email by the link sent on your email address");
@@ -69,8 +72,8 @@ public class UserService {
             }else{
                 String password = loginDto.getPassword();
                 String encodedPassword = user.getPassword();
-                Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
-                if (isPwdRight) {
+                //Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
+                if (password.equals(encodedPassword)) {
                     Optional<User> user1 = userRepository.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
                     if (user1.isPresent()) {
                         return new LoginMesage("Login Success", true);
