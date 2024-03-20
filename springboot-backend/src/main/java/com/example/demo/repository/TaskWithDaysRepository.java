@@ -14,6 +14,19 @@ public interface TaskWithDaysRepository extends JpaRepository<TaskWithDays, Long
     // Custom method to find all tasks
     List<TaskWithDays> findAll();
 
+    @Query("SELECT t FROM TaskWithDays t WHERE t.userid = :userId AND t.day = 'Monday'")
+    List<TaskWithDays> getmonday(Long userId);
+
+    @Query("SELECT t FROM TaskWithDays t WHERE t.userid = :userId AND t.day = 'Tuesday'")
+    List<TaskWithDays> gettuesday(Long userId);
+
+    @Query("SELECT t FROM TaskWithDays t WHERE t.userid = :userId AND t.day = 'Wednesday'")
+    List<TaskWithDays> getwednesday(Long userId);
+
+    @Query("SELECT t FROM TaskWithDays t WHERE t.userid = :userId AND t.day = 'Thursday'")
+    List<TaskWithDays> getthursday(Long userId);
+
+
 
 
 }

@@ -30,4 +30,24 @@ public class TaskWithDaysController {
         return taskWithDaysService.getAllTaskWithDays();
     }
 
+    @GetMapping("/monday/{userId}")
+    public List<TaskWithDays> getmondayTaskWithDays(@PathVariable Long userId) {
+        return taskWithDaysService.getmondayTaskWithDays(userId);
+    }
+
+    @GetMapping("/tuesday/{userId}")
+    public List<TaskWithDays> gettuesdayTaskWithDays(@PathVariable Long userId) {
+        return taskWithDaysService.gettuesdayTaskWithDays(userId);
+    }
+
+    @GetMapping("/wednesday/{userId}")
+    public List<TaskWithDays> getwednesdayTaskWithDays(@PathVariable Long userId) {
+        return taskWithDaysService.getwednesdayTaskWithDays(userId);
+    }
+
+    @GetMapping("/thursday/{userId}")
+    public List<TaskWithDays> getthursdayTaskWithDays(@PathVariable Long userId) {
+        return taskWithDaysService.getthursdayTaskWithDays(userId);
+    }
+
 }
