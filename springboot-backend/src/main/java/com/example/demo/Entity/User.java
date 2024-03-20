@@ -7,7 +7,7 @@ public class User {
     @Id
     @Column(name = "user_id", length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
+    private Long userId;
 
     @Column(name = "user_name", length = 255)
     private String userName;
@@ -21,11 +21,11 @@ public class User {
     @Column(name = "verified", length = 255)
     private boolean verified;
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -69,7 +69,7 @@ public class User {
         this.verified = verified;
     }
 
-    public User(int userId, String userName, String email, String password, String verificationToken, boolean verified) {
+    public User(Long userId, String userName, String email, String password, String verificationToken, boolean verified) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
