@@ -1,6 +1,6 @@
 // material-ui
-import { Typography } from '@mui/material';
-import { useState } from 'react';
+//import { Typography } from '@mui/material';
+//import { useState } from 'react';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
@@ -11,13 +11,13 @@ import { Box } from '@mui/system';
 
 const MyLearningPlan = () => {
 
-    const [isDatanull, setIsDatanull] = useState(true);
+    //const [isDatanull, setIsDatanull] = useState(true);
 
-    const LearningProgress = () => {
+    /*const LearningProgress = () => {
         <Typography>
 
         </Typography>
-    }
+    }*/
 
     return (
         <MainCard>
