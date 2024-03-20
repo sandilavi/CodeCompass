@@ -14,24 +14,39 @@ import AddReactionTwoToneIcon from '@mui/icons-material/AddReactionTwoTone';
 import newbie from 'assets/images/users/new-bie.png';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const HomePage = () => {
 
   const theme = useTheme();
-  const [statistics, setStatistics] = useState({
+  const [statistics] = useState({
     plansCompleted: 3,
     archivements: 0,
     experience: 0
   });
+
+  const startQuiz = (lang) => {
+    Swal.fire({
+      title: 'Confirmation',
+      text: `Start the Evaluation quiz for ${lang}`,
+      icon: 'question',
+      iconHtml: "<i class='fas fa-book-open'></i>",
+      confirmButtonText: 'Start Quiz',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        alert('success');
+      }
+    });
+  }
 
   return (
     <MainCard title="Dashboard">
       <Typography variant='h3' align='center' marginBottom='20px' sx={{ fontWeight: 'medium' }} >
         Select a Programming Language
       </Typography>
-      <Box display='flex' alignItems='center' sx={{ boxShadow: 3, borderRadius: 2 }} >
-        <Card sx={{ maxWidth: 345, width: 200, mt: '9px', mb: '9px', ml: '4px' }} onClick={() => { console.log('onClick'); }}>
+      <Box display='flex' alignItems='center' justifyContent='center' sx={{ boxShadow: 3, borderRadius: 2 }} >
+        <Card sx={{ maxWidth: 345, width: 200, mt: '9px', mb: '9px', ml: '4px' }} onClick={() => { startQuiz('Java'); }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -46,7 +61,7 @@ const HomePage = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card sx={{ maxWidth: 345, width: 200, mt: '9px', mb: '9px', ml: '4px' }}>
+        <Card sx={{ maxWidth: 345, width: 200, mt: '9px', mb: '9px', ml: '4px' }} onClick={() => { startQuiz('Python'); }}>
           <CardActionArea>
             <CardMedia
               component="img"

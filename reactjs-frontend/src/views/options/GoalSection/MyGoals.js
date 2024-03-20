@@ -15,6 +15,7 @@
 // );
 // 
 import React, { useState } from 'react';
+import UserService from "../../../services/UserService.js";
 
 import './MyGoals.css';
 
@@ -22,7 +23,9 @@ function MyGoals() {
   const [goals, setGoals] = useState([]);
   const [newGoal, setNewGoal] = useState('');
   const [selectedDay, setSelectedDay] = useState(''); // Selected day for filtering
-
+  const userId = 123;
+  let task = "";
+  let day = "";
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   const handleAddGoal = (event) => {
@@ -32,6 +35,11 @@ function MyGoals() {
       setGoals([...goals, { text: newGoal, day: selectedDay }]);
       setNewGoal('');
     }
+    task = newGoal;
+    day = selectedDay;
+    let data = { userId, task, day };
+
+    UserService.goalSave(data);
   };
 
   const handleRemoveGoal = (index) => {
@@ -45,7 +53,7 @@ function MyGoals() {
   };
 
   const filteredGoals = goals.filter((goal) => !selectedDay || goal.day === selectedDay);
-
+  // const filteredGoals1 = UserService.getGoal();
   return (
     <div className="goals-section">
       <h2>Your Daily Programming Goals</h2>
@@ -74,9 +82,9 @@ function MyGoals() {
         <button type="submit">Add Goal</button>
       </form>
       <ul>
-        {filteredGoals.map((goal, index) => (
+        {filteredGoals.map((task, index) => (
           <li key={index}>
-            {goal.text}
+            {task.text}
             <button onClick={() => handleRemoveGoal(index)}>Remove</button>
           </li>
         ))}
