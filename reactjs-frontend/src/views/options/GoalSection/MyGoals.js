@@ -1,19 +1,3 @@
-// // material-ui
-// import { Typography } from '@mui/material';
-
-// // project imports
-// import MainCard from 'ui-component/cards/MainCard';
-
-// // ==============================|| SAMPLE PAGE ||============================== //
-
-// const MyGoals = () => (
-//     <MainCard >
-//         <Typography variant="body1">
-//             lorem ipasdqefqe
-//         </Typography>
-//     </MainCard>
-// );
-// 
 import React, { useState, useEffect } from 'react';
 import UserService from "../../../services/UserService.js";
 
@@ -103,7 +87,7 @@ function MyGoals() {
         });
     }
 
-  }, [selectedDay]);
+  }, [selectedDay,goals]);
 
 
   const filteredGoals = goals.filter((goal) => !selectedDay || goal.day === selectedDay);

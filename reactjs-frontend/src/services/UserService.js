@@ -17,19 +17,19 @@ class UserService {
     }
 
     getMonday() {
-        return axios.get("http://localhost:8080/task/monday/124");
+        return axios.get("http://localhost:8080/task/monday/123");
     }
 
     getTuesday() {
-        return axios.get("http://localhost:8080/task/tuesday/124");
+        return axios.get("http://localhost:8080/task/tuesday/123");
     }
 
     getWednesday() {
-        return axios.get("http://localhost:8080/task/wednesday/124");
+        return axios.get("http://localhost:8080/task/wednesday/123");
     }
 
     getThursday() {
-        return axios.get("http://localhost:8080/task/thursday/124");
+        return axios.get("http://localhost:8080/task/thursday/123");
     }
 }
 
