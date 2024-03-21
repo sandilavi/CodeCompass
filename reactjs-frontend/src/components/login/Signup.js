@@ -1,6 +1,7 @@
 import React from "react";
 import UserService from "../../services/UserService";
 import Swal from 'sweetalert2';
+import styles from "../../Login.module.css";
 
 function SignUpForm({ updateName }) {
     const [state, setState] = React.useState({
@@ -81,22 +82,23 @@ function SignUpForm({ updateName }) {
     }
 
     return (
-        <div className="form-container sign-up-container">
-            <form onSubmit={handleOnSubmit}>
-                <h1>Create Account</h1>
-                <div className="social-container">
-                    <a href="#" className="social">
+        <div className={`${styles.formContainer} ${styles.signUpContainer}`}>
+            <form className={styles.formCustom} onSubmit={handleOnSubmit}>
+                <h1 className={styles.hone}>Create Account</h1>
+                <div className={styles.socialContainer}>
+                    {/* <a href="#" className="social">
                         <i className="fab fa-facebook-f" />
-                    </a>
+                    </a> */}
                     <a href="#" className="social">
-                        <i className="fab fa-google-plus-g" />
+                        <i className="fab fa-google" />
                     </a>
-                    <a href="#" className="social">
+                    {/* <a href="#" className="social">
                         <i className="fab fa-linkedin-in" />
-                    </a>
+                    </a> */}
                 </div>
-                <span>or use your email for registration</span>
+                <span className={styles.spanC}>or use your email for registration</span>
                 <input
+                    className={styles.inputC}
                     type="text"
                     name="name"
                     value={state.name}
@@ -104,6 +106,7 @@ function SignUpForm({ updateName }) {
                     placeholder="Name"
                 />
                 <input
+                    className={styles.inputC}
                     type="email"
                     name="email"
                     value={state.email}
@@ -111,6 +114,7 @@ function SignUpForm({ updateName }) {
                     placeholder="Email"
                 />
                 <input
+                    className={styles.inputC}
                     type="password"
                     name="password"
                     value={state.password}
@@ -118,15 +122,16 @@ function SignUpForm({ updateName }) {
                     placeholder="Password"
                 />
                 <input
+                    className={styles.inputC}
                     type="password"
                     name="confirmPassword"
                     value={state.confirmPassword}
                     onChange={handleChange}
                     placeholder="Confirm Password"
                 />
-                <button className="opt-btn">Sign Up</button>
+                <button className={`${styles.buttonCustom} ${styles.optBtn}`}>Sign Up</button>
             </form>
-        </div>
+        </div >
     );
 }
 
