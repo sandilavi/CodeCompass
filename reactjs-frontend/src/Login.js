@@ -17,12 +17,15 @@ export function Login() {
   };
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
+  const updateName = () => {
+    setType("signIn");
+  }
 
   return (
     <div className="my-div">
       <div className="App">
         <div className={containerClass} id="container">
-          <SignUpForm />
+          <SignUpForm updateName={updateName} />
           <SignInForm />
           <div className="overlay-container">
             <div className="overlay">

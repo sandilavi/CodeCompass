@@ -2,7 +2,7 @@ import React from "react";
 import UserService from "../../services/UserService";
 import Swal from 'sweetalert2';
 
-function SignUpForm() {
+function SignUpForm({ updateName }) {
     const [state, setState] = React.useState({
         name: "",
         email: "",
@@ -28,7 +28,9 @@ function SignUpForm() {
 
             if (response.data.includes("Verify email by the link sent on your email address")) {
                 // alert("Verify email by the link sent on your email address and signIn");
-                signUpPopUp();
+                verifyEmailPopUp();
+            } else if (response.data.includes("Email is already in use!")) {
+                exitsEmailPopUp();
             }
             return response.data;
         })
@@ -49,16 +51,31 @@ function SignUpForm() {
         }
     };
 
-    const signUpPopUp = () => {
+    const exitsEmailPopUp = () => {
         Swal.fire({
-            title: 'Welcome to the Codecompass',
-            text: `please Verify email by the link sent on your email and SignIn`,
+            title: 'Email is already in use!',
+            text: `Please Use Another Email`,
+            icon: 'error',
+            iconHtml: "<i class='fas fa-exclamation-triangle'></i>",
+            confirmButtonText: 'Ok',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("ok");
+            }
+        });
+    }
+
+    const verifyEmailPopUp = () => {
+        Swal.fire({
+            title: 'Welcome to the CodeCompass',
+            text: `Please Verify email by the link sent on your email and SignIn`,
             icon: 'success',
             iconHtml: "<i class='fas fa-check-circle'></i>",
             confirmButtonText: 'Ok',
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log("ok");
+                updateName();
             }
         });
     }

@@ -65,6 +65,7 @@ const ProfileSection = () => {
    * */
   const anchorRef = useRef(null);
   const handleLogout = async () => {
+    window.location.href = 'http://localhost:3000/app/login';
     console.log('Logout');
   };
 
