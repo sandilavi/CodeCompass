@@ -65,14 +65,14 @@ public class UserService {
     public LoginMesage loginUser(LoginDto loginDto) {
         String msg = "";
         User user = userRepository.findByEmail(loginDto.getEmail());
-        boolean verified=user.isVerified();
+
         if (user != null) {
+            boolean verified=user.isVerified();
             if(!verified){
                 return new LoginMesage("Please verify your email first", false);
             }else{
                 String password = loginDto.getPassword();
                 String encodedPassword = user.getPassword();
-                //Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
                 if (password.equals(encodedPassword)) {
                     Optional<User> user1 = userRepository.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
                     if (user1.isPresent()) {
