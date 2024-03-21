@@ -2,7 +2,7 @@
   "name": "Codecompass",
   "version": "3.4.2",
   "private": true,
-  "homepage": "/app/login",
+  "homepage": "/login",
   "dependencies": {
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
