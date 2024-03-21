@@ -1,5 +1,6 @@
 import React from "react";
 import UserService from "../../services/UserService";
+import Swal from 'sweetalert2';
 import styles from "../../Login.module.css";
 
 function SignUpForm() {
@@ -23,7 +24,21 @@ function SignUpForm() {
         const { name, email, password } = state;
         let user = { name, email, password };
 
-        UserService.signup(user);
+        UserService.signup(user).then(response => {
+            console.log(response.data);
+
+            if (response.data.includes("Verify email by the link sent on your email address")) {
+                // alert("Verify email by the link sent on your email address and signIn");
+                signUpPopUp();
+            }
+            return response.data;
+        })
+            .catch(error => {
+
+                console.error('Error:', error);
+                throw error;
+            });
+
         console.log("userName", name);
         console.log("email", email);
         console.log("password");
@@ -33,9 +48,21 @@ function SignUpForm() {
                 [key]: ""
             }));
         }
-
-
     };
+
+    const signUpPopUp = () => {
+        Swal.fire({
+            title: 'Welcome to the Codecompass',
+            text: `please Verify email by the link sent on your email and SignIn`,
+            icon: 'success',
+            iconHtml: "<i class='fas fa-check-circle'></i>",
+            confirmButtonText: 'Ok',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("ok");
+            }
+        });
+    }
 
     return (
         <div className={`${styles.formContainer} ${styles.signUpContainer}`}>
