@@ -20,6 +20,11 @@ export function Login() {
 
   console.log(containerClass);
 
+  const updateName = () => {
+    setType("signIn");
+  }
+
+
   return (
     <div className={styles.myDiv}>
       <div className={styles.App}>
