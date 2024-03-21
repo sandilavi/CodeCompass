@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./global.css";
 import SignInForm from "./components/login/Signin";
 import SignUpForm from "./components/login/Signup";
+import styles from "./Login.module.css";
 
 
 
@@ -16,32 +16,34 @@ export function Login() {
     }
   };
   const containerClass =
-    "container " + (type === "signUp" ? "right-panel-active" : "");
+    `${styles.container}` + (type === "signUp" ? ` ${styles.rightPanelActive}` : ``);
+
+  console.log(containerClass);
 
   return (
-    <div className="my-div">
-      <div className="App">
+    <div className={styles.myDiv}>
+      <div className={styles.App}>
         <div className={containerClass} id="container">
           <SignUpForm />
           <SignInForm />
-          <div className="overlay-container">
-            <div className="overlay">
-              <div className="overlay-panel overlay-left">
-                <h1>Hi There!</h1>
-                <img alt="logo" className="logo" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
+          <div className={styles.overlayContainer}>
+            <div className={styles.overlay}>
+              <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
+                <h1 className={styles.hone}>Hi There!</h1>
+                <img alt="logo" className={styles.logo} src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
                 <button
-                  className="ghost"
+                  className={`${styles.buttonCustom} ${styles.ghost}`}
                   id="signIn"
                   onClick={() => handleOnClick("signIn")}
                 >
                   Sign In
                 </button>
               </div>
-              <div className="overlay-panel overlay-right">
-                <h1>Welcome Back!</h1>
-                <img className="logo" alt="logo" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
+              <div className={`${styles.overlayPanel} ${styles.overlayRight}`} >
+                <h1 className={styles.hone}>Welcome Back!</h1>
+                <img className={styles.logo} alt="logo" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
                 <button
-                  className="ghost "
+                  className={`${styles.buttonCustom} ${styles.ghost}`}
                   id="signUp"
                   onClick={() => handleOnClick("signUp")}
                 >

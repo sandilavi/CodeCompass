@@ -1,5 +1,6 @@
 import React from "react";
 import UserService from '../../services/UserService';
+import styles from "../../Login.module.css";
 
 function SignInForm() {
     const [state, setState] = React.useState({
@@ -21,7 +22,7 @@ function SignInForm() {
         let user = { email, password };
 
         UserService.signing(user);
-        console.log("Login Success")
+        // console.log("Login Success")
         for (const key in state) {
             setState({
                 ...state,
@@ -33,22 +34,23 @@ function SignInForm() {
 
 
     return (
-        <div className="form-container sign-in-container">
-            <form onSubmit={handleOnSubmit}>
-                <h1>Sign in</h1>
-                <div className="social-container">
-                    <a href="#" className="social">
+        <div className={`${styles.formContainer} ${styles.signInContainer}`}>
+            <form className={styles.formCustom} onSubmit={handleOnSubmit}>
+                <h1 className={styles.hone}>Sign in</h1>
+                <div className={styles.socialContainer}>
+                    {/* <a href="#" className="social">
                         <i className="fab fa-facebook-f" />
-                    </a>
+                    </a> */}
                     <a href="#" className="social">
-                        <i className="fab fa-google-plus-g" />
+                        <i className="fab fa-google" />
                     </a>
-                    <a href="#" className="social">
+                    {/* <a href="#" className="social">
                         <i className="fab fa-linkedin-in" />
-                    </a>
+                    </a> */}
                 </div>
-                <span>or use your account</span>
+                <span className={styles.spanC}>or use your account</span>
                 <input
+                    className={styles.inputC}
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -56,14 +58,15 @@ function SignInForm() {
                     onChange={handleChange}
                 />
                 <input
+                    className={styles.inputC}
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={state.password}
                     onChange={handleChange}
                 />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                {/* <a href="#">Forgot your password?</a> */}
+                <button className={styles.buttonCustom}>Sign In</button>
             </form>
         </div>
     );
