@@ -23,7 +23,7 @@ export default function Home() {
             <div className="overlay">
               <div className="overlay-panel overlay-left">
                 <h1>Hi There!</h1>
-                <img className="logo" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
+                <img className="logo" alt="" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
                 <button
                   className="ghost"
                   id="signIn"
@@ -34,7 +34,7 @@ export default function Home() {
               </div>
               <div className="overlay-panel overlay-right">
                 <h1>Welcome Back!</h1>
-                <img className="logo" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
+                <img className="logo" alt="" src={process.env.PUBLIC_URL + '/images/codecomp.png'} />
                 <button
                   className="ghost "
                   id="signUp"

@@ -21,7 +21,7 @@ export default function Quiz() {
     {
       question: "Which of the following is used for explicit type casting in Java?",
       options: ["(cast)", "cast()", "(type)", "None of the above"],
-      answers: "(cast)"
+      answer: "(cast)"
     },
     {
       question: "What will be the result of the following expression: 5 > 3 && 3 < 2?",
@@ -87,12 +87,72 @@ export default function Quiz() {
       ),
       options: ["It checks if the given number is a perfect square.", "It checks if the given number is a power of 2.", "It checks if the given number is a prime number.", "It checks if the given number is a Fibonacci number."],
       answer: "It checks if the given number is a prime number."
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the displayMessage method? </div>
+          <img src="/images/question11.png" alt="question" />
+        </div>
+      ),
+      options: ["x: 10, z: 30", "x: 10, y: 20, z: 30", "x: 10", "No output"],
+      answer: "x: 10, z: 30"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What does the following Java method calculate recursively? </div>
+          <img src="/images/question12.png" alt="question" />
+        </div>
+      ),
+      options: ["Factorial of a number", "Sum of all numbers up to n", "Greatest common divisor of two numbers", "Fibonacci sequence up to the nth term"],
+      answer: "Fibonacci sequence up to the nth term"
+    },
+    {
+      question: "Which keyword is used in Java to throw an exception explicitly within a method?",
+      options: ["try", "catch", "throw", "throws"],
+      answer: "throw"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What does the following Java code snippet do? </div>
+          <img src="/images/question14.png" alt="question" />
+        </div>
+      ),
+      options: ["Reads a string input from the user", "Reads an integer input from the user", "Reads a double input from the user", "Prints a message without taking any input"],
+      answer: "Reads an integer input from the user"
+    },
+    {
+      question: "Which class is used for writing content to a file in Java?",
+      options: ["FileReader", "BufferedWriter", "PrintWriter", "FileWriter"],
+      answer: "FileWriter"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> Which of the following method calls will compile successfully? </div>
+          <img src="/images/question16.png" alt="question" />
+        </div>
+      ),
+      options: ["int result = calculateSum(5, 10);", "double result = calculateSum(3.5, 7.8);", "float result = calculateSum(4.2, 8.6);", "calculateSum(5.0, 10.0);"],
+      answer: ["int result = calculateSum(5, 10);", "double result = calculateSum(3.5, 7.8);"]
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> Which of the following method calls will throw an IllegalArgumentException? </div>
+          <img src="/images/question17.png" alt="question" />
+        </div>
+      ),
+      options: ["int result = NumberOperations.performOperation(10, 5, 'add');", "int result = NumberOperations.performOperation(15, 0, 'divide');", "int result = NumberOperations.performOperation(7, 3, 'modulo');", "int result = NumberOperations.performOperation(8, 4, 'multiply');"],
+      answer: ["int result = NumberOperations.performOperation(7, 3, 'modulo');"]
     }
   ];
 
   const handleAnswerOptionClick = (selectedAnswer) => {
-    // For the second question, allow multiple answers
-    if (currentQuestion === 1) {
+    // Allow multiple answers for relavant Questions
+    if (currentQuestion === 15) {
       let newSelectedOptions;
       if (selectedOptions.includes(selectedAnswer)) {
         newSelectedOptions = selectedOptions.filter(option => option !== selectedAnswer);
@@ -116,11 +176,11 @@ export default function Quiz() {
     if (selectedOptions.length === 1) {
       if (selectedOptions[0] === questions[currentQuestion].answer) {
         currentScore++;
-        if (currentQuestion < 4) { // First 4 questions are for beginners
+        if (currentQuestion < 9) { // First 9 questions are for beginners
           beginnerCorrectAnswer++;
-        } else if (currentQuestion < 7) { // Next 3 questions are for intermediate
+        } else if (currentQuestion < 17) { // Next 8 questions are for intermediate
           intermediateCorrectAnswer++;
-        } else { // Last 3 questions are for advanced
+        } else { // Last 8 questions are for advanced
           advancedCorrectAnswer++;
         }
       }
