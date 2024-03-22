@@ -9,8 +9,8 @@ import CourseContentPlayer from 'views/content-player/ContentPlayer';
 
 export default function ThemeRoutes() {
 
-  const login = { path: '/login', element: <Login /> }
+  const login = { path: '', element: <Login /> }
   const player = { path: '/player', element: <CourseContentPlayer /> }
 
-  return useRoutes([...MainRoutes, login, player]);
+  return useRoutes([login, player, ...MainRoutes]);
 }

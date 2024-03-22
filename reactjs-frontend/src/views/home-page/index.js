@@ -15,6 +15,7 @@ import newbie from 'assets/images/users/new-bie.png';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { useLocation } from 'react-router';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const HomePage = () => {
@@ -25,6 +26,8 @@ const HomePage = () => {
     archivements: 0,
     experience: 0
   });
+  const location = useLocation();
+  const data = location.state;
 
   const startQuiz = (lang) => {
     Swal.fire({

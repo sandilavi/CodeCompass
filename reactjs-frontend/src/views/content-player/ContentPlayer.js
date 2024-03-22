@@ -18,8 +18,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { useNavigate } from 'react-router';
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -66,10 +69,80 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-function CourseContentPlayer() {
 
+function defaultPara() {
+    return (<><Typography paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
+        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
+        imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
+        Convallis convallis tellus id interdum velit laoreet id donec ultrices.
+        Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
+        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
+        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
+        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
+        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
+        sapien faucibus et molestie ac.
+    </Typography>
+        <Typography paragraph>
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
+            eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+            neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
+            tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
+            sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+            tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
+            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
+            et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
+            tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+            eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+            posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
+    </>);
+}
+
+function nextPara() {
+    return (<><Typography paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        te
+        rgergrgre
+        gravidareg
+        re
+        gravidaergg
+        reg
+        reg
+        erg
+        er
+        do odio aenean sed adipiscing. Amet nisl suscipit
+        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
+        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
+        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
+        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
+        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
+        sapien faucibus et molestie ac.
+    </Typography>
+        <Typography paragraph>
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
+            eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+            neque volrgrger
+            rgergrg
+            gravidaerg
+            erg
+
+            erg
+            Ornare aenean euismod elementum nisi quis
+            eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+            posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
+    </>);
+}
+
+function CourseContentPlayer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [view, setView] = React.useState(defaultPara());
+    const navigate = useNavigate();
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -78,10 +151,13 @@ function CourseContentPlayer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const setMainView = () => {
+    }
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
+            <AppBar position="fixed" open={open} sx={{ backgroundColor: '#9398c9' }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -92,7 +168,7 @@ function CourseContentPlayer() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant="h3" noWrap component="div">
                         Persistent drawer
                     </Typography>
                 </Toolbar>
@@ -118,59 +194,43 @@ function CourseContentPlayer() {
                 <Divider />
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
+                        <Accordion key={text}>
+                            <AccordionSummary
+                                expandIcon={<ArrowDownwardIcon />}
+                                aria-controls="panel1-content"
+                                id="panel1-header"
+                            >
+                                <Typography>Accordion 1</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ArrowDownwardIcon />}
+                                        aria-controls="panel1-content"
+                                        id="panel1-header"
+                                    >
+                                        <Typography>asasa 1</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <ListItem key={text} disablePadding>
+                                            <ListItemButton onClick={setMainView}>
+                                                <ListItemIcon>
+                                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                                </ListItemIcon>
+                                                <ListItemText primary={text} />
+                                            </ListItemButton>
+                                        </ListItem>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </AccordionDetails>
+                        </Accordion>
                     ))}
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                    eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                    neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                    tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                    tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                    gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                    et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                    posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+                {view}
             </Main>
         </Box>
     );
