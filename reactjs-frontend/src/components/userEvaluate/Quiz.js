@@ -146,7 +146,91 @@ export default function Quiz() {
         </div>
       ),
       options: ["int result = NumberOperations.performOperation(10, 5, 'add');", "int result = NumberOperations.performOperation(15, 0, 'divide');", "int result = NumberOperations.performOperation(7, 3, 'modulo');", "int result = NumberOperations.performOperation(8, 4, 'multiply');"],
-      answer: ["int result = NumberOperations.performOperation(7, 3, 'modulo');"]
+      answer: "int result = NumberOperations.performOperation(7, 3, 'modulo');"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the following Java code snippet? </div>
+          <img src="/images/question18.png" alt="question" />
+        </div>
+      ),
+      options: ["Name: John Doe, Age: 30", "John Doe, 30", "Name: John Doe, Age: 30, 30", "Compilation error"],
+      answer: "Name: John Doe, Age: 30"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the contents of the numbers ArrayList after executed? </div>
+          <img src="/images/question19.png" alt="question" />
+        </div>
+      ),
+      options: ["[10, 20, 25, 40]", "[10, 25, 30, 40]", "[10, 30, 40]", "[10, 20, 30, 40]"],
+      answer: "[10, 25, 30, 40]"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the main method when executed? </div>
+          <img src="/images/question20.png" alt="question" />
+        </div>
+      ),
+      options: ["[Purple, Red, Blue, Green]", "[Purple, Blue, Green, Yellow]", "[Red, Blue, Green, Purple]", "[Purple, Red, Blue, Green, Yellow]"],
+      answer: "[Purple, Blue, Green, Yellow]"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the size of the grades HashMap after the following operations are performed? </div>
+          <div className="question-text"> 1. Add entry "Alice" with value 85. </div>
+          <div className="question-text"> 2. Add entry "Bob" with value 92. </div>
+          <div className="question-text"> 3. Add entry "Charlie" with value 78. </div>
+          <div className="question-text"> 4. Replace the value for entry "Bob" with 95. </div>
+          <div className="question-text"> 5. Remove entry "Charlie". </div>
+        </div>
+      ),
+      options: ["2", "3", "4", "5"],
+      answer: "3"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the main method when executed? </div>
+          <img src="/images/question22.png" alt="question" />
+        </div>
+      ),
+      options: ["[Apple, Banana, Cherry, Date]", "[Apple, Banana, Date]", "[Banana, Cherry, Date]", "[Apple, Date]"],
+      answer: "[Apple, Banana, Date]"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output when the main method is executed? </div>
+          <img src="/images/question23.png" alt="question" />
+        </div>
+      ),
+      options: ["The output will be unpredictable and may vary on each run", "The output will always be 'Thread 1: 0, 1, 2, 3, 4' followed by 'Thread 2: 0, 1, 2, 3, 4'", "The output will always be 'Thread 1: 0, 1, 2, 3, 4' intermixed with 'Thread 2: 0, 1, 2, 3, 4'", "The code will throw an exception during execution"],
+      answer: "The output will always be 'Thread 1: 0, 1, 2, 3, 4' intermixed with 'Thread 2: 0, 1, 2, 3, 4'"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the main method when executed? </div>
+          <img src="/images/question24.png" alt="question" />
+        </div>
+      ),
+      options: ["Number of 5-letter words: 1", "Number of 5-letter words: 2", "Number of 5-letter words: 3", "Number of 5-letter words: 4"],
+      answer: "Number of 5-letter words: 2"
+    },
+    {
+      question: (
+        <div>
+          <div className="question-text"> What will be the output of the main method when executed? </div>
+          <img src="/images/question24.png" alt="question" />
+        </div>
+      ),
+      options: ["[10, 20, 30, 40, 50]", "[10, 30, 50]", "[20, 40]", "[30]"],
+      answer: "[10, 30, 50]"
     }
   ];
 
