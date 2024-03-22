@@ -12,7 +12,7 @@ public class TaskWithDays{
     @Column
     private Long userid;
 
-    @Column
+    @Column(length = 1000)
     private String task;
 
     @Column

@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Entity.User;
+import com.example.demo.dto.Changepassword;
 import com.example.demo.dto.LoginDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.repository.UserRepository;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +24,7 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
     @Autowired
     private JavaMailSender javaMailSender;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -93,7 +92,7 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: "));
         if (existingUser != null) {
             existingUser.setUserName(user.getUserName());
-            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            existingUser.setPassword(user.getPassword());
             userRepository.save(existingUser);
             return ResponseEntity.ok("updated");
         } else {
@@ -102,16 +101,20 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<String> updateUser_from_email(String email, User user) {
-
+    public ResponseEntity<String> updateUser_from_email(String email, Changepassword changepassword) {
         User existingUser = userRepository.findByEmail(email);
-
-
+        String currentPassword=existingUser.getPassword();
+        String newPassword= changepassword.getNewPassword();
+        logger.info("currentPassword"+currentPassword);
+        logger.info("newPassword"+newPassword);
         if (existingUser != null) {
-            existingUser.setUserName(user.getUserName());
-            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepository.save(existingUser);
-            return ResponseEntity.ok("updated");
+            if(currentPassword.equals(changepassword.getCurrentPassword())){
+                existingUser.setPassword(changepassword.getNewPassword());
+                userRepository.save(existingUser);
+                return ResponseEntity.ok("updated");
+            }else{
+                return ResponseEntity.badRequest().body("Current Password is not correct");
+            }
         } else {
             // Handle user not found scenario
             return ResponseEntity.badRequest().body("Error");

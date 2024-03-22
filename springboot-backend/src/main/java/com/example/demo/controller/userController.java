@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.Entity.User;
 import com.example.demo.Services.LoginMesage;
 import com.example.demo.Services.UserService;
+import com.example.demo.dto.Changepassword;
 import com.example.demo.dto.LoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,8 +42,8 @@ public class userController {
     }
 
     @PutMapping("/userUpdate_email/{email}")
-    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody User user) {
-        return userService.updateUser_from_email(email, user);
+    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody Changepassword changepassword) {
+        return userService.updateUser_from_email(email, changepassword);
 
     }
     @GetMapping("/getAllUsers")
