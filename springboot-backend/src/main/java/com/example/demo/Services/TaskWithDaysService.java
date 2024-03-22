@@ -41,4 +41,18 @@ public class TaskWithDaysService {
     public List<TaskWithDays> getthursdayTaskWithDays(Long userId) {
         return taskWithDaysRepository.getthursday(userId);
     }
+
+    public List<TaskWithDays> getfridayTaskWithDays(Long userId) {
+        return taskWithDaysRepository.getfriday(userId);
+    }
+
+    public List<TaskWithDays> getsaturdayTaskWithDays(Long userId) {
+        return taskWithDaysRepository.getsaturday(userId);
+    }
+
+    public List<TaskWithDays> getsundayTaskWithDays(Long userId) {
+        return taskWithDaysRepository.getsunday(userId);
+    }
+
+
 }
