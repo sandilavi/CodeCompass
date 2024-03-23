@@ -55,4 +55,12 @@ public class TaskWithDaysService {
     }
 
 
+    public ResponseEntity<String> deleteTaskByEmail(Long id) {
+        try {
+            taskWithDaysRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.ok("deleted");
+    }
 }

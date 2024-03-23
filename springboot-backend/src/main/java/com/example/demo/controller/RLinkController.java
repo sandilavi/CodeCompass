@@ -24,6 +24,11 @@ public class RLinkController {
        return resoursesWithLinksService.getLinks(topic,levels);
     }
 
+    @GetMapping("/getLinks/{levels}")
+    public List<Resourseswithlinks> getLinks(@PathVariable String levels) {
+        return resoursesWithLinksService.getAllByLevels(levels);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long id) {
         return resoursesWithLinksService.deleteById(id);

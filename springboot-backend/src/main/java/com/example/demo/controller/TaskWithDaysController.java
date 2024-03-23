@@ -63,6 +63,9 @@ public class TaskWithDaysController {
     @GetMapping("/sunday/{userId}")
     public List<TaskWithDays> getsundayTaskWithDays(@PathVariable Long userId) {
         return taskWithDaysService.getsundayTaskWithDays(userId);
-
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long id) {
+        return taskWithDaysService.deleteTaskByEmail(id);
     }
 }
