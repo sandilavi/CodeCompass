@@ -1,17 +1,19 @@
 .quiz-container {
-    background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
+  background: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  margin: -20px 0 50px;
 }
+
 .answer-section {
   display: flex;
   flex-direction: column;
 }
+
 .option {
   padding: 10px;
   margin-bottom: 10px;
@@ -21,22 +23,27 @@
   transition: background-color 0.3s;
   text-transform: none;
 }
+
 .option.selected {
   background-color: #87ceeb;
 }
+
 .next-question-button {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #3dc593;
   cursor: pointer;
 }
+
 .question-count {
   margin-top: 100px;
   margin-bottom: 15px;
 }
+
 .question-count-class {
   font-size: 30px;
 }
+
 .question-text {
   font-size: 20px;
   margin-bottom: 12px;

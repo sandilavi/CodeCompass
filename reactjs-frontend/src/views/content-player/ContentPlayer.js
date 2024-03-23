@@ -16,11 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import FeedIcon from '@mui/icons-material/Feed';
+import PlayLessonOutlinedIcon from '@mui/icons-material/PlayLessonOutlined';
 import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 //import { useNavigate } from 'react-router';
+import Content from './Content';
 
 const drawerWidth = 400;
 
@@ -167,12 +168,20 @@ function CourseContentPlayer() {
                                 <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{text}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <ListItem key={text} disablePadding>
+                                <ListItem disablePadding>
                                     <ListItemButton onClick={setMainView}>
                                         <ListItemIcon>
-                                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                            <FeedIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary={text} />
+                                        <ListItemText primary='Overview' />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemButton onClick={setMainView}>
+                                        <ListItemIcon>
+                                            <PlayLessonOutlinedIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary='Supportive Resources' />
                                     </ListItemButton>
                                 </ListItem>
                             </AccordionDetails>
@@ -183,7 +192,7 @@ function CourseContentPlayer() {
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
-                {view}
+                <Content />
             </Main>
         </Box>
     );
