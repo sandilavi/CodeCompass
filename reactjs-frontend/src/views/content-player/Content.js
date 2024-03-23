@@ -1,11 +1,11 @@
 import React from 'react';
-// import './Contents.css'; // Import the CSS file
+import './Contents.css'; // Import the CSS file
 
 
 
 function Content() {
-    return (
-        <>
+    const element = () => {
+        return (
             <div className="container">
                 <h1>Java Variables Guide</h1>
                 <p>Variables are fundamental components in Java programming. They are used to store data values that can be referenced and manipulated throughout the program.</p>
@@ -45,8 +45,13 @@ function Content() {
 
                 <h2>Example</h2>
                 <p>Here's a simple example demonstrating the declaration, initialization, and usage of variables in Java:</p>
-                <pre><code>public class Main {'{'}<br />    public static void main(String[] args) {'{'}<br />        // Declare and initialize variables<br />        int age = 25;<br />        double salary = 1000.50;<br />        boolean isEmployed = true;<br />        char gender = 'M';<br />        String name = "John Doe";<br /><br />        // Print out variable values<br />        System.out.println("Name: " + name);<br />        System.out.println("Age: " + age);<br />        System.out.println("Salary: $" + salary);<br />        System.out.println("Employed: " + isEmployed);<br />        System.out.println("Gender: " + gender);<br />    {'}'}<br />{'}'}</code></pre>
+                <pre><code>public class Main {'{'}<br />    public static void main(String[] args) {'{'}<br />       <div> // Declare and initialize variables</div><br />        int age = 25;<br />        double salary = 1000.50;<br />        boolean isEmployed = true;<br />        char gender = 'M';<br />        String name = "John Doe";<br /><br />        // Print out variable values<br />        System.out.println("Name: " + name);<br />        System.out.println("Age: " + age);<br />        System.out.println("Salary: $" + salary);<br />        System.out.println("Employed: " + isEmployed);<br />        System.out.println("Gender: " + gender);<br />    {'}'}<br />{'}'}</code></pre>
             </div>
+        );
+    }
+    return (
+        <>
+            {element()}
         </>
     );
 }
