@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AccountSettings.css'; // Import the CSS file
 
+
 function AccountSettings() {
   const [email, setEmail] = useState(''); // State for email
   const [currentPassword, setCurrentPassword] = useState(''); // State for current password
@@ -46,6 +47,7 @@ function AccountSettings() {
   return (
     <div className="account-settings">
       <h2>Account Settings</h2>
+      <button onClick={() => window.location.href = "app/menu/home"}>Home</button>
       <p>Welcome to your account settings page!</p>
 
       <form onSubmit={handleSubmit}>
