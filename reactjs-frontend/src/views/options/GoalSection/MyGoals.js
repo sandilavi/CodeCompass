@@ -10,7 +10,7 @@ function MyGoals() {
   const [selectedDay, setSelectedDay] = useState(''); // Selected day for filtering
 
 
-  const userId = 123;
+  const userId = JSON.parse(localStorage.getItem('id'));
   let task = "";
   let day = "";
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -45,7 +45,7 @@ function MyGoals() {
   useEffect(() => {
     console.log("res.data")
     if (selectedDay === "Monday") {
-      UserService.getMonday()
+      UserService.getMonday(userId)
         .then((res) => {
           setGoals(res.data);
           console.log(res.data)
@@ -56,7 +56,7 @@ function MyGoals() {
           console.error('Error fetching employees:', error);
         });
     } else if (selectedDay == "Tuesday") {
-      UserService.getTuesday()
+      UserService.getTuesday(userId)
         .then((res) => {
           setGoals(res.data);
           console.log(res.data)
@@ -67,7 +67,7 @@ function MyGoals() {
           console.error('Error fetching employees:', error);
         });
     } else if (selectedDay == "Wednesday") {
-      UserService.getWednesday()
+      UserService.getWednesday(userId)
         .then((res) => {
           setGoals(res.data);
           console.log(res.data)
@@ -78,7 +78,7 @@ function MyGoals() {
           console.error('Error fetching employees:', error);
         });
     } else if (selectedDay == "Thursday") {
-      UserService.getThursday()
+      UserService.getThursday(userId)
         .then((res) => {
           setGoals(res.data);
           console.log(res.data)

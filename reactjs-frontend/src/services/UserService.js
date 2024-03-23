@@ -16,20 +16,20 @@ class UserService {
         return axios.post("http://localhost:8080/task/save", data);
     }
 
-    getMonday() {
-        return axios.get("http://localhost:8080/task/monday/123");
+    getMonday(userId) {
+        return axios.get(`http://localhost:8080/task/monday/${userId}`);
     }
 
-    getTuesday() {
-        return axios.get("http://localhost:8080/task/tuesday/123");
+    getTuesday(userId) {
+        return axios.get(`http://localhost:8080/task/tuesday/${userId}`);
     }
 
-    getWednesday() {
-        return axios.get("http://localhost:8080/task/wednesday/123");
+    getWednesday(userId) {
+        return axios.get(`http://localhost:8080/task/wednesday/${userId}`);
     }
 
-    getThursday() {
-        return axios.get("http://localhost:8080/task/thursday/123");
+    getThursday(userId) {
+        return axios.get(`http://localhost:8080/task/thursday/${userId}`);
 
     }
 
@@ -39,6 +39,9 @@ class UserService {
 
     removeGoal(index) {
         return axios.delete(`http://localhost:8080/task/delete/${index}`);
+    }
+    getUserDetails(email) {
+        return axios.get(`http://localhost:8080/user/${email}`);
     }
 }
 
