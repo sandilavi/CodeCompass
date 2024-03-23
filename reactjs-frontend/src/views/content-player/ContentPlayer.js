@@ -71,7 +71,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-function defaultPara() {
+/*function defaultPara() {
     return (<><Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
@@ -100,11 +100,11 @@ function defaultPara() {
             posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
     </>);
-}
+}*/
 function CourseContentPlayer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
-    const [view] = React.useState(defaultPara());
+    //const [view] = React.useState(defaultPara());
     const [sections] = React.useState(['Arrays', 'Varibles']);
     //const navigate = useNavigate();
 
@@ -158,7 +158,7 @@ function CourseContentPlayer() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {sections.map((text, index) => (
+                    {sections.map((text) => (
                         <Accordion key={text} sx={{ margin: '5px 0 5px 0' }}>
                             <AccordionSummary
                                 expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}

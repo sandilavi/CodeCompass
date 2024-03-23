@@ -10,7 +10,7 @@ import Quiz from 'components/userEvaluate/Quiz';
 
 export default function ThemeRoutes() {
 
-  const login = { path: '', element: <Login /> }
+  const login = { path: '/login', element: <Login /> }
   const player = { path: '/player', element: <CourseContentPlayer /> }
   const quiz = { path: '/quiz', element: <Quiz /> }
 

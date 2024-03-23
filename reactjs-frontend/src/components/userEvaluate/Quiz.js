@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Quiz.css';
-
 import axios from 'axios';
 
 export default function Quiz() {
@@ -143,7 +142,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which of the following method calls will throw an IllegalArgumentException? </div>
-          <img src="/images/question17.png" alt="question" />
+          <img src="/images/question17.png" alt="question"/>
         </div>
       ),
       options: ["int result = NumberOperations.performOperation(10, 5, 'add');", "int result = NumberOperations.performOperation(15, 0, 'divide');", "int result = NumberOperations.performOperation(7, 3, 'modulo');", "int result = NumberOperations.performOperation(8, 4, 'multiply');"],
