@@ -1,12 +1,9 @@
 package com.example.demo.Entity;
-
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="user")
 public class User {
-
     @Id
     @Column(name = "user_id", length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,16 +16,10 @@ public class User {
     private String email;
     @Column(name = "password", length = 255)
     private String password;
-
-    public User() {
-    }
-
-    public User(int userId, String userName, String email, String password) {
-        this.userId = userId;
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-    }
+    @Column(name = "verificationToken", length = 255)
+    private String verificationToken;
+    @Column(name = "verified", length = 255)
+    private boolean verified;
 
     public int getUserId() {
         return userId;
@@ -61,5 +52,39 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public User(int userId, String userName, String email, String password, String verificationToken, boolean verified) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.verificationToken = verificationToken;
+        this.verified = verified;
+    }
+
+    public User() {
+    }
+
+
+
+
+
+
 }
 
