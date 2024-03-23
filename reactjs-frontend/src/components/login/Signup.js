@@ -25,7 +25,7 @@ function SignUpForm({ updateName }) {
         let user = { name, email, password };
 
         UserService.signup(user).then(response => {
-            console.log(response.data);
+            console.log("response.data" + response.data);
 
             if (response.data.includes("Verify email by the link sent on your email address")) {
                 // alert("Verify email by the link sent on your email address and signIn");

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './AccountSettings.css'; // Import the CSS file
+import Swal from 'sweetalert2';
 
 
 function AccountSettings() {
+  //const [userName, setuserName] = useState('');
   const [email, setEmail] = useState(''); // State for email
   const [currentPassword, setCurrentPassword] = useState(''); // State for current password
   const [newPassword, setNewPassword] = useState(''); // State for new password
@@ -20,8 +22,8 @@ function AccountSettings() {
 
     try {
       // Replace with your API call to update user information
-      const response = await fetch('/api/update-user', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/user/userUpdate_email/akilajayawickrama7@gmail.com', {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, currentPassword, newPassword }),
       });
@@ -32,17 +34,32 @@ function AccountSettings() {
       } else {
         // Handle successful update (e.g., clear form, show success message)
         setEmail('');
-        setCurrentPassword('');
         setNewPassword('');
-        setConfirmPassword('');
         setErrorMessage('');
-        alert('Account information updated successfully!'); // Temporary success alert
+        successfully();
       }
     } catch (error) {
       console.error('Error updating user:', error);
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
+
+
+
+  const successfully = () => {
+    Swal.fire({
+      title: 'Successfully',
+      text: `Account information updated successfully!`,
+      icon: 'success',
+      iconHtml: "<i class='fas fa-check-circle'></i>",
+      confirmButtonText: 'Ok',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("ok");
+      }
+    });
+  }
+
 
   return (
     <div className="account-settings">

@@ -1,7 +1,6 @@
 import React from "react";
 import UserService from '../../services/UserService';
 import Swal from 'sweetalert2';
-//import { redirect } from "react-router";
 import styles from "../../Login.module.css";
 
 function SignInForm() {
@@ -28,7 +27,7 @@ function SignInForm() {
             if (response.data.message == "Login Success") {
                 window.location.href = 'http://localhost:3000/app/menu/home';
                 redirect("http://localhost:3000/app/menu/home")
-                //navigate(path, { replace: true });
+
 
             } else if (response.data.message == "Please verify your email first") {
                 verifyEmail();

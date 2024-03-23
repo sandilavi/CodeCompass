@@ -21,6 +21,7 @@ function MyGoals() {
     if (newGoal.trim() !== '') {
       setGoals([...goals, { text: newGoal, day: selectedDay }]);
       setNewGoal('');
+      setSelectedDay(selectedDay);
     }
     task = newGoal;
     day = selectedDay;
