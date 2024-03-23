@@ -51,6 +51,7 @@
     "react/jsx-uses-vars": "error",
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": 0,
+    "react/jsx-no-comment-textnodes": "off",
     "no-undef": "off",
     "react/display-name": "off",
     "react/jsx-filename-extension": "off",
