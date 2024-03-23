@@ -123,10 +123,12 @@ function MyGoals() {
         <button type="submit">Add Goal</button>
       </form>
       <ul>
+
         {filteredGoals.map((goals, index) => (
           <li key={index}>
+
             {goals.task}
-            <button onClick={() => handleRemoveGoal(index)}>Remove</button>
+            <button onClick={() => handleRemoveGoal(goals.id)}>Remove</button>
           </li>
         ))}
       </ul>
