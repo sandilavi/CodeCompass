@@ -100,47 +100,11 @@ function defaultPara() {
         </Typography>
     </>);
 }
-
-/*function nextPara() {
-    return (<><Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        te
-        rgergrgre
-        gravidareg
-        re
-        gravidaergg
-        reg
-        reg
-        erg
-        er
-        do odio aenean sed adipiscing. Amet nisl suscipit
-        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-        sapien faucibus et molestie ac.
-    </Typography>
-        <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-            eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-            neque volrgrger
-            rgergrg
-            gravidaerg
-            erg
-
-            erg
-            Ornare aenean euismod elementum nisi quis
-            eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-            posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-    </>);
-}*/
-
 function CourseContentPlayer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [view] = React.useState(defaultPara());
+    const [sections] = React.useState(['Arrays', 'Varibles']);
     //const navigate = useNavigate();
 
 
@@ -193,35 +157,24 @@ function CourseContentPlayer() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <Accordion key={text}>
+                    {sections.map((text, index) => (
+                        <Accordion key={text} sx={{ margin: '5px 0 5px 0' }}>
                             <AccordionSummary
-                                expandIcon={<ArrowDownwardIcon />}
+                                expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
-                                <Typography>Accordion 1</Typography>
+                                <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{text}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ArrowDownwardIcon />}
-                                        aria-controls="panel1-content"
-                                        id="panel1-header"
-                                    >
-                                        <Typography>asasa 1</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <ListItem key={text} disablePadding>
-                                            <ListItemButton onClick={setMainView}>
-                                                <ListItemIcon>
-                                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                                </ListItemIcon>
-                                                <ListItemText primary={text} />
-                                            </ListItemButton>
-                                        </ListItem>
-                                    </AccordionDetails>
-                                </Accordion>
+                                <ListItem key={text} disablePadding>
+                                    <ListItemButton onClick={setMainView}>
+                                        <ListItemIcon>
+                                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                        </ListItemIcon>
+                                        <ListItemText primary={text} />
+                                    </ListItemButton>
+                                </ListItem>
                             </AccordionDetails>
                         </Accordion>
                     ))}
