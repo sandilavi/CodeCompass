@@ -26,7 +26,7 @@ public class RlinksService {
     }
 
     public List<Resourseswithlinks> getLinks(String topic, String levels) {
-        return resourseswithlinksRepository.getLinks(topic, levels);
+        return resourseswithlinksRepository.getAllByTopicAndLevels(topic, levels);
     }
 
     public ResponseEntity<String> deleteById(Long id) {
@@ -37,6 +37,11 @@ public class RlinksService {
         } catch (Exception e) {
             return ResponseEntity.ok("Error");
         }
+    }
+
+    public List<Resourseswithlinks> getAllByLevels(String levels) {
+        return  resourseswithlinksRepository.getAllByLevels(levels);
+
     }
 }
 
