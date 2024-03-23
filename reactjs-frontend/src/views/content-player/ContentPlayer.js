@@ -139,7 +139,7 @@ function defaultPara() {
 
 function CourseContentPlayer() {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const [view] = React.useState(defaultPara());
     //const navigate = useNavigate();
 

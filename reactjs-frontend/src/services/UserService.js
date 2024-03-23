@@ -18,16 +18,13 @@ class UserService {
 
     getMonday() {
         return axios.get("http://localhost:8080/task/monday/123");
-        return axios.get("http://localhost:8080/task/monday/123");
     }
 
     getTuesday() {
         return axios.get("http://localhost:8080/task/tuesday/123");
-        return axios.get("http://localhost:8080/task/tuesday/123");
     }
 
     getWednesday() {
-        return axios.get("http://localhost:8080/task/wednesday/123");
         return axios.get("http://localhost:8080/task/wednesday/123");
     }
 

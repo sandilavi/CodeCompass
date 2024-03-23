@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './AccountSettings.css'; // Import the CSS file
 import Swal from 'sweetalert2';
+import { useTheme } from '@mui/material/styles';
+import { AppBar, Toolbar } from '@mui/material';
+import Header from 'layout/MainLayout/Header';
 
 
 function AccountSettings() {
@@ -10,6 +13,7 @@ function AccountSettings() {
   const [newPassword, setNewPassword] = useState(''); // State for new password
   const [confirmPassword, setConfirmPassword] = useState(''); // State for confirm password
   const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const theme = useTheme();
 
   // Function to handle form submission (replace with your actual API call)
   const handleSubmit = async (event) => {
@@ -62,69 +66,84 @@ function AccountSettings() {
 
 
   return (
-    <div className="account-settings">
-      <h2>Account Settings</h2>
-      <button onClick={() => window.location.href = "app/menu/home"}>Home</button>
-      <p>Welcome to your account settings page!</p>
+    <>
+      <AppBar
+        enableColorOnDark
+        position="fixed"
+        color="inherit"
+        elevation={0}
+        sx={{
+          bgcolor: theme.palette.background.default,
+          // transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
+        }}
+      >
+        <Toolbar>
+          <Header />
+        </Toolbar>
+      </AppBar>
+      <div className="account-settings">
+        <h2>Account Settings</h2>
+        <p>Welcome to your account settings page!</p>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="currentPassword">Current Password</label>
-          <input
-            type="password"
-            id="currentPassword"
-            name="currentPassword"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="currentPassword">Current Password</label>
+            <input
+              type="password"
+              id="currentPassword"
+              name="currentPassword"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="newPassword">New Password</label>
-          <input
-            type="password"
-            id="newPassword"
-            name="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="newPassword">New Password</label>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm New Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm New Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <button type="submit">Update Account</button>
+          <button type="submit">Update Account</button>
 
-        <p className="reset-password">
-          <a href="/reset-password">Forgot your password?</a>
-        </p>
-      </form>
-    </div>
+          <p className="reset-password">
+            <a href="/reset-password">Forgot your password?</a>
+          </p>
+        </form>
+      </div>
+    </>
   );
 }
 
