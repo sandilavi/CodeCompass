@@ -31,6 +31,8 @@ function MyGoals() {
   };
 
   const handleRemoveGoal = (index) => {
+    console.log("aa" + index);
+    UserService.removeGoal(index);
     const updatedGoals = [...goals];
     updatedGoals.splice(index, 1);
     setGoals(updatedGoals);
@@ -88,7 +90,7 @@ function MyGoals() {
         });
     }
 
-  }, [selectedDay,goals]);
+  }, [selectedDay, goals]);
 
 
   const filteredGoals = goals.filter((goal) => !selectedDay || goal.day === selectedDay);

@@ -36,6 +36,10 @@ class UserService {
     userUpdate() {
         return axios.get("http://localhost:8080/user/userUpdate_email/akilajayawickrama7@gmail.com");
     }
+
+    removeGoal(index) {
+        return axios.delete(`http://localhost:8080/task/delete/${index}`);
+    }
 }
 
 export default new UserService()

@@ -2,6 +2,7 @@ import React from "react";
 import UserService from '../../services/UserService';
 import Swal from 'sweetalert2';
 import styles from "../../Login.module.css";
+import { useNavigate } from 'react-router';
 
 function SignInForm() {
     const [state, setState] = React.useState({
@@ -16,6 +17,8 @@ function SignInForm() {
         });
     };
 
+    const navigation = useNavigate();
+
     const handleOnSubmit = evt => {
         evt.preventDefault();
 
@@ -25,8 +28,7 @@ function SignInForm() {
         UserService.signing(user).then(response => {
             console.log(response.data.message)
             if (response.data.message == "Login Success") {
-                window.location.href = 'http://localhost:3000/app/menu/home';
-                redirect("http://localhost:3000/app/menu/home")
+                navigation('/menu/home', { replace: true });
 
 
             } else if (response.data.message == "Please verify your email first") {
