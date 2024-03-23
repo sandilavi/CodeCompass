@@ -4,13 +4,15 @@ import { useRoutes } from 'react-router-dom';
 import MainRoutes from './MainRoutes';
 import { Login } from 'Login';
 import CourseContentPlayer from 'views/content-player/ContentPlayer';
+import Quiz from 'components/userEvaluate/Quiz';
 
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
 
-  const login = { path: '', element: <Login /> }
+  const login = { path: '/login', element: <Login /> }
   const player = { path: '/player', element: <CourseContentPlayer /> }
+  const quiz = { path: '/quiz', element: <Quiz /> }
 
-  return useRoutes([login, player, ...MainRoutes]);
+  return useRoutes([login, player, quiz, ...MainRoutes]);
 }

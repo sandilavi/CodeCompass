@@ -20,7 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { useNavigate } from 'react-router';
+//import { useNavigate } from 'react-router';
 
 const drawerWidth = 400;
 
@@ -101,7 +101,7 @@ function defaultPara() {
     </>);
 }
 
-function nextPara() {
+/*function nextPara() {
     return (<><Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         te
@@ -135,13 +135,13 @@ function nextPara() {
             posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
     </>);
-}
+}*/
 
 function CourseContentPlayer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [view, setView] = React.useState(defaultPara());
-    const navigate = useNavigate();
+    const [view] = React.useState(defaultPara());
+    //const navigate = useNavigate();
 
 
     const handleDrawerOpen = () => {
