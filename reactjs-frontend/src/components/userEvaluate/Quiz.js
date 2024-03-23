@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Quiz.css';
+
 import axios from 'axios';
 
 export default function Quiz() {
@@ -182,11 +183,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the size of the grades HashMap after the following operations are performed? </div>
-          <div className="question-text"> 1. Add entry "Alice" with value 85. </div>
-          <div className="question-text"> 2. Add entry "Bob" with value 92. </div>
-          <div className="question-text"> 3. Add entry "Charlie" with value 78. </div>
-          <div className="question-text"> 4. Replace the value for entry "Bob" with 95. </div>
-          <div className="question-text"> 5. Remove entry "Charlie". </div>
+          
         </div>
       ),
       options: ["2", "3", "4", "5"],
