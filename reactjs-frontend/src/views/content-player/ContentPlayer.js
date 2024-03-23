@@ -22,6 +22,7 @@ import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 //import { useNavigate } from 'react-router';
 import Content from './Content';
+import VideoPlayer from './VideoPlayer';
 
 const drawerWidth = 400;
 
@@ -193,6 +194,8 @@ function CourseContentPlayer() {
             <Main open={open}>
                 <DrawerHeader />
                 <Content />
+                <VideoPlayer 
+                videoId={"dLiCvjFuts4"}/>
             </Main>
         </Box>
     );
