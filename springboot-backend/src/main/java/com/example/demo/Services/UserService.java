@@ -30,7 +30,7 @@ public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     UserDto userDto;
     public ResponseEntity<String> addUser(User user){
-        logger.info(user.getUserName());
+        logger.info(user.getName());
         logger.info(user.getEmail());
         logger.info(user.getPassword());
         String token = UUID.randomUUID().toString();
@@ -91,7 +91,7 @@ public class UserService {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: "));
         if (existingUser != null) {
-            existingUser.setUserName(user.getUserName());
+            existingUser.setName(user.getName());
             existingUser.setPassword(user.getPassword());
             userRepository.save(existingUser);
             return ResponseEntity.ok("updated");
