@@ -26,11 +26,10 @@ public class Resourseswithlinks {
     @Column
     private String topic;
 
-    public Resourseswithlinks() {
-    }
+    @Column
+    private String language;
 
-    public Resourseswithlinks(Long id, String image, String title, String description, String href, String level,
-            String topic) {
+    public Resourseswithlinks(Long id, String image, String title, String description, String href, String level, String topic, String language) {
         this.id = id;
         this.image = image;
         this.title = title;
@@ -38,6 +37,10 @@ public class Resourseswithlinks {
         this.href = href;
         this.level = level;
         this.topic = topic;
+        this.language = language;
+    }
+
+    public Resourseswithlinks() {
     }
 
     public Long getId() {
@@ -94,5 +97,13 @@ public class Resourseswithlinks {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

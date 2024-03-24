@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface RVedioRepo extends JpaRepository<ResoursewithvedioLinks,Long> {
-    @Query("SELECT t FROM ResoursewithvedioLinks t WHERE t.topic = :topic AND t.levels = :levels")
-    List<ResoursewithvedioLinks> getLinks(String topic, String levels);
+
+    List<ResoursewithvedioLinks> getAllByLanguageAndLevel(String language, String levels);
 }

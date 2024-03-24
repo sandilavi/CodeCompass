@@ -19,9 +19,9 @@ public class RLinkController {
        return resoursesWithLinksService.saveResourses(resourseswithlinks);
     }
 
-    @GetMapping("/getLinks/{topic}/{levels}")
-    public List<Resourseswithlinks> getLinks(@PathVariable String topic,@PathVariable String levels) {
-       return resoursesWithLinksService.getLinks(topic,levels);
+    @GetMapping("/{language}/{levels}")
+    public List<Resourseswithlinks> getLinks(@PathVariable String language,@PathVariable String levels) {
+       return resoursesWithLinksService.getLinks(language,levels);
     }
 
     @GetMapping("/getLinks/{levels}")

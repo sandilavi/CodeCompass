@@ -18,9 +18,9 @@ public class RVedioController {
         return resoursewithvedioLinksServices.saveResourses(resoursewithvedioLinks);
     }
 
-    @GetMapping("/getLinks/{topic}/{levels}")
-    public List<ResoursewithvedioLinks> getLinks(@PathVariable String topic, @PathVariable String levels) {
-        return resoursewithvedioLinksServices.getLinks(topic,levels);
+    @GetMapping("/{language}/{levels}")
+    public List<ResoursewithvedioLinks> getLinks(@PathVariable String language, @PathVariable String levels) {
+        return resoursewithvedioLinksServices.getLinks(language,levels);
     }
 
     @DeleteMapping("/delete/{id}")
