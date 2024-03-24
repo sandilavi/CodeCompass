@@ -327,8 +327,11 @@ export default function Quiz() {
         alert('Congratulations! You are an expert. Keep refining your skills and mentor others.');
         navigate('/player', { replace: true, state: userLevel });
       } else {
-        alert('Unable to determine your proficiency level. Please try again later.');
+        alert('Your proficiency level is not available. Please try again later.');
       }
+    }
+    else {
+      alert('Unable to determine your proficiency level. Please try again later.');
     }
   };
 
