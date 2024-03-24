@@ -131,12 +131,12 @@ export default function Quiz() {
     {
       question: (
         <div>
-          <div className="question-text"> Which of the following method calls will compile successfully? </div>
+          <div className="question-text"> What will be the output of the following Java code snippet? </div>
           <img src="/images/question16.png" alt="question" />
         </div>
       ),
-      options: ["int result = calculateSum(5, 10);", "double result = calculateSum(3.5, 7.8);", "float result = calculateSum(4.2, 8.6);", "calculateSum(5.0, 10.0);"],
-      answer: ["int result = calculateSum(5, 10);", "double result = calculateSum(3.5, 7.8);"]
+      options: ["Integer: 100 Double: 3.14", "Double: 100 Integer: 3.14", "Integer: 100 Integer: 3.14", "None of the above."],
+      answer: "Integer: 100 Double: 3.14"
     },
     {
       question: (
@@ -181,12 +181,12 @@ export default function Quiz() {
     {
       question: (
         <div>
-          <div className="question-text"> What will be the size of the grades HashMap after the following operations are performed? </div>
-          
+          <div className="question-text"> What will be the output of the main method when executed? </div>
+          <img src="/images/question21.png" alt="question" />
         </div>
       ),
-      options: ["2", "3", "4", "5"],
-      answer: "3"
+      options: ["25", "30", "28", "Emily"],
+      answer: "30"
     },
     {
       question: (
@@ -195,8 +195,8 @@ export default function Quiz() {
           <img src="/images/question22.png" alt="question" />
         </div>
       ),
-      options: ["[Apple, Banana, Cherry, Date]", "[Apple, Banana, Date]", "[Banana, Cherry, Date]", "[Apple, Date]"],
-      answer: "[Apple, Banana, Date]"
+      options: ["10 20 30 40", "40 30 20 10", "The output depends on the order of elements in the ArrayList.", "None of the above."],
+      answer: "10 20 30 40"
     },
     {
       question: (
@@ -205,8 +205,11 @@ export default function Quiz() {
           <img src="/images/question23.png" alt="question" />
         </div>
       ),
-      options: ["The output will be unpredictable and may vary on each run", "The output will always be 'Thread 1: 0, 1, 2, 3, 4' followed by 'Thread 2: 0, 1, 2, 3, 4'", "The output will always be 'Thread 1: 0, 1, 2, 3, 4' intermixed with 'Thread 2: 0, 1, 2, 3, 4'", "The code will throw an exception during execution"],
-      answer: "The output will always be 'Thread 1: 0, 1, 2, 3, 4' intermixed with 'Thread 2: 0, 1, 2, 3, 4'"
+      options: ["Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4 Threads execution complete.",
+                "Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Threads execution complete. Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4",
+                "The output cannot be determined as it depends on the thread scheduler.",
+                "None of the above."],
+      answer: "Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4 Threads execution complete."
     },
     {
       question: (
@@ -344,9 +347,11 @@ export default function Quiz() {
               </button>
             ))}
           </div>
-          <button className="next-question-button" onClick={handleNextQuestionClick}>
-            {currentQuestion === questions.length - 1 ? 'Submit the Quiz' : 'Next Question'}
-          </button>
+          <div className="button-container">
+            <button className="next-question-button" onClick={handleNextQuestionClick}>
+              {currentQuestion === questions.length - 1 ? 'Submit the Quiz' : 'Next Question'}
+            </button>
+          </div>
         </>
       )}
     </div>

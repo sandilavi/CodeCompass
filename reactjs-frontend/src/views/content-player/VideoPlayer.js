@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+/*import React, { useRef } from 'react';
 import YouTube from 'react-youtube';
 import "./VideoPlayer.css"
 
@@ -34,4 +34,4 @@ const VideoPlayer = ({ videoId, width = '640', height = '390', autoplay = false 
   );
 };
 
-export default VideoPlayer;
+export default VideoPlayer;*/
