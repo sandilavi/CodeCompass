@@ -20,6 +20,8 @@ import FeedIcon from '@mui/icons-material/Feed';
 import PlayLessonOutlinedIcon from '@mui/icons-material/PlayLessonOutlined';
 import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 //import { useNavigate } from 'react-router';
 import Content from './Content';
 import VideoPlayer from './VideoPlayer';
@@ -185,6 +187,15 @@ function CourseContentPlayer() {
             <Main open={open}>
                 <DrawerHeader />
                 {view}
+                <Stack
+                    sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '30px 0 0 0', backgroundColor: '#f9f9ff', position: 'fixed', bottom: '0' }}
+                    spacing={1}
+                    width='100%'
+                    height='60px'>
+                    <Button variant="contained">
+                        Save Progress
+                    </Button>
+                </Stack>
             </Main>
         </Box>
     );
