@@ -43,13 +43,14 @@ class UserService {
         return axios.get(HOST_bASE_URL + `task/saturday/${userId}`);
 
     }
-    
+
     getSunday(userId) {
         return axios.get(HOST_bASE_URL + `task/sunday/${userId}`);
 
     }
-    userUpdate() {
-        return axios.get(HOST_bASE_URL + `user/userUpdate_email/akilajayawickrama7@gmail.com`);
+    userUpdate(email, changepassword) {
+        return axios.put(HOST_bASE_URL + `user/userUpdate_email/${email}`, changepassword);
+
     }
 
     removeGoal(index) {
@@ -64,6 +65,9 @@ class UserService {
     }
     getVideo(level, language) {
         return axios.get(HOST_bASE_URL + `vedio/${language}/${level}`)
+    }
+    getHtml(level, language) {
+        return axios.get(HOST_bASE_URL + `html/${language}/${level}`);
     }
 }
 
