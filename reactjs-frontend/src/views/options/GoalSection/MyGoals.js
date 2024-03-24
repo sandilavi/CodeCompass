@@ -53,7 +53,7 @@ function MyGoals() {
 
 
         .catch((error) => {
-          console.error('Error fetching employees:', error);
+          console.error('Error fetching goals:', error);
         });
     } else if (selectedDay == "Tuesday") {
       UserService.getTuesday(userId)
@@ -64,7 +64,7 @@ function MyGoals() {
 
 
         .catch((error) => {
-          console.error('Error fetching employees:', error);
+          console.error('Error fetching goals:', error);
         });
     } else if (selectedDay == "Wednesday") {
       UserService.getWednesday(userId)
@@ -75,7 +75,7 @@ function MyGoals() {
 
 
         .catch((error) => {
-          console.error('Error fetching employees:', error);
+          console.error('Error fetching goals:', error);
         });
     } else if (selectedDay == "Thursday") {
       UserService.getThursday(userId)
@@ -86,10 +86,42 @@ function MyGoals() {
 
 
         .catch((error) => {
-          console.error('Error fetching employees:', error);
+          console.error('Error fetching goals:', error);
         });
-    }
+    }else if (selectedDay == "Friday") {
+      UserService.getFriday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
 
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+      } else if (selectedDay == "Saturday") {
+      UserService.getSaturday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+      }else if (selectedDay == "Sunday") {
+        UserService.getSunday(userId)
+          .then((res) => {
+            setGoals(res.data);
+            console.log(res.data)
+          })
+  
+  
+          .catch((error) => {
+            console.error('Error fetching goals:', error);
+          });
+        }  
   }, [selectedDay, goals]);
 
 

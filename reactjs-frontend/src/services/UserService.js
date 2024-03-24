@@ -34,6 +34,20 @@ class UserService {
 
     }
 
+    getFriday(userId) {
+        return axios.get(HOST_bASE_URL + `task/friday/${userId}`);
+
+    }
+
+    getSaturday(userId) {
+        return axios.get(HOST_bASE_URL + `task/saturday/${userId}`);
+
+    }
+    
+    getSunday(userId) {
+        return axios.get(HOST_bASE_URL + `task/sunday/${userId}`);
+
+    }
     userUpdate(email) {
         return axios.get(HOST_bASE_URL + `user/userUpdate_email/akilajayawickrama7@gmail.com`);
     }
