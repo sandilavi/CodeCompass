@@ -28,6 +28,14 @@ function SignInForm() {
         UserService.signing(user).then(response => {
             console.log(response.data.message)
             if (response.data.message == "Login Success") {
+                UserService.getUserDetails(email).then(response => {
+                    console.log(response.data)
+                    localStorage.setItem('id', JSON.stringify(response.data));
+                    localStorage.setItem('email', JSON.stringify(email));
+                });
+                console.log(response.data)
+                const id = JSON.parse(localStorage.getItem('id'));
+                console.log("idddd" + id);
                 navigation('/menu/home', { replace: true });
 
 

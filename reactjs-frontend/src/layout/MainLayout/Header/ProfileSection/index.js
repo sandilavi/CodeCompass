@@ -63,9 +63,14 @@ const ProfileSection = () => {
   /**
    * anchorRef is used on different componets and specifying one type leads to other components throwing an error
    * */
+  const navigation = useNavigate();
+
   const anchorRef = useRef(null);
   const handleLogout = async () => {
-    window.location.href = 'http://localhost:3000/app/login';
+    navigation('', { replace: true });
+    // To clear all items
+    localStorage.clear();
+
     console.log('Logout');
   };
 
