@@ -67,7 +67,7 @@ const ProfileSection = () => {
 
   const anchorRef = useRef(null);
   const handleLogout = async () => {
-    navigation('', { replace: true });
+    navigation('../', { replace: true });
     // To clear all items
     localStorage.clear();
 

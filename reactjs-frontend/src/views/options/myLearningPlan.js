@@ -23,8 +23,8 @@ const MyLearningPlan = () => {
   
     return (
         <Box sx={{ width: '100%' }}>
-        <ProgressBar value="70" />
-        </Box>
+        <ProgressBar value="70"/>
+    </Box>
     );
 
     // const [isDataNull, setIsDatanull] = React.useState(false);
