@@ -42,10 +42,12 @@ public class userController {
     }
 
     @PutMapping("/userUpdate_email/{email}")
-    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody Changepassword changepassword) {
+    public ResponseEntity<String> updateUser_From_email(@PathVariable String email,
+            @RequestBody Changepassword changepassword) {
         return userService.updateUser_from_email(email, changepassword);
 
     }
+
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -54,5 +56,10 @@ public class userController {
     @DeleteMapping("/delete/{email}")
     public ResponseEntity<String> deleteEmployee(@PathVariable("email") String email) {
         return userService.deleteEmployeeByEmail(email);
+    }
+
+    @GetMapping("/{email}")
+    public Long getUserbyEmail(@PathVariable String email) {
+        return userService.getUserbyEmail(email);
     }
 }

@@ -1,37 +1,98 @@
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
 
 @Entity
-@Table(name="Resourseswithlinks")
+@Table(name = "Resourseswithlinks")
 public class Resourseswithlinks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String levels;
+    private String image;
 
     @Column
-    private String links;
+    private String title;
 
+    @Column
+    private String description;
+
+    @Column
+    private String href;
+
+    @Column
+    private String level;
     @Column
     private String topic;
 
     public Resourseswithlinks() {
     }
 
-    public Resourseswithlinks(Long id, String levels, String links, String topic) {
+    public Resourseswithlinks(Long id, String image, String title, String description, String href, String level,
+            String topic) {
         this.id = id;
-        this.levels = levels;
-        this.links = links;
+        this.image = image;
+        this.title = title;
+        this.description = description;
+        this.href = href;
+        this.level = level;
+        this.topic = topic;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
         this.topic = topic;
     }
 }

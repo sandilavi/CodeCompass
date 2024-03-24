@@ -29,7 +29,8 @@ public class UserService {
     private JavaMailSender javaMailSender;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     UserDto userDto;
-    public ResponseEntity<String> addUser(User user){
+
+    public ResponseEntity<String> addUser(User user) {
         logger.info(user.getName());
         logger.info(user.getEmail());
         logger.info(user.getPassword());
@@ -38,19 +39,22 @@ public class UserService {
         if (userRepository.existsByemail(user.getEmail())) {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         } else {
-           user.setPassword(user.getPassword());
+            user.setPassword(user.getPassword());
             userRepository.save(user);
             sendVerificationEmail(user.getEmail(), token);
             return ResponseEntity.ok("Verify email by the link sent on your email address");
         }
     }
+
     private void sendVerificationEmail(String email, String token) {
-      SimpleMailMessage message = new SimpleMailMessage();
-      message.setTo(email);
-      message.setSubject("Email Verification");
-      message.setText("Click the following link to verify your email: http://localhost:8080/user/verifyEmail?token=" + token);
-      javaMailSender.send(message);
-  }
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Email Verification");
+        message.setText(
+                "Click the following link to verify your email: http://localhost:8080/user/verifyEmail?token=" + token);
+        javaMailSender.send(message);
+    }
+
     public void verifyEmail(String token) {
         User user = userRepository.findByVerificationToken(token);
         if (user != null) {
@@ -61,19 +65,21 @@ public class UserService {
             throw new IllegalArgumentException("Invalid verification token.");
         }
     }
+
     public LoginMesage loginUser(LoginDto loginDto) {
         String msg = "";
         User user = userRepository.findByEmail(loginDto.getEmail());
 
         if (user != null) {
-            boolean verified=user.isVerified();
-            if(!verified){
+            boolean verified = user.isVerified();
+            if (!verified) {
                 return new LoginMesage("Please verify your email first", false);
-            }else{
+            } else {
                 String password = loginDto.getPassword();
                 String encodedPassword = user.getPassword();
                 if (password.equals(encodedPassword)) {
-                    Optional<User> user1 = userRepository.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
+                    Optional<User> user1 = userRepository.findOneByEmailAndPassword(loginDto.getEmail(),
+                            encodedPassword);
                     if (user1.isPresent()) {
                         return new LoginMesage("Login Success", true);
                     } else {
@@ -83,10 +89,11 @@ public class UserService {
                     return new LoginMesage("password Not Match", false);
                 }
             }
-        }else {
+        } else {
             return new LoginMesage("Email not exits", false);
         }
     }
+
     public ResponseEntity<String> updateUser_from_id(Long id, User user) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: "));
@@ -103,16 +110,16 @@ public class UserService {
 
     public ResponseEntity<String> updateUser_from_email(String email, Changepassword changepassword) {
         User existingUser = userRepository.findByEmail(email);
-        String currentPassword=existingUser.getPassword();
-        String newPassword= changepassword.getNewPassword();
-        logger.info("currentPassword"+currentPassword);
-        logger.info("newPassword"+newPassword);
+        String currentPassword = existingUser.getPassword();
+        String newPassword = changepassword.getNewPassword();
+        logger.info("currentPassword" + currentPassword);
+        logger.info("newPassword" + newPassword);
         if (existingUser != null) {
-            if(currentPassword.equals(changepassword.getCurrentPassword())){
+            if (currentPassword.equals(changepassword.getCurrentPassword())) {
                 existingUser.setPassword(changepassword.getNewPassword());
                 userRepository.save(existingUser);
                 return ResponseEntity.ok("updated");
-            }else{
+            } else {
                 return ResponseEntity.badRequest().body("Current Password is not correct");
             }
         } else {
@@ -120,12 +127,13 @@ public class UserService {
             return ResponseEntity.badRequest().body("Error");
         }
     }
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     public ResponseEntity<String> deleteEmployeeByEmail(String email) {
-        User existingUser= userRepository.findByEmail(email);
+        User existingUser = userRepository.findByEmail(email);
         if (existingUser != null) {
             userRepository.delete(existingUser);
             return ResponseEntity.ok("deleted");
@@ -133,5 +141,11 @@ public class UserService {
             // Handle user not found scenario
             return ResponseEntity.badRequest().body("Error");
         }
+    }
+
+    public Long getUserbyEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return user.getUserId();
+
     }
 }
