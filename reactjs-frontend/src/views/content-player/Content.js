@@ -45,7 +45,7 @@ function Content() {
 
                 <h2>Example</h2>
                 <p>Here's a simple example demonstrating the declaration, initialization, and usage of variables in Java:</p>
-                public class Main {'{'} public static void main(String[] args) {'{'} {'// Declare and initialize variables'} int age = 25; double salary = 1000.50; boolean isEmployed = true; char gender = 'M'; String name = "John Doe"; {'// Print out variable values'} System.out.println("Name: " + name); System.out.println("Age: " + age); System.out.println("Salary: $" + salary); System.out.println("Employed: " + isEmployed); System.out.println("Gender: " + gender); {'}'} {'}'}{'}'}
+                <pre><code>public class Main {'{'}<br />    public static void main(String[] args) {'{'}<br />        // Declare and initialize variables<br />        int age = 25;<br />        double salary = 1000.50;<br />        boolean isEmployed = true;<br />        char gender = 'M';<br />        String name = "John Doe";<br /><br />        // Print out variable values<br />        System.out.println("Name: " + name);<br />        System.out.println("Age: " + age);<br />        System.out.println("Salary: $" + salary);<br />        System.out.println("Employed: " + isEmployed);<br />        System.out.println("Gender: " + gender);<br />    {'}'}<br />{'}'}</code></pre>
             </div>
         );
     }

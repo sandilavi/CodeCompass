@@ -29,16 +29,12 @@ function SignInForm() {
             console.log(response.data.message)
             if (response.data.message == "Login Success") {
                 UserService.getUserDetails(email).then(response => {
-                    console.log(response.data)
-                    localStorage.setItem('id', JSON.stringify(response.data));
+                    localStorage.setItem('id', JSON.stringify(response.data.userId));
                     localStorage.setItem('email', JSON.stringify(email));
+                    localStorage.setItem('name', JSON.stringify(response.data.userName));
                 });
-                console.log(response.data)
                 const id = JSON.parse(localStorage.getItem('id'));
-                console.log("idddd" + id);
                 navigation('/menu/home', { replace: true });
-
-
             } else if (response.data.message == "Please verify your email first") {
                 verifyEmail();
             } else if (response.data.message == "Login Failed") {

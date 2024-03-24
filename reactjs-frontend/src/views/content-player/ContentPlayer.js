@@ -20,6 +20,8 @@ import FeedIcon from '@mui/icons-material/Feed';
 import PlayLessonOutlinedIcon from '@mui/icons-material/PlayLessonOutlined';
 import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 //import { useNavigate } from 'react-router';
 import Content from './Content';
 import VideoPlayer from './VideoPlayer';
@@ -72,37 +74,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-
-function defaultPara() {
-    return (<><Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-        imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-        Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-        Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-        sapien faucibus et molestie ac.
-    </Typography>
-        <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-            eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-            neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-            tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-            sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-            tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-            et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-            tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-            eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-            posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-    </>);
-}
 function CourseContentPlayer() {
     //views
     const resourcesView = () => {
@@ -128,8 +99,11 @@ function CourseContentPlayer() {
 
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
-    const [view] = React.useState(defaultPara());
-    const [sections] = React.useState(['Arrays', 'Varibles']);
+    const [mainCap, setMainCap] = React.useState('Default');
+    const [view, setView] = React.useState(overview());
+    const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
+    const [details, setDetails] = React.useState([]);
+    const htmlData = [];
     const level = 'Beginner';
     //const navigate = useNavigate();
 
@@ -141,6 +115,10 @@ function CourseContentPlayer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const saveProgress = () => {
+
+    }
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -182,7 +160,7 @@ function CourseContentPlayer() {
                 <Divider />
                 <List>
                     {sections.map((text) => (
-                        <Accordion key={text} sx={{ margin: '5px 0 5px 0' }}>
+                        <Accordion key={text} sx={{ margin: '5px 0 5px 0' }} onClick={() => { setMainCap(text) }}>
                             <AccordionSummary
                                 expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
                                 aria-controls="panel1-content"
@@ -216,6 +194,14 @@ function CourseContentPlayer() {
             <Main open={open}>
                 <DrawerHeader />
                 {view}
+                <Stack
+                    sx={{ marginBottom: '10px', position: 'fixed', bottom: '0', right: '0' }}
+                    spacing={2}
+                    width='170px'>
+                    <Button variant="contained" onClick={saveProgress}>
+                        Save Progress
+                    </Button>
+                </Stack>
             </Main>
         </Box>
     );
