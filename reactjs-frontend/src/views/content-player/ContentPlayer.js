@@ -181,7 +181,7 @@ function CourseContentPlayer() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {sections.map((text, index) => (
+                    {sections.map((text) => (
                         <Accordion key={text} sx={{ margin: '5px 0 5px 0' }}>
                             <AccordionSummary
                                 expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
