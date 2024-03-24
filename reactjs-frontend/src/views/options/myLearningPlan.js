@@ -1,8 +1,6 @@
-import MainCard from 'ui-component/cards/MainCard';
-import noData from 'assets/images/users/no data.jpg'
-import { Box } from '@mui/system';
 import ProgressBar from './Progress'; 
 import React from 'react';
+import Box from '@mui/material/Box';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -22,18 +20,11 @@ import React from 'react';
 // }
 
 const MyLearningPlan = () => {
-
-    const [currentProgress, setCurrentProgress] = React.useState(25);
-  
-    const handleClick = () => {
-      setCurrentProgress((prevProgress) => Math.min(prevProgress + 10, 100));
-    };
   
     return (
-      <div>
-        <ProgressBar progress={currentProgress} label="Lesson Progress" />
-        <button onClick={handleClick}>Increase Progress</button>
-      </div>
+        <Box sx={{ width: '100%' }}>
+        <ProgressBar value="70" />
+      </Box>
     );
 
     // const [isDataNull, setIsDatanull] = React.useState(false);

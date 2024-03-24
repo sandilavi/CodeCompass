@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 import './Progress.css';
 
-const ProgressBar = ({ progress, label, maxValue = 100, color = '#007bff' }) => {
-  const [percentage, setPercentage] = useState(progress * (100 / maxValue));
+const ProgressBar = ( props ) => {
 
   // Optional function to update progress externally (if needed)
 //   const updateProgress = (newProgress) => {
@@ -12,20 +13,21 @@ const ProgressBar = ({ progress, label, maxValue = 100, color = '#007bff' }) => 
 //   };
 
   return (
-    <div className="progress">
-      <label>{label}</label>
-      <div
-        className="progress-bar"
-        role="progressbar"
-        aria-valuenow={percentage}
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style={{ width: `${percentage}%`, backgroundColor: color }}
-      >
-        {percentage}%
-      </div>
-    </div>
-  );
+
+    
+<Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ width: '100%', mr: 1 }}>
+        <LinearProgress variant="determinate" {...props} />
+      </Box>
+      <Box sx={{ minWidth: 35 }}>
+        <Typography variant="body2" color="text.secondary">{`${Math.round(
+          props.value,
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  )
 };
 
 export default ProgressBar;
+
+

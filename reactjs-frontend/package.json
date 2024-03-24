@@ -21,6 +21,7 @@
     "framer-motion": "^11.0.3",
     "material-ui-popup-state": "^5.0.10",
     "prop-types": "^15.8.1",
+    "rc-progress": "^4.0.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.10.1",
