@@ -111,22 +111,29 @@ public class UserService {
     }
 
     public ResponseEntity<String> updateUser_from_email(String email, Changepassword changepassword) {
-        User existingUser = userRepository.findByEmail(email);
-        String currentPassword = existingUser.getPassword();
-        String newPassword = changepassword.getNewPassword();
-        logger.info("currentPassword" + currentPassword);
-        logger.info("newPassword" + newPassword);
-        if (existingUser != null) {
-            if (currentPassword.equals(changepassword.getCurrentPassword())) {
-                existingUser.setPassword(changepassword.getNewPassword());
-                userRepository.save(existingUser);
-                return ResponseEntity.ok("updated");
+        try {
+            User existingUser = userRepository.findByEmail(email);
+            String currentPassword = existingUser.getPassword();
+            String newPassword = changepassword.getNewPassword();
+            logger.info("currentPassword" + currentPassword);
+            logger.info("newPassword" + newPassword);
+            if (existingUser != null) {
+
+                    if (currentPassword.equals(changepassword.getCurrentPassword())) {
+                        existingUser.setPassword(changepassword.getNewPassword());
+                        userRepository.save(existingUser);
+                        return ResponseEntity.ok("updated");
+                    } else {
+                        return ResponseEntity.badRequest().body("Current Password is not correct");
+                    }
+
+
             } else {
-                return ResponseEntity.badRequest().body("Current Password is not correct");
+                // Handle user not found scenario
+                return ResponseEntity.badRequest().body("Error:Email not found");
             }
-        } else {
-            // Handle user not found scenario
-            return ResponseEntity.badRequest().body("Error");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
