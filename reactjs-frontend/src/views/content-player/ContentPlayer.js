@@ -27,6 +27,7 @@ import Content from './Content';
 import VideoPlayer from './VideoPlayer';
 import LinkCard from './LinkCard';
 import UserService from 'services/UserService';
+import { useLocation } from 'react-router';
 
 const drawerWidth = 400;
 
@@ -103,12 +104,13 @@ function CourseContentPlayer() {
     };
     const [videoId, setVideoId] = React.useState([]);
     const [htmlData, setHtmlData] = React.useState([]);
-    const level = 'Intermediate';
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [mainCap, setMainCap] = React.useState('Default');
     const [view, setView] = React.useState(overview());
     const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
+    const location = useLocation();
+    const level = location.state;
 
     //const navigate = useNavigate();
 
