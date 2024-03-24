@@ -5,6 +5,7 @@ import com.example.demo.Services.LoginMesage;
 import com.example.demo.Services.UserService;
 import com.example.demo.dto.Changepassword;
 import com.example.demo.dto.LoginDto;
+import com.example.demo.dto.UserDetailsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +60,7 @@ public class userController {
     }
 
     @GetMapping("/{email}")
-    public Long getUserbyEmail(@PathVariable String email) {
+    public UserDetailsDto getUserbyEmail(@PathVariable String email) {
         return userService.getUserbyEmail(email);
     }
 }
