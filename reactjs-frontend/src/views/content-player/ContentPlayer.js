@@ -76,35 +76,38 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 function CourseContentPlayer() {
     //views
-    const resourcesView = () => {
+
+const resourcesView = (data, links = []) => {
+        let datas = data;
         return (
             <Box display='flex' flexDirection='column' alignItems='center' sx={{ boxShadow: 3, borderRadius: '5px', backgroundColor: "#EDE7F6" }}>
                 <Typography variant='h2' fontWeight='700' fontFamily='Poppins' sx={{ margin: '5px 0 5px 0' }}>Watch this video and get more understanding </Typography>
-                <VideoPlayer videoId={"dLiCvjFuts4"} />
-                <Typography variant='h3' fontWeight='500' fontFamily='Poppins' sx={{ margin: '7px 0 7px 0' }}>Refer this links also</Typography>
-                <LinkCard
-                    image="https://cufinder.io/_next/image?url=https%3A%2F%2Fcufinder.io%2Fimages%2Fmarketing-logos%2Fw3schools.com.png&w=640&q=75"
-                    title="Java Varibles"
-                    description="Link description this is a test link nikan link ekk"
-                    href="https://www.w3schools.com/java/java_variables.asp"
-                />
+                <VideoPlayer videoId={datas} />
+                <Typography variant='h3' fontWeight='500' fontFamily='Poppins' sx={{ margin: '7px 0 7px 0' }}>Refer this links also for gain more knowladge</Typography>
+                {links.map((obj, index) => (
+                    <LinkCard key={index}
+                        image={obj.image}
+                        title={obj.title}
+                        description={obj.description}
+                        href={obj.href}
+                    />
+                ))}
             </Box>
         );
 
     };
-    const overview = () => {
-        return <Content />;
-    }
 
-
+    const overview = (html = '<div class=main> default <div>') => {
+        return <Content html={html} />;
+    };
+    const [videoId, setVideoId] = React.useState([]);
+    const [htmlData, setHtmlData] = React.useState([]);
+    const level = 'Intermediate';
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [mainCap, setMainCap] = React.useState('Default');
     const [view, setView] = React.useState(overview());
     const [sections] = React.useState(['Arrays', 'Varibles']);
-    //const [] = React.useState([]);
-    //const htmlData = [];
-    const level = 'Beginner';
     //const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -116,7 +119,6 @@ function CourseContentPlayer() {
             }).catch((error) => {
                 console.log(error.message);
             });
-
 
         UserService.getVideo(level, "Java")
             .then((response) => {
