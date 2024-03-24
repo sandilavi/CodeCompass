@@ -19,9 +19,9 @@ function SignInForm() {
 
         const { email, password } = state;
         let user = { email, password };
-        console.log(response.data);
-        UserService.signing(user);
 
+        UserService.signing(user);
+        console.log("Login Success")
         for (const key in state) {
             setState({
                 ...state,
@@ -30,7 +30,7 @@ function SignInForm() {
         }
     };
 
-    ;
+
 
     return (
         <div className="form-container sign-in-container">

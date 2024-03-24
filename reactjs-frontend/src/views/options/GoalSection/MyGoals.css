@@ -1,0 +1,76 @@
+/*  */
+.goals-section {
+  margin: 2rem auto;
+  max-width: 500px; /* Adjust width as needed */
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.goals-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.goals-section p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.goals-section form {
+  display: flex; /* Align input and button horizontally */
+}
+
+.goals-section input {
+  flex: 1; /* Expand input to fill available space */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 0.5rem; /* Add space between input and button */
+}
+
+.goals-section button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #eee; /* Light background for button */
+  cursor: pointer;
+}
+
+.goals-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goals-section li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px dotted #ddd;
+}
+
+.goals-section .no-goals {
+  text-align: center;
+  font-style: italic;
+  color: #ccc; /* Light gray for subdued message */
+  margin-top: 1rem;
+}
+
+.goals-section .day-switcher {
+  margin-bottom: 1rem;
+}
+
+.goals-section .day-switcher button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.7rem; /* Adjust padding for smaller buttons */
+  font-size: 0.9rem;
+  border: none; /* Remove default button border */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.goals-section .day-switcher button.active {
+  background-color: #ddd; /* Light background for active button */
+}
