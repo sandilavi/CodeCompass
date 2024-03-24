@@ -1,0 +1,34 @@
+.progress {
+  margin: 20px;
+  width: 80%;
+}
+
+.progress-bar {
+  height: 20px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.progress-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Gradient background for progress bar */
+.progress-bar {
+  background: linear-gradient(to right, #007bff, #00bcd4);
+}
+
+/* Rounded corners for progress bar */
+.progress-bar {
+  border-radius: 10px;
+}
+
+/* Animation for progress bar */
+.progress-bar {
+  transition: width 0.5s ease-in-out;
+}
+  

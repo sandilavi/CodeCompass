@@ -1,32 +1,40 @@
-// material-ui
-//import { Typography } from '@mui/material';
-//import { useState } from 'react';
-
-// project imports
-import MainCard from 'ui-component/cards/MainCard';
-import noData from 'assets/images/users/no data.jpg'
-import { Box } from '@mui/system';
+import ProgressBar from './Progress'; 
+import React from 'react';
+import Box from '@mui/material/Box';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
+// function ProgressTracker() {
+    
+//   }
+
+// function NullData (noData) {
+//     return (
+//         <MainCard>
+//             <Box display={'flex'} justifyContent={'center'}>
+//                 <img alt='nodata' src={noData} width='900px' height='500px' />
+//             </Box>
+
+//         </MainCard>
+//     );
+// }
+
 const MyLearningPlan = () => {
-
-    //const [isDatanull, setIsDatanull] = useState(true);
-
-    /*const LearningProgress = () => {
-        <Typography>
-
-        </Typography>
-    }*/
-
+  
     return (
-        <MainCard>
-            <Box display={'flex'} justifyContent={'center'}>
-                <img alt='nodata' src={noData} width='900px' height='500px' />
-            </Box>
-
-        </MainCard>
+        <Box sx={{ width: '100%' }}>
+        <ProgressBar value="70"/>
+    </Box>
     );
+
+    // const [isDataNull, setIsDatanull] = React.useState(false);
+    // return(
+    //         <div>
+    //           {isDataNull ? <NullData noData={noData} /> : <ProgressTracker />}
+    //         </div>
+    // )
+
+    
 };
 
 export default MyLearningPlan;

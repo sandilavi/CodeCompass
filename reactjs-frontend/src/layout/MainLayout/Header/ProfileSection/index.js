@@ -63,8 +63,14 @@ const ProfileSection = () => {
   /**
    * anchorRef is used on different componets and specifying one type leads to other components throwing an error
    * */
+  const navigation = useNavigate();
+
   const anchorRef = useRef(null);
   const handleLogout = async () => {
+    navigation('../', { replace: true });
+    // To clear all items
+    localStorage.clear();
+
     console.log('Logout');
   };
 

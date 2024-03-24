@@ -3,7 +3,6 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
-import AccountSettings from 'views/options/AccountSettings/AccountSettings';
 
 // utilities routing
 // const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
@@ -61,10 +60,6 @@ const MainRoutes = [{
       ]
     }
   ]
-},
-{
-  path: '/accountSettings',
-  element: <AccountSettings />,
 }];
 
 export default MainRoutes;

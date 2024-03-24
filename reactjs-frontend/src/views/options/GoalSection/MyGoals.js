@@ -1,29 +1,16 @@
-// // material-ui
-// import { Typography } from '@mui/material';
-
-// // project imports
-// import MainCard from 'ui-component/cards/MainCard';
-
-// // ==============================|| SAMPLE PAGE ||============================== //
-
-// const MyGoals = () => (
-//     <MainCard >
-//         <Typography variant="body1">
-//             lorem ipasdqefqe
-//         </Typography>
-//     </MainCard>
-// );
-// 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserService from "../../../services/UserService.js";
 
 import './MyGoals.css';
 
 function MyGoals() {
   const [goals, setGoals] = useState([]);
+  //const [goalsTuesday, setGoalsTuesday] = useState([]);
   const [newGoal, setNewGoal] = useState('');
   const [selectedDay, setSelectedDay] = useState(''); // Selected day for filtering
-  const userId = 123;
+
+
+  const userId = JSON.parse(localStorage.getItem('id'));
   let task = "";
   let day = "";
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -34,6 +21,7 @@ function MyGoals() {
     if (newGoal.trim() !== '') {
       setGoals([...goals, { text: newGoal, day: selectedDay }]);
       setNewGoal('');
+      setSelectedDay(selectedDay);
     }
     task = newGoal;
     day = selectedDay;
@@ -43,6 +31,8 @@ function MyGoals() {
   };
 
   const handleRemoveGoal = (index) => {
+    console.log("aa" + index);
+    UserService.removeGoal(index);
     const updatedGoals = [...goals];
     updatedGoals.splice(index, 1);
     setGoals(updatedGoals);
@@ -51,6 +41,89 @@ function MyGoals() {
   const handleDayChange = (day) => {
     setSelectedDay(day);
   };
+
+  useEffect(() => {
+    console.log("res.data")
+    if (selectedDay === "Monday") {
+      UserService.getMonday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+    } else if (selectedDay == "Tuesday") {
+      UserService.getTuesday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+    } else if (selectedDay == "Wednesday") {
+      UserService.getWednesday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+    } else if (selectedDay == "Thursday") {
+      UserService.getThursday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+    }else if (selectedDay == "Friday") {
+      UserService.getFriday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+      } else if (selectedDay == "Saturday") {
+      UserService.getSaturday(userId)
+        .then((res) => {
+          setGoals(res.data);
+          console.log(res.data)
+        })
+
+
+        .catch((error) => {
+          console.error('Error fetching goals:', error);
+        });
+      }else if (selectedDay == "Sunday") {
+        UserService.getSunday(userId)
+          .then((res) => {
+            setGoals(res.data);
+            console.log(res.data)
+          })
+  
+  
+          .catch((error) => {
+            console.error('Error fetching goals:', error);
+          });
+        }  
+  }, [selectedDay, goals]);
+
 
   const filteredGoals = goals.filter((goal) => !selectedDay || goal.day === selectedDay);
   // const filteredGoals1 = UserService.getGoal();
@@ -82,10 +155,12 @@ function MyGoals() {
         <button type="submit">Add Goal</button>
       </form>
       <ul>
-        {filteredGoals.map((task, index) => (
+
+        {filteredGoals.map((goals, index) => (
           <li key={index}>
-            {task.text}
-            <button onClick={() => handleRemoveGoal(index)}>Remove</button>
+
+            {goals.task}
+            <button onClick={() => handleRemoveGoal(goals.id)}>Remove</button>
           </li>
         ))}
       </ul>
