@@ -310,8 +310,6 @@ export default function Quiz() {
     }
   };
 
-  //navigate('/player');
-
   const generateLearningPlan = () => {
     if (Array.isArray(proficiencyLevel) && proficiencyLevel.length > 0) {
       const userLevel = proficiencyLevel[0];

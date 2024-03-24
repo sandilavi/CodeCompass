@@ -99,7 +99,7 @@ function CourseContentPlayer() {
 
     };
 
-    const overview = (html = '<div class=main>sdsd<div>') => {
+    const overview = (html = '<div class=main>default view<div>') => {
         return <Content html={html} />;
     };
     const [videoId, setVideoId] = React.useState([]);
