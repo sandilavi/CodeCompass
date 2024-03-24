@@ -5,9 +5,12 @@ import "./profilePopup.css";
 
 const ProfilePopup = () => {
   // Example profile details (you can replace with actual data)
+  const name = JSON.parse(localStorage.getItem('name'));
+  const email = JSON.parse(localStorage.getItem('email'));
   const profileDetails = {
-    name: "John Doe",
-    email: "john@example.com",
+
+    name: name,
+    email: email,
     // Add other profile properties here
 
   };
