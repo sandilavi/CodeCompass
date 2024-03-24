@@ -26,7 +26,7 @@ import Button from '@mui/material/Button';
 import Content from './Content';
 import VideoPlayer from './VideoPlayer';
 import LinkCard from './LinkCard';
-
+import UserService from 'services/UserService';
 const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -106,6 +106,39 @@ function CourseContentPlayer() {
     //const htmlData = [];
     const level = 'Beginner';
     //const navigate = useNavigate();
+
+    React.useEffect(() => {
+
+        UserService.getLearningPlanDetails(level, "Java")
+            .then((response) => {
+                console.log(response.data);
+                setSection(response.data);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+
+        UserService.getVideo(level, "Java")
+            .then((response) => {
+                let videoIdz = response.data.map(obj => ({ topic: obj.topic, vedioid: obj.vedioid }));
+                console.log(videoIdz);
+                setVideoId(videoIdz);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+
+        UserService.getHtml(level, "Java")
+            .then((response) => {
+                console.log(response.data);
+                let htmlDataz = response.data.map(obj => ({ topic: obj.topic, htmlContent: obj.htmlContent }));
+                setHtmlData(htmlDataz);
+                console.log(htmlDataz);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+    }, []);
 
 
     const handleDrawerOpen = () => {
