@@ -225,7 +225,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question24.png" alt="question" />
+          <img src="/images/question25.png" alt="question" />
         </div>
       ),
       options: ["[10, 20, 30, 40, 50]", "[10, 30, 50]", "[20, 40]", "[30]"],
@@ -234,19 +234,7 @@ export default function Quiz() {
   ];
 
   const handleAnswerOptionClick = (selectedAnswer) => {
-    // Allow multiple answers for relavant Questions
-    if (currentQuestion === 15) {
-      let newSelectedOptions;
-      if (selectedOptions.includes(selectedAnswer)) {
-        newSelectedOptions = selectedOptions.filter(option => option !== selectedAnswer);
-      } else {
-        newSelectedOptions = [...selectedOptions, selectedAnswer];
-      }
-      setSelectedOptions(newSelectedOptions);
-    } else {
-      // For other questions, allow only one answer
-      setSelectedOptions([selectedAnswer]);
-    }
+    setSelectedOptions([selectedAnswer]);
   };
 
   const handleNextQuestionClick = () => {
