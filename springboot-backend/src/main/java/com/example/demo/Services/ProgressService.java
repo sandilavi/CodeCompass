@@ -15,11 +15,19 @@ public class ProgressService {
     @Autowired
     ProgressRepo progressRepo;
     public ResponseEntity<String> addProgress(Progress progress) {
-        progressRepo.save(progress);
+        try {
+            progressRepo.save(progress);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return ResponseEntity.ok("saved");
     }
 
     public List get(Long courseid, String userid) {
-       return progressRepo.getAllByCourseidAndUserid(courseid,userid);
+        try {
+            return progressRepo.getAllByCourseidAndUserid(courseid,userid);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

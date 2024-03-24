@@ -25,8 +25,8 @@ public class RlinksService {
         }
     }
 
-    public List<Resourseswithlinks> getLinks(String topic, String levels) {
-        return resourseswithlinksRepository.getAllByTopicAndLevel(topic, levels);
+    public List<Resourseswithlinks> getLinks(String language, String levels) {
+        return resourseswithlinksRepository.getAllByLanguageAndLevel(language, levels);
     }
 
     public ResponseEntity<String> deleteById(Long id) {
@@ -40,7 +40,11 @@ public class RlinksService {
     }
 
     public List<Resourseswithlinks> getAllByLevels(String levels) {
-        return  resourseswithlinksRepository.getAllByLevel(levels);
+        try {
+            return  resourseswithlinksRepository.getAllByLevel(levels);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

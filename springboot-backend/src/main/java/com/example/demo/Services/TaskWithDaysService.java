@@ -13,45 +13,85 @@ public class TaskWithDaysService {
     @Autowired
     TaskWithDaysRepository taskWithDaysRepository;
     public ResponseEntity<String> save(TaskWithDays taskWithDays) {
-        taskWithDaysRepository.save(taskWithDays);
+        try {
+            taskWithDaysRepository.save(taskWithDays);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return ResponseEntity.ok("Savedz");
     }
 
     public List<TaskWithDays> getList(Long userId) {
-       return taskWithDaysRepository.findByUserid(userId);
+        try {
+            return taskWithDaysRepository.findByUserid(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getAllTaskWithDays() {
-        return taskWithDaysRepository.findAll();
+        try {
+            return taskWithDaysRepository.findAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
     public List<TaskWithDays> getmondayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getmonday(userId);
+        try {
+            return taskWithDaysRepository.getmonday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> gettuesdayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.gettuesday(userId);
+        try {
+            return taskWithDaysRepository.gettuesday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getwednesdayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getwednesday(userId);
+        try {
+            return taskWithDaysRepository.getwednesday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getthursdayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getthursday(userId);
+        try {
+            return taskWithDaysRepository.getthursday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getfridayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getfriday(userId);
+        try {
+            return taskWithDaysRepository.getfriday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getsaturdayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getsaturday(userId);
+        try {
+            return taskWithDaysRepository.getsaturday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<TaskWithDays> getsundayTaskWithDays(Long userId) {
-        return taskWithDaysRepository.getsunday(userId);
+        try {
+            return taskWithDaysRepository.getsunday(userId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
