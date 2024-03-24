@@ -69,6 +69,10 @@ class UserService {
     getHtml(level, language) {
         return axios.get(HOST_bASE_URL + `html/${language}/${level}`);
     }
+
+    saveProgress(progress) {
+        return axios.post(HOST_bASE_URL + "progress/save", progress);
+    }
 }
 
 export default new UserService()

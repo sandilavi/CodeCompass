@@ -27,7 +27,8 @@ import Content from './Content';
 import VideoPlayer from './VideoPlayer';
 import LinkCard from './LinkCard';
 import UserService from 'services/UserService';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const drawerWidth = 400;
 
@@ -111,6 +112,7 @@ function CourseContentPlayer() {
     const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
     const location = useLocation();
     const level = location.state;
+    const navigation = useNavigate();
 
     //const navigate = useNavigate();
 
@@ -159,7 +161,36 @@ function CourseContentPlayer() {
     };
 
     const saveProgress = () => {
+        let id = JSON.parse(localStorage.getItem('id'));
+        console.log(id);
+        let courseId = 1;
+        let progress = { courseId, id, mainCap, level };
 
+        UserService.saveProgress(progress)
+            .then(response => {
+                Swal.fire({
+                    title: `${response.data} !`,
+                    text: "Saved Succesfully",
+                    icon: "success",
+                    showCancelButton: true,
+                    confirmButtonText: "Go to Home",
+                    cancelButtonText: `Continue`
+                }).then(
+                    (result) => {
+                        if (result.isConfirmed) {
+                            navigation('/menu/home', { replace: true });
+                        } else if (result.isDenied) {
+                            Swal.fire("Changes are not saved", "", "info");
+                        }
+                    }
+                );
+            }).catch(error => {
+                Swal.fire({
+                    title: "Error Occured!",
+                    text: error.message,
+                    icon: "error"
+                });
+            })
     }
     return (
         <Box sx={{ display: 'flex' }}>

@@ -4,19 +4,19 @@ import Box from '@mui/material/Box';
 
 import './Progress.css';
 
-const ProgressBar = ( props ) => {
+const ProgressBar = (props) => {
 
   // Optional function to update progress externally (if needed)
-//   const updateProgress = (newProgress) => {
-//     const updatedPercentage = Math.min(Math.max(0, newProgress * (100 / maxValue)), 100);
-//     setPercentage(updatedPercentage);
-//   };
+  //   const updateProgress = (newProgress) => {
+  //     const updatedPercentage = Math.min(Math.max(0, newProgress * (100 / maxValue)), 100);
+  //     setPercentage(updatedPercentage);
+  //   };
 
   return (
 
-    
-<Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
+
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ width: '150px', mr: 1 }}>
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
