@@ -15,12 +15,14 @@ import newbie from 'assets/images/users/new-bie.png';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 //import { useLocation } from 'react-router';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const HomePage = () => {
-
+  const navigate = useNavigate();
   const theme = useTheme();
+  
   const [statistics] = useState({
     plansCompleted: 3,
     archivements: 0,
@@ -38,7 +40,12 @@ const HomePage = () => {
       confirmButtonText: 'Start Quiz',
     }).then((result) => {
       if (result.isConfirmed) {
-        alert('success');
+        if (lang === 'Java') {
+          navigate('/quiz');
+        }
+        else {
+          alert('Coming soon!');
+        }
       }
     });
   }

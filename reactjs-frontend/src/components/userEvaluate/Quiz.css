@@ -1,5 +1,4 @@
 .quiz-container {
-  background: #f6f5f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +29,7 @@
 .option.selected {
   background-color: #87ceeb;
 }
-.next-question-button {
+.submit-button {
   margin-top: 20px;
   margin-bottom: 20px !important;
   border: 1px solid #3dc593;
@@ -55,4 +54,17 @@
 .question-text {
   font-size: 20px;
   margin-bottom: 12px;
+}
+.score-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.score-text {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.user-level-text {
+  font-size: 18px;
 }

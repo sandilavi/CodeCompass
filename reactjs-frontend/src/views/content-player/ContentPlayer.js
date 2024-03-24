@@ -101,9 +101,9 @@ function CourseContentPlayer() {
     const [open, setOpen] = React.useState(true);
     const [mainCap, setMainCap] = React.useState('Default');
     const [view, setView] = React.useState(overview());
-    const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
-    const [details, setDetails] = React.useState([]);
-    const htmlData = [];
+    const [sections] = React.useState(['Arrays', 'Varibles']);
+    //const [] = React.useState([]);
+    //const htmlData = [];
     const level = 'Beginner';
     //const navigate = useNavigate();
 

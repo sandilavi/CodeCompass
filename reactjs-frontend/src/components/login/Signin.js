@@ -2,7 +2,7 @@ import React from "react";
 import UserService from '../../services/UserService';
 import Swal from 'sweetalert2';
 import styles from "../../Login.module.css";
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
     const [state, setState] = React.useState({
