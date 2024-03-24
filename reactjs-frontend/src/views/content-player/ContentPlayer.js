@@ -22,12 +22,12 @@ import { AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-//import { useNavigate } from 'react-router';
+//import { useNavigate } from 'react-router-dom';
 import Content from './Content';
 import VideoPlayer from './VideoPlayer';
 import LinkCard from './LinkCard';
 import UserService from 'services/UserService';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 400;
 

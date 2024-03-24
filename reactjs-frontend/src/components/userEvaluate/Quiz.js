@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Quiz.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which statement will be printed by the following Java code snippet? </div>
-          <img src="/images/question5.png" alt="question" />
+          <img src="/images/question5.png" className='img' alt="question" />
         </div>
       ),
       options: ["Number is greater than 5", "Number is less than 5", "Number is less than or equal to 5", "Number is greater than or equal to 5"],
@@ -49,7 +49,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of this code snippet? </div>
-          <img src="/images/question6.png" alt="question" />
+          <img src="/images/question6.png" className='img' alt="question" />
         </div>
       ),
       options: ["Day is: Sunday", "Day is: Monday", "Day is: Tuesday", "Day is: Invalid day"],
@@ -59,7 +59,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> How many iterations will the following Java loop perform? </div>
-          <img src="/images/question7.png" alt="question" />
+          <img src="/images/question7.png" className='img' alt="question" />
         </div>
       ),
       options: ["5", "10", "4", "6"],
@@ -69,7 +69,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the following Java code snippet? </div>
-          <img src="/images/question8.png" alt="question" />
+          <img src="/images/question8.png" className='img' alt="question" />
         </div>
       ),
       options: ["1 2 3 4 5", "1 2 4 5", "1 2 3 5", "1 3 4 5"],
@@ -84,7 +84,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What does this method determine? </div>
-          <img src="/images/question10.png" alt="question" />
+          <img src="/images/question10.png" className='img' alt="question" />
         </div>
       ),
       options: ["It checks if the given number is a perfect square.", "It checks if the given number is a power of 2.", "It checks if the given number is a prime number.", "It checks if the given number is a Fibonacci number."],
@@ -94,7 +94,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the displayMessage method? </div>
-          <img src="/images/question11.png" alt="question" />
+          <img src="/images/question11.png" className='img' alt="question" />
         </div>
       ),
       options: ["x: 10, z: 30", "x: 10, y: 20, z: 30", "x: 10", "No output"],
@@ -104,7 +104,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What does the following Java method calculate recursively? </div>
-          <img src="/images/question12.png" alt="question" />
+          <img src="/images/question12.png" className='img' alt="question" />
         </div>
       ),
       options: ["Factorial of a number", "Sum of all numbers up to n", "Greatest common divisor of two numbers", "Fibonacci sequence up to the nth term"],
@@ -119,7 +119,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What does the following Java code snippet do? </div>
-          <img src="/images/question14.png" alt="question" />
+          <img src="/images/question14.png" className='img' alt="question" />
         </div>
       ),
       options: ["Reads a string input from the user", "Reads an integer input from the user", "Reads a double input from the user", "Prints a message without taking any input"],
@@ -134,7 +134,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the following Java code snippet? </div>
-          <img src="/images/question16.png" alt="question" />
+          <img src="/images/question16.png" className='img' alt="question" />
         </div>
       ),
       options: ["Integer: 100 Double: 3.14", "Double: 100 Integer: 3.14", "Integer: 100 Integer: 3.14", "None of the above."],
@@ -144,7 +144,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which of the following method calls will throw an IllegalArgumentException? </div>
-          <img src="/images/question17.png" alt="question" />
+          <img src="/images/question17.png" className='img' alt="question" />
         </div>
       ),
       options: ["int result = NumberOperations.performOperation(10, 5, 'add');", "int result = NumberOperations.performOperation(15, 0, 'divide');", "int result = NumberOperations.performOperation(7, 3, 'modulo');", "int result = NumberOperations.performOperation(8, 4, 'multiply');"],
@@ -154,7 +154,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the following Java code snippet? </div>
-          <img src="/images/question18.png" alt="question" />
+          <img src="/images/question18.png" className='img' alt="question" />
         </div>
       ),
       options: ["Name: John Doe, Age: 30", "John Doe, 30", "Name: John Doe, Age: 30, 30", "Compilation error"],
@@ -164,7 +164,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the contents of the numbers ArrayList after executed? </div>
-          <img src="/images/question19.png" alt="question" />
+          <img src="/images/question19.png" className='img' alt="question" />
         </div>
       ),
       options: ["[10, 20, 25, 40]", "[10, 25, 30, 40]", "[10, 30, 40]", "[10, 20, 30, 40]"],
@@ -174,7 +174,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question20.png" alt="question" />
+          <img src="/images/question20.png" className='img' alt="question" />
         </div>
       ),
       options: ["[Purple, Red, Blue, Green]", "[Purple, Blue, Green, Yellow]", "[Red, Blue, Green, Purple]", "[Purple, Red, Blue, Green, Yellow]"],
@@ -184,7 +184,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question21.png" alt="question" />
+          <img src="/images/question21.png" className='img' alt="question" />
         </div>
       ),
       options: ["25", "30", "28", "Emily"],
@@ -194,7 +194,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question22.png" alt="question" />
+          <img src="/images/question22.png" className='img' alt="question" />
         </div>
       ),
       options: ["10 20 30 40", "40 30 20 10", "The output depends on the order of elements in the ArrayList.", "None of the above."],
@@ -204,7 +204,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output when the main method is executed? </div>
-          <img src="/images/question23.png" alt="question" />
+          <img src="/images/question23.png" className='img' alt="question" />
         </div>
       ),
       options: ["Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4 Threads execution complete.",
@@ -217,7 +217,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question24.png" alt="question" />
+          <img src="/images/question24.png" className='img' alt="question" />
         </div>
       ),
       options: ["Number of 5-letter words: 1", "Number of 5-letter words: 2", "Number of 5-letter words: 3", "Number of 5-letter words: 4"],
@@ -227,7 +227,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> What will be the output of the main method when executed? </div>
-          <img src="/images/question25.png" alt="question" />
+          <img src="/images/question25.png" className='img' alt="question" />
         </div>
       ),
       options: ["[10, 20, 30, 40, 50]", "[10, 30, 50]", "[20, 40]", "[30]"],
@@ -321,7 +321,6 @@ export default function Quiz() {
         navigate('/player', { replace: true, state: userLevel });
       } else if (userLevel === 'Intermediate') {
         alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
-        console.log(userLevel);
         navigate('/player', { replace: true, state: userLevel });
       } else if (userLevel === 'Advanced') {
         alert('Your level is advanced. Dive deep into complex concepts and contribute to open-source projects.');
@@ -331,7 +330,6 @@ export default function Quiz() {
         navigate('/player', { replace: true, state: userLevel });
       } else {
         alert('Unable to determine your proficiency level. Please try again later.');
-        navigate('/player', { replace: true, state: userLevel });
       }
     }
   };

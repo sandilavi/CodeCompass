@@ -10,6 +10,9 @@
   display: flex;
   flex-direction: column;
 }
+.img {
+  width: 800px;
+}
 .option {
   width: 800px;
   margin-bottom: 10px;
@@ -50,6 +53,7 @@
 }
 .question-count-class {
   font-size: 30px;
+  margin-bottom: 20px;
 }
 .question-text {
   font-size: 20px;
