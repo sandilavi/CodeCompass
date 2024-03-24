@@ -14,5 +14,5 @@ public interface RlinkRepo extends JpaRepository<Resourseswithlinks,Long> {
     List<Resourseswithlinks> getAllByLevel(String levels);
 
 
-    List<Resourseswithlinks> getAllByTopicAndLevel(String topic,String levels);
+    List<Resourseswithlinks> getAllByLanguageAndLevel(String language,String level);
 }

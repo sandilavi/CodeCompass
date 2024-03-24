@@ -3,6 +3,7 @@ package com.example.demo.Services;
 import com.example.demo.Entity.User;
 import com.example.demo.dto.Changepassword;
 import com.example.demo.dto.LoginDto;
+import com.example.demo.dto.UserDetailsDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -143,9 +145,14 @@ public class UserService {
         }
     }
 
-    public Long getUserbyEmail(String email) {
+    public UserDetailsDto getUserbyEmail(String email) {
+        UserDetailsDto userDetailsDto=new UserDetailsDto();
+
         User user = userRepository.findByEmail(email);
-        return user.getUserId();
+        userDetailsDto.setUserName(user.getName());
+        userDetailsDto.setUserId(user.getUserId());
+
+        return userDetailsDto;
 
     }
 }

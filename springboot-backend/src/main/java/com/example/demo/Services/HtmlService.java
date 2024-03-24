@@ -1,30 +1,32 @@
 package com.example.demo.Services;
 
 import com.example.demo.Entity.HtmlEntity;
+import com.example.demo.Entity.Resourseswithlinks;
 import com.example.demo.repository.HtmlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HtmlService {
     @Autowired
     private HtmlRepository htmlRepository;
 
-    public String saveHtml(String htmlContent) {
-        HtmlEntity entity = new HtmlEntity();
-        // Decode HTML content if needed
-        entity.setHtmlContent(htmlContent);
-        htmlRepository.save(entity);
+    public String saveHtml(HtmlEntity htmlContent) {
+        try {
+            htmlRepository.save(htmlContent);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "ok";
     }
-
-    public String retrieveHtml(Long id) {
-        HtmlEntity entity = htmlRepository.findById(id).orElse(null);
-        if (entity != null) {
-            // Decode HTML content if needed
-            return entity.getHtmlContent();
+    public List<HtmlEntity> getLinks(String language, String level) {
+        try {
+            return htmlRepository.getAllByLanguageAndLevel(language, level);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }
 

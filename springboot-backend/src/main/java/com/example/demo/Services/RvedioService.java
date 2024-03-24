@@ -21,16 +21,18 @@ public class RvedioService {
     public ResponseEntity<String> saveResourses(ResoursewithvedioLinks resoursewithvedioLinks) {
         try {
             resoursewithvedioLinksRepository.save(resoursewithvedioLinks);
-            logger.info(resoursewithvedioLinks.getVediolink());
-            logger.info(resoursewithvedioLinks.getLevels());
             return ResponseEntity.ok("Saved");
         } catch (Exception e) {
             return ResponseEntity.ok("Error");
         }
     }
 
-    public List<ResoursewithvedioLinks> getLinks(String topic, String levels) {
-        return resoursewithvedioLinksRepository.getLinks(topic, levels);
+    public List<ResoursewithvedioLinks> getLinks(String language, String levels) {
+        try {
+            return resoursewithvedioLinksRepository.getAllByLanguageAndLevel(language, levels);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ResponseEntity<String> deleteById(Long id) {
