@@ -33,7 +33,7 @@ function SignInForm() {
                     localStorage.setItem('email', JSON.stringify(email));
                     localStorage.setItem('name', JSON.stringify(response.data.userName));
                 });
-                const id = JSON.parse(localStorage.getItem('id'));
+                //const id = JSON.parse(localStorage.getItem('id'));
                 navigation('/menu/home', { replace: true });
             } else if (response.data.message == "Please verify your email first") {
                 verifyEmail();

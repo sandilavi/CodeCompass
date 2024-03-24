@@ -16,7 +16,7 @@ export default function Quiz() {
     {
       question: "What is the correct syntax to declare a variable of type integer in Java?",
       options: ["int myVar;", "myVar int;", "integer myVar;", "int = myVar;"],
-      answer: "int myVar"
+      answer: "int myVar;"
     },
     {
       question: "Which of the following is used for explicit type casting in Java?",

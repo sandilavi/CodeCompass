@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './Progress.css';
 
 const ProgressBar = ({ progress, label, maxValue = 100, color = '#007bff' }) => {
-  const [percentage, setPercentage] = useState(progress * (100 / maxValue));
+  const [percentage] = useState(progress * (100 / maxValue));
 
   // Optional function to update progress externally (if needed)
 //   const updateProgress = (newProgress) => {

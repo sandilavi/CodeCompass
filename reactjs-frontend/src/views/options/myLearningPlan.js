@@ -1,6 +1,6 @@
-import MainCard from 'ui-component/cards/MainCard';
-import noData from 'assets/images/users/no data.jpg'
-import { Box } from '@mui/system';
+//import MainCard from 'ui-component/cards/MainCard';
+//import noData from 'assets/images/users/no data.jpg'
+//import { Box } from '@mui/system';
 import ProgressBar from './Progress'; 
 import React from 'react';
 
