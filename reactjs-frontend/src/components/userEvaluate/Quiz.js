@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Quiz.css';
 import axios from 'axios';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 export default function Quiz() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -39,7 +39,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which statement will be printed by the following Java code snippet? </div>
-          <img src="/images/question5.png" alt="question"/>
+          <img src="/images/question5.png" alt="question" />
         </div>
       ),
       options: ["Number is greater than 5", "Number is less than 5", "Number is less than or equal to 5", "Number is greater than or equal to 5"],
@@ -144,7 +144,7 @@ export default function Quiz() {
       question: (
         <div>
           <div className="question-text"> Which of the following method calls will throw an IllegalArgumentException? </div>
-          <img src="/images/question17.png" alt="question"/>
+          <img src="/images/question17.png" alt="question" />
         </div>
       ),
       options: ["int result = NumberOperations.performOperation(10, 5, 'add');", "int result = NumberOperations.performOperation(15, 0, 'divide');", "int result = NumberOperations.performOperation(7, 3, 'modulo');", "int result = NumberOperations.performOperation(8, 4, 'multiply');"],
@@ -208,9 +208,9 @@ export default function Quiz() {
         </div>
       ),
       options: ["Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4 Threads execution complete.",
-                "Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Threads execution complete. Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4",
-                "The output cannot be determined as it depends on the thread scheduler.",
-                "None of the above."],
+        "Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Threads execution complete. Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4",
+        "The output cannot be determined as it depends on the thread scheduler.",
+        "None of the above."],
       answer: "Thread 1: 0 Thread 1: 1 Thread 1: 2 Thread 1: 3 Thread 1: 4 Thread 2: 0 Thread 2: 1 Thread 2: 2 Thread 2: 3 Thread 2: 4 Threads execution complete."
     },
     {
@@ -244,7 +244,7 @@ export default function Quiz() {
     let beginnerCorrectAnswer = beginnerCorrect;
     let intermediateCorrectAnswer = intermediateCorrect;
     let advancedCorrectAnswer = advancedCorrect;
-  
+
     // Update score based on the user's answer
     if (selectedOptions.length === 1) {
       if (selectedOptions[0] === questions[currentQuestion].answer) {
@@ -258,21 +258,21 @@ export default function Quiz() {
         }
       }
     }
-  
+
     setScore(currentScore);
     setBeginnerCorrect(beginnerCorrectAnswer);
     setIntermediateCorrect(intermediateCorrectAnswer);
     setAdvancedCorrect(advancedCorrectAnswer);
-  
+
     setSelectedOptions([]);
-  
+
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
       handleGetProficiencyLevel();
-  
+
       // Send quiz data to backend
       const quizData = {
         "Total_Correct_Answers": currentScore,
@@ -280,7 +280,7 @@ export default function Quiz() {
         "Intermediate_Correct_Answers": intermediateCorrectAnswer,
         "Advanced_Correct_Answers": advancedCorrectAnswer,
       };
-  
+
       axios.post('http://127.0.0.1:5000/send_quiz_data', quizData)
         .then((response) => {
           // Handle response from backend if needed
@@ -292,7 +292,7 @@ export default function Quiz() {
           console.error('Error sending quiz data:', error);
         });
     }
-  };  
+  };
 
   const handleGetProficiencyLevel = async () => {
     try {
@@ -313,22 +313,28 @@ export default function Quiz() {
   //navigate('/player');
 
   const generateLearningPlan = () => {
-  if (Array.isArray(proficiencyLevel) && proficiencyLevel.length > 0) {
-    const userLevel = proficiencyLevel[0];
-    
-    if (userLevel === 'Beginner') {
-      alert('Your level is beginner. Start with basic concepts and practice regularly.');
-    } else if (userLevel === 'Intermediate') {
-      alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
-    } else if (userLevel === 'Advanced') {
-      alert('Your level is advanced. Dive deep into complex concepts and contribute to open-source projects.');
-    } else if (userLevel === 'Expert') {
-      alert('Congratulations! You are an expert. Keep refining your skills and mentor others.');
-    } else {
-      alert('Unable to determine your proficiency level. Please try again later.');
+    if (Array.isArray(proficiencyLevel) && proficiencyLevel.length > 0) {
+      const userLevel = proficiencyLevel[0];
+
+      if (userLevel === 'Beginner') {
+        alert('Your level is beginner. Start with basic concepts and practice regularly.');
+        navigate('/player', { replace: true, state: userLevel });
+      } else if (userLevel === 'Intermediate') {
+        alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
+        console.log(userLevel);
+        navigate('/player', { replace: true, state: userLevel });
+      } else if (userLevel === 'Advanced') {
+        alert('Your level is advanced. Dive deep into complex concepts and contribute to open-source projects.');
+        navigate('/player', { replace: true, state: userLevel });
+      } else if (userLevel === 'Expert') {
+        alert('Congratulations! You are an expert. Keep refining your skills and mentor others.');
+        navigate('/player', { replace: true, state: userLevel });
+      } else {
+        alert('Unable to determine your proficiency level. Please try again later.');
+        navigate('/player', { replace: true, state: userLevel });
+      }
     }
-  }
-};
+  };
 
   return (
     <div className="quiz-container">
@@ -349,9 +355,9 @@ export default function Quiz() {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].options.map((option, index) => (
-              <button 
-                key={index} 
-                className={selectedOptions.includes(option) ? 'option selected' : 'option'} 
+              <button
+                key={index}
+                className={selectedOptions.includes(option) ? 'option selected' : 'option'}
                 onClick={() => handleAnswerOptionClick(option)}
               >
                 {option}
