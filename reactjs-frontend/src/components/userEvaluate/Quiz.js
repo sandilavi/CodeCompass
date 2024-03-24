@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Quiz.css';
 import axios from 'axios';
+//import { useNavigate } from 'react-router-dom';
 
 export default function Quiz() {
+  //const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -16,7 +18,7 @@ export default function Quiz() {
     {
       question: "What is the correct syntax to declare a variable of type integer in Java?",
       options: ["int myVar;", "myVar int;", "integer myVar;", "int = myVar;"],
-      answer: "int myVar"
+      answer: "int myVar;"
     },
     {
       question: "Which of the following is used for explicit type casting in Java?",
@@ -307,13 +309,34 @@ export default function Quiz() {
       console.error('Error fetching proficiency level:', error);
     }
   };
-  
+
+  //navigate('/player');
+
+  const generateLearningPlan = () => {
+  if (Array.isArray(proficiencyLevel) && proficiencyLevel.length > 0) {
+    const userLevel = proficiencyLevel[0];
+    
+    if (userLevel === 'Beginner') {
+      alert('Your level is beginner. Start with basic concepts and practice regularly.');
+    } else if (userLevel === 'Intermediate') {
+      alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
+    } else if (userLevel === 'Advanced') {
+      alert('Your level is advanced. Dive deep into complex concepts and contribute to open-source projects.');
+    } else if (userLevel === 'Expert') {
+      alert('Congratulations! You are an expert. Keep refining your skills and mentor others.');
+    } else {
+      alert('Unable to determine your proficiency level. Please try again later.');
+    }
+  }
+};
+
   return (
     <div className="quiz-container">
       {showScore ? (
         <div className="score-section">
-          You scored {score} out of {questions.length}
-          {proficiencyLevel && <div>Proficiency Level: {proficiencyLevel}</div>}
+          <div className="score-text">You scored {score} out of {questions.length}</div>
+          {proficiencyLevel && <div className="user-level-text">Proficiency Level: {proficiencyLevel}</div>}
+          <button onClick={generateLearningPlan} className='submit-button'>Generate My Learning Plan</button>
         </div>
       ) : (
         <>
@@ -336,7 +359,7 @@ export default function Quiz() {
             ))}
           </div>
           <div className="button-container">
-            <button className="next-question-button" onClick={handleNextQuestionClick}>
+            <button className="submit-button" onClick={handleNextQuestionClick}>
               {currentQuestion === questions.length - 1 ? 'Submit the Quiz' : 'Next Question'}
             </button>
           </div>

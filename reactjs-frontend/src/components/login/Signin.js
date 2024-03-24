@@ -2,7 +2,7 @@ import React from "react";
 import UserService from '../../services/UserService';
 import Swal from 'sweetalert2';
 import styles from "../../Login.module.css";
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
     const [state, setState] = React.useState({
@@ -33,7 +33,7 @@ function SignInForm() {
                     localStorage.setItem('email', JSON.stringify(email));
                     localStorage.setItem('name', JSON.stringify(response.data.userName));
                 });
-                const id = JSON.parse(localStorage.getItem('id'));
+                //const id = JSON.parse(localStorage.getItem('id'));
                 navigation('/menu/home', { replace: true });
             } else if (response.data.message == "Please verify your email first") {
                 verifyEmail();

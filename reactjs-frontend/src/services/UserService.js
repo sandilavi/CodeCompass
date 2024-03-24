@@ -48,7 +48,7 @@ class UserService {
         return axios.get(HOST_bASE_URL + `task/sunday/${userId}`);
 
     }
-    userUpdate(email) {
+    userUpdate() {
         return axios.get(HOST_bASE_URL + `user/userUpdate_email/akilajayawickrama7@gmail.com`);
     }
 

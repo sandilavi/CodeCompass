@@ -26,7 +26,7 @@ import Button from '@mui/material/Button';
 import Content from './Content';
 import VideoPlayer from './VideoPlayer';
 import LinkCard from './LinkCard';
-
+import UserService from 'services/UserService';
 const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -101,11 +101,44 @@ function CourseContentPlayer() {
     const [open, setOpen] = React.useState(true);
     const [mainCap, setMainCap] = React.useState('Default');
     const [view, setView] = React.useState(overview());
-    const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
-    const [details, setDetails] = React.useState([]);
-    const htmlData = [];
+    const [sections] = React.useState(['Arrays', 'Varibles']);
+    //const [] = React.useState([]);
+    //const htmlData = [];
     const level = 'Beginner';
     //const navigate = useNavigate();
+
+    React.useEffect(() => {
+
+        UserService.getLearningPlanDetails(level, "Java")
+            .then((response) => {
+                console.log(response.data);
+                setSection(response.data);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+
+        UserService.getVideo(level, "Java")
+            .then((response) => {
+                let videoIdz = response.data.map(obj => ({ topic: obj.topic, vedioid: obj.vedioid }));
+                console.log(videoIdz);
+                setVideoId(videoIdz);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+
+        UserService.getHtml(level, "Java")
+            .then((response) => {
+                console.log(response.data);
+                let htmlDataz = response.data.map(obj => ({ topic: obj.topic, htmlContent: obj.htmlContent }));
+                setHtmlData(htmlDataz);
+                console.log(htmlDataz);
+            }).catch((error) => {
+                console.log(error.message);
+            });
+
+    }, []);
 
 
     const handleDrawerOpen = () => {
@@ -159,35 +192,43 @@ function CourseContentPlayer() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {sections.map((text) => (
-                        <Accordion key={text} sx={{ margin: '5px 0 5px 0' }} onClick={() => { setMainCap(text) }}>
-                            <AccordionSummary
-                                expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{text}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <ListItem disablePadding>
-                                    <ListItemButton onClick={() => { setView(overview()) }}>
-                                        <ListItemIcon>
-                                            <FeedIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Overview' />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton onClick={() => { setView(resourcesView()) }}>
-                                        <ListItemIcon>
-                                            <PlayLessonOutlinedIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Supportive Resources' />
-                                    </ListItemButton>
-                                </ListItem>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))}
+                    {[...new Map(sections.map(item =>
+                        [item['topic'], item])).values()].map((obj, index) => (
+                            <Accordion key={index} sx={{ margin: '5px 0 5px 0' }} onClick={() => { setMainCap(obj.topic) }}>
+                                <AccordionSummary
+                                    expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
+                                    aria-controls="panel1-content"
+                                    id="panel1-header"
+                                >
+                                    <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{obj.topic}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <ListItem disablePadding>
+                                        <ListItemButton onClick={() => {
+                                            let data = htmlData.find(el => el.topic === obj.topic);
+                                            setView(overview(data.htmlContent));
+                                        }}>
+                                            <ListItemIcon>
+                                                <FeedIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Overview' />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton onClick={() => {
+                                            let data = videoId.find(el => el.topic === obj.topic);
+                                            let links = sections.filter(el => el.topic === obj.topic);
+                                            setView(resourcesView(data.vedioid, links));
+                                        }}>
+                                            <ListItemIcon>
+                                                <PlayLessonOutlinedIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Supportive Resources' />
+                                        </ListItemButton>
+                                    </ListItem>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
                 </List>
                 <Divider />
             </Drawer>

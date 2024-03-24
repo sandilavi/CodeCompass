@@ -12,6 +12,11 @@ try:
 except FileNotFoundError:
     raise FileNotFoundError("Could not find the ML model file.")
 
+# Define a route for the root URL
+@app.route('/')
+def home():
+    return "Welcome to the Quiz App"
+
 # Define a route to receive POST requests
 @app.route('/send_quiz_data', methods=['POST'])
 def send_quiz_data():
@@ -49,3 +54,6 @@ def send_quiz_data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#if __name__ == '__main__':
+#    app.run(host='0.0.0.0', port=8080)
