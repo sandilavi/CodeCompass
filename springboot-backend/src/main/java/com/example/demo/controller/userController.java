@@ -3,7 +3,9 @@ package com.example.demo.controller;
 import com.example.demo.Entity.User;
 import com.example.demo.Services.LoginMesage;
 import com.example.demo.Services.UserService;
+import com.example.demo.dto.Changepassword;
 import com.example.demo.dto.LoginDto;
+import com.example.demo.dto.UserDetailsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +43,11 @@ public class userController {
     }
 
     @PutMapping("/userUpdate_email/{email}")
-    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody User user) {
-        return userService.updateUser_from_email(email, user);
+    public ResponseEntity<String> updateUser_From_email(@PathVariable String email, @RequestBody Changepassword changepassword) {
+        return userService.updateUser_from_email(email, changepassword);
 
     }
+
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -53,5 +56,10 @@ public class userController {
     @DeleteMapping("/delete/{email}")
     public ResponseEntity<String> deleteEmployee(@PathVariable("email") String email) {
         return userService.deleteEmployeeByEmail(email);
+    }
+
+    @GetMapping("/{email}")
+    public UserDetailsDto getUserbyEmail(@PathVariable String email) {
+        return userService.getUserbyEmail(email);
     }
 }
