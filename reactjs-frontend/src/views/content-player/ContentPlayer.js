@@ -192,35 +192,43 @@ function CourseContentPlayer() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {sections.map((text) => (
-                        <Accordion key={text} sx={{ margin: '5px 0 5px 0' }} onClick={() => { setMainCap(text) }}>
-                            <AccordionSummary
-                                expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{text}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <ListItem disablePadding>
-                                    <ListItemButton onClick={() => { setView(overview()) }}>
-                                        <ListItemIcon>
-                                            <FeedIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Overview' />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton onClick={() => { setView(resourcesView()) }}>
-                                        <ListItemIcon>
-                                            <PlayLessonOutlinedIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Supportive Resources' />
-                                    </ListItemButton>
-                                </ListItem>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))}
+                    {[...new Map(sections.map(item =>
+                        [item['topic'], item])).values()].map((obj, index) => (
+                            <Accordion key={index} sx={{ margin: '5px 0 5px 0' }} onClick={() => { setMainCap(obj.topic) }}>
+                                <AccordionSummary
+                                    expandIcon={<ArrowDownwardIcon sx={{ fontWeight: '800', color: 'red' }} />}
+                                    aria-controls="panel1-content"
+                                    id="panel1-header"
+                                >
+                                    <Typography sx={{ color: '#4242c5', fontWeight: '900' }}>{obj.topic}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <ListItem disablePadding>
+                                        <ListItemButton onClick={() => {
+                                            let data = htmlData.find(el => el.topic === obj.topic);
+                                            setView(overview(data.htmlContent));
+                                        }}>
+                                            <ListItemIcon>
+                                                <FeedIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Overview' />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton onClick={() => {
+                                            let data = videoId.find(el => el.topic === obj.topic);
+                                            let links = sections.filter(el => el.topic === obj.topic);
+                                            setView(resourcesView(data.vedioid, links));
+                                        }}>
+                                            <ListItemIcon>
+                                                <PlayLessonOutlinedIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Supportive Resources' />
+                                        </ListItemButton>
+                                    </ListItem>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
                 </List>
                 <Divider />
             </Drawer>
