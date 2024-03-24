@@ -101,7 +101,9 @@ function CourseContentPlayer() {
     const [open, setOpen] = React.useState(true);
     const [mainCap, setMainCap] = React.useState('Default');
     const [view, setView] = React.useState(overview());
-    const [sections] = React.useState(['Arrays', 'Varibles']);
+    const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
+    const [details, setDetails] = React.useState([]);
+    const htmlData = [];
     const level = 'Beginner';
     //const navigate = useNavigate();
 
@@ -113,6 +115,10 @@ function CourseContentPlayer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const saveProgress = () => {
+
+    }
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -189,11 +195,10 @@ function CourseContentPlayer() {
                 <DrawerHeader />
                 {view}
                 <Stack
-                    sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '30px 0 0 0', backgroundColor: '#f9f9ff', position: 'fixed', bottom: '0' }}
-                    spacing={1}
-                    width='100%'
-                    height='60px'>
-                    <Button variant="contained">
+                    sx={{ marginBottom: '10px', position: 'fixed', bottom: '0', right: '0' }}
+                    spacing={2}
+                    width='170px'>
+                    <Button variant="contained" onClick={saveProgress}>
                         Save Progress
                     </Button>
                 </Stack>
