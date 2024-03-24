@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useTheme } from '@mui/material/styles';
 import { AppBar, Toolbar } from '@mui/material';
 import Header from 'layout/MainLayout/Header';
+import UserService from 'services/UserService';
 
 
 function AccountSettings() {
@@ -14,7 +15,7 @@ function AccountSettings() {
   const [confirmPassword, setConfirmPassword] = useState(''); // State for confirm password
   const [errorMessage, setErrorMessage] = useState(''); // State for error message
   const theme = useTheme();
-
+  const changepassword = { email, currentPassword, newPassword };
   // Function to handle form submission (replace with your actual API call)
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,22 +26,21 @@ function AccountSettings() {
     }
 
     try {
-      // Replace with your API call to update user information
-      const response = await fetch('http://localhost:8080/user/userUpdate_email/akilajayawickrama7@gmail.com', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, currentPassword, newPassword }),
-      });
+      const response = UserService.userUpdate(email, changepassword);
+      console.log((await response).data);
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'An error occurred.');
-      } else {
-        // Handle successful update (e.g., clear form, show success message)
+      if ((await response).data == "updated") {
+        successfully();
+        //setErrorMessage(errorData.message || 'An error occurred.');
         setEmail('');
         setNewPassword('');
+        setCurrentPassword('');
         setErrorMessage('');
-        successfully();
+        setConfirmPassword('')
+      } else {
+        // Handle successful update (e.g., clear form, show success message)
+
+
       }
     } catch (error) {
       console.error('Error updating user:', error);
