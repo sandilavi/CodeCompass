@@ -1,0 +1,59 @@
+.progress {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    height: 25px; /* Set overall height */
+    background-color: #eee; /* Optional background color for container */
+    border-radius: 5px; /* Add rounded corners for the container */
+  }
+  
+  .progress-bar {
+    height: 100%; /* Fill the entire container height */
+    border-radius: inherit; /* Inherit rounded corners from container */
+    background-color: #ddd; /* Default background color for unfilled progress */
+    transition: width 0.5s ease-in-out; /* Smooth transition effect */
+  }
+  
+  /* Style variations for different progress states */
+  .progress-bar[aria-valuenow="0"] { /* Starting point */
+    background-color: #ccc;
+  }
+  
+  .progress-bar[aria-valuenow="25"] { /* 25% progress */
+    background-color: #007bff; /* Blue */
+  }
+  
+  .progress-bar[aria-valuenow="50"] { /* 50% progress */
+    background-color: #28a745; /* Green */
+  }
+  
+  .progress-bar[aria-valuenow="75"] { /* 75% progress */
+    background-color: #ffc107; /* Yellow */
+  }
+  
+  .progress-bar[aria-valuenow="100"] { /* Completed state */
+    background-color: #dc3545; /* Red */
+  }
+  
+  /* Optional progress bar with striped animation */
+  .progress-bar.striped {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 25%, transparent 50%, rgba(255, 255, 255, 0.15) 75%, transparent 100%);
+    background-size: 40px 40px; /* Adjust size of stripes */
+    animation: progress-bar-stripes 1.2s linear infinite;
+  }
+  
+  @keyframes progress-bar-stripes {
+    from {
+      background-position: 40px 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+  
+  /* Optional label styling */
+  .progress label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
