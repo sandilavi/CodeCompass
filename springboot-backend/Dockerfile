@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:17-alpine
 WORKDIR /springboot-backend
 COPY /target/demo-0.0.1-SNAPSHOT.jar /app
 EXPOSE 8080
