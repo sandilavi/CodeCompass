@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Lquiz.module.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const beginnerQuestions = [
     // Variables/Data types
@@ -402,6 +404,7 @@ function LevelQuiz() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const location = useLocation();
+    const navigation = useNavigate();
     const level = location.state;
 
     const loadQues = () => {
@@ -427,6 +430,10 @@ function LevelQuiz() {
         setCurrentQuestion(currentQuestion + 1);
     };
 
+    const goTohome = () => {
+        navigation('/menu/home', { replace: true });
+    }
+
     return (
         <div className={styles.quiz}>
             <h1>{`${level} Java Quiz`}</h1>
@@ -436,6 +443,14 @@ function LevelQuiz() {
                 <div className={styles.results}>
                     <h2>You finished the quiz!</h2>
                     <p>Your score: {score} / {loadQues().length}</p>
+                    <Stack
+                        sx={{ margin: '10px 0 10px 0' }}
+                        spacing={2}
+                        width='170px'>
+                        <Button variant="contained" onClick={goTohome}>
+                            Evaluate
+                        </Button>
+                    </Stack>
                 </div>
             )}
         </div>
