@@ -1,0 +1,111 @@
+.account-settings {
+  /* Container for account settings */
+  margin-top: 100px !important;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  /* Light gray background */
+  border-radius: 5px;
+  /* Rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  margin: 2rem auto;
+  /* Centered with some margin */
+  max-width: 500px;
+  /* Limit maximum width */
+}
+
+.account-settings h2 {
+  /* Heading */
+  font-size: 1.8rem;
+  font-weight: 500;
+  /* Semi-bold */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  /* Centered text */
+}
+
+.account-settings p {
+  /* Welcome message */
+  margin-bottom: 2rem;
+  text-align: center;
+  /* Centered text */
+}
+
+.form-group {
+  /* Form group styling */
+  margin-bottom: 1rem;
+  display: flex;
+  /* Use flexbox for layout */
+  justify-content: space-between;
+  /* Align labels and inputs horizontally */
+}
+
+.form-group label {
+  /* Label styling */
+  flex: 0 0 120px;
+  /* Fixed label width */
+  font-weight: 400;
+  /* Normal weight */
+  margin-bottom: 5px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  /* Input styling for email and password */
+  flex: 1;
+  /* Flexible width to fill remaining space */
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  /* Light gray border */
+  border-radius: 3px;
+  /* Rounded corners */
+  font-size: 1rem;
+}
+
+.error-message {
+  /* Styling for error messages */
+  color: red;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.reset-password {
+  /* Reset password link styling */
+  text-align: right;
+  /* Right-aligned */
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.reset-password a {
+  /* Styling for the reset password link itself */
+  color: #333;
+  text-decoration: none;
+  /* Remove underline */
+  font-weight: 400;
+}
+
+.reset-password a:hover {
+  /* Hover effect for the reset password link */
+  text-decoration: underline;
+  /* Add underline on hover */
+}
+
+button[type="submit"] {
+  /* Submit button styling */
+  display: block;
+  /* Make it a block-level element */
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  /* Blue background */
+  color: #fff;
+  /* White text */
+  font-size: 1rem;
+  cursor: pointer;
+  /* Indicate clickable behavior */
+}

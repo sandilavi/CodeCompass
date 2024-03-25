@@ -1,0 +1,8 @@
+.movie-clip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Adjust as needed */
+    margin: 10px auto; /* Optional margin */
+  }
+  
