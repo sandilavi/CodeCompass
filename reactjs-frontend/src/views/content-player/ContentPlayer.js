@@ -161,10 +161,15 @@ function CourseContentPlayer() {
     };
 
     const saveProgress = () => {
-        let id = JSON.parse(localStorage.getItem('id'));
-        console.log(id);
-        let courseId = 1;
-        let progress = { courseId, id, mainCap, level };
+
+        let userid = JSON.parse(localStorage.getItem('id'));
+        console.log(userid);
+        let courseid = 1;
+        let topic2 = { mainCap }
+        let topic = topic2.mainCap;
+        console.log(topic.mainCap);
+        let progress = { courseid, userid, topic, level };
+        console.log(progress)
 
         UserService.saveProgress(progress)
             .then(response => {
