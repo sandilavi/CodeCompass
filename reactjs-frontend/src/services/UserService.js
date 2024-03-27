@@ -73,6 +73,10 @@ class UserService {
     saveProgress(progress) {
         return axios.post(HOST_bASE_URL + "progress/save", progress);
     }
+
+    getProgress(courseId, userId) {
+        return axios.get(HOST_bASE_URL + `progress/getProgress/${courseId}/${userId}`);
+    }
 }
 
 export default new UserService()

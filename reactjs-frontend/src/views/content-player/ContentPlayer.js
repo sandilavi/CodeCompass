@@ -111,7 +111,7 @@ function CourseContentPlayer() {
     const [view, setView] = React.useState(overview());
     const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
     const location = useLocation();
-    const level = location.state;
+    const level = "Intermediate";
     const navigation = useNavigate();
 
     //const navigate = useNavigate();
