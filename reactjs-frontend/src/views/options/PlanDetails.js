@@ -9,11 +9,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import UserService from 'services/UserService';
+import { useNavigate } from 'react-router-dom';
 
 function PlanDetails({ datas, id }) {
 
     const [detail, setDetail] = useState([]);
     const [precentage, setPrecentage] = useState(1);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // setParamData(...datas);
@@ -46,6 +48,11 @@ function PlanDetails({ datas, id }) {
 
     }, [precentage]);
 
+    function navigatePlan(level, topic) {
+        let data = { "level": level, "topic": topic };
+        navigate('/player', { replace: true, state: data });
+    }
+
     return (
         <>
 
@@ -69,7 +76,7 @@ function PlanDetails({ datas, id }) {
                             </Typography>
                         </AccordionDetails>
                         <AccordionActions>
-                            <Button>Continue</Button>
+                            <Button onClick={() => navigatePlan(item.level, item.topic)}>Continue</Button>
                         </AccordionActions>
                     </Accordion>
                 ))}

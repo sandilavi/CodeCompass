@@ -111,7 +111,8 @@ function CourseContentPlayer() {
     const [view, setView] = React.useState(overview());
     const [sections, setSection] = React.useState(['Arrays', 'Varibles']);
     const location = useLocation();
-    const level = "Intermediate";
+    const passedState = location.state;
+    const level = passedState.level;
     const navigation = useNavigate();
 
     //const navigate = useNavigate();
@@ -141,6 +142,11 @@ function CourseContentPlayer() {
             .then((response) => {
                 console.log(response.data);
                 let htmlDataz = response.data.map(obj => ({ topic: obj.topic, htmlContent: obj.htmlContent }));
+                if (!(passedState.topic === " ")) {
+                    setMainCap(passedState.topic);
+                    let temp = htmlDataz.find(el => el.topic === passedState.topic);
+                    setView(overview(temp.htmlContent));
+                }
                 setHtmlData(htmlDataz);
                 console.log(htmlDataz);
             }).catch((error) => {

@@ -316,7 +316,7 @@ export default function Quiz() {
 
       if (userLevel === 'Beginner') {
         alert('Your level is beginner. Start with basic concepts and practice regularly.');
-        navigate('/player', { replace: true, state: userLevel });
+        navigate('/player', { replace: true, state: { "level": userLevel, "topic": " " } });
       } else if (userLevel === 'Intermediate') {
         alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
         navigate('/player', { replace: true, state: userLevel });
