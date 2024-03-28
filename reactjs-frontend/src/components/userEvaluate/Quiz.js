@@ -319,13 +319,13 @@ export default function Quiz() {
         navigate('/player', { replace: true, state: { "level": userLevel, "topic": " " } });
       } else if (userLevel === 'Intermediate') {
         alert('Your level is intermediate. Focus on more advanced topics and work on projects.');
-        navigate('/player', { replace: true, state: userLevel });
+        navigate('/player', { replace: true, state: { "level": userLevel, "topic": " " } });
       } else if (userLevel === 'Advanced') {
         alert('Your level is advanced. Dive deep into complex concepts and contribute to open-source projects.');
-        navigate('/player', { replace: true, state: userLevel });
+        navigate('/player', { replace: true, state: { "level": userLevel, "topic": " " } });
       } else if (userLevel === 'Expert') {
         alert('Congratulations! You are an expert. Keep refining your skills and mentor others.');
-        navigate('/player', { replace: true, state: userLevel });
+        navigate('/player', { replace: true, state: { "level": userLevel, "topic": " " } });
       } else {
         alert('Your proficiency level is not available. Please try again later.');
       }
