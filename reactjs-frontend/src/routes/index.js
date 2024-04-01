@@ -11,9 +11,9 @@ import AccountSettings from 'views/options/AccountSettings/AccountSettings';
 
 export default function ThemeRoutes() {
 
-  const login = { path: '', element: <Login /> }
+  const login = { path: '/fgf', element: <Login /> }
   const player = { path: '/player', element: <CourseContentPlayer /> }
   const quiz = { path: '/quiz', element: <Quiz /> }
-  const accountSettings = { path: '/accountSettings', element: <AccountSettings />}
+  const accountSettings = { path: ' ', element: <AccountSettings /> }
   return useRoutes([login, player, quiz, accountSettings, ...MainRoutes]);
 }
