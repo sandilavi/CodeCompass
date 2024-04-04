@@ -281,7 +281,7 @@ export default function Quiz() {
         "Advanced_Correct_Answers": advancedCorrectAnswer,
       };
 
-      axios.post('http://ec2-54-165-191-105.compute-1.amazonaws.com:5000/send_quiz_data', quizData)
+      axios.post('https://ec2-50-19-151-239.compute-1.amazonaws.com:443/send_quiz_data', quizData)
         .then((response) => {
           // Handle response from backend if needed
           const { User_Level } = response.data;
@@ -296,7 +296,7 @@ export default function Quiz() {
 
   const handleGetProficiencyLevel = async () => {
     try {
-      const response = await axios.post('http://ec2-54-165-191-105.compute-1.amazonaws.com:5000/send_quiz_data', {
+      const response = await axios.post('https://ec2-50-19-151-239.compute-1.amazonaws.com:443/send_quiz_data', {
         'Total_Correct_Answers': score,
         'Beginner_Correct_Answers': beginnerCorrect,
         'Intermediate_Correct_Answers': intermediateCorrect,
