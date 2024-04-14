@@ -160,11 +160,33 @@ function CourseContentPlayer() {
         setOpen(false);
     };
 
+    const evaluateLevel = () => {
+        Swal.fire({
+            title: `Hi there !`,
+            text: "Do you want to get evaluation for the level",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonText: "Start",
+            cancelButtonText: 'Continue'
+        }).then(
+            (result) => {
+                if (result.isConfirmed) {
+                    navigation('/lc', { replace: true, state: level });
+                }
+            }
+        );
+    }
+
     const saveProgress = () => {
-        let id = JSON.parse(localStorage.getItem('id'));
-        console.log(id);
-        let courseId = 1;
-        let progress = { courseId, id, mainCap, level };
+
+        let userid = JSON.parse(localStorage.getItem('id'));
+        console.log(userid);
+        let courseid = 1;
+        let topic2 = { mainCap }
+        let topic = topic2.mainCap;
+        console.log(topic.mainCap);
+        let progress = { courseid, userid, topic, level };
+        console.log(progress)
 
         UserService.saveProgress(progress)
             .then(response => {
@@ -281,6 +303,14 @@ function CourseContentPlayer() {
                     width='170px'>
                     <Button variant="contained" onClick={saveProgress}>
                         Save Progress
+                    </Button>
+                </Stack>
+                <Stack
+                    sx={{ marginBottom: '10px', position: 'fixed', bottom: '0' }}
+                    spacing={2}
+                    width='170px'>
+                    <Button variant="contained" onClick={evaluateLevel}>
+                        Evaluate
                     </Button>
                 </Stack>
             </Main>
