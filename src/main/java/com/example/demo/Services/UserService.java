@@ -53,7 +53,7 @@ public class UserService {
         message.setTo(email);
         message.setSubject("Email Verification");
         message.setText(
-                "Click the following link to verify your email: https://ec2-50-19-151-239.compute-1.amazonaws.com:443/user/verifyEmail?token=" + token);
+                "Click the following link to verify your email: https://ec2-54-147-159-137.compute-1.amazonaws.com/user/verifyEmail?token=" + token);
         javaMailSender.send(message);
     }
 
