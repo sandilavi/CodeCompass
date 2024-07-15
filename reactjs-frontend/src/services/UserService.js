@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = "https://ec2-54-147-159-137.compute-1.amazonaws.com:443/user/";
-const HOST_bASE_URL = 'https://ec2-54-147-159-137.compute-1.amazonaws.com:443/';
+const USER_API_BASE_URL = "https://ec2-34-229-245-113.compute-1.amazonaws.com:443/user/";
+const HOST_bASE_URL = 'https://ec2-34-229-245-113.compute-1.amazonaws.com:443/';
 
 class UserService {
 
