@@ -5,14 +5,14 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
 # Copy the pom.xml and source code into the container
-COPY springboot-backend/pom.xml springboot-backend/pom.xml
-COPY springboot-backend/src springboot-backend/src
+COPY springboot-backend/pom.xml pom.xml
+COPY springboot-backend/src src
 
-# Package the application
-RUN mvn -f springboot-backend/pom.xml clean package
+# Build the application
+RUN mvn -f pom.xml clean package
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 # Run the jar file
-CMD ["java","-jar","springboot-backend/target/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "springboot-backend/target/demo-0.0.1-SNAPSHOT.jar"]
