@@ -11,11 +11,8 @@ COPY springboot-backend/src springboot-backend/src
 # Package the application
 RUN mvn -f springboot-backend/pom.xml clean package
 
-# Copy the packaged jar file into the container
-COPY springboot-backend/target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
-
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 # Run the jar file
-CMD ["java","-jar","/app/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-jar","springboot-backend/target/demo-0.0.1-SNAPSHOT.jar"]
